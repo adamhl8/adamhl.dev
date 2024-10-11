@@ -1,10 +1,17 @@
+import { classNames } from "../util/lang"
 import { pathToRoot, slugTag } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { classNames } from "../util/lang"
+
+const EXCLUDED_SLUGS = ["Projects"]
 
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
+  if (EXCLUDED_SLUGS.includes(fileData.slug ?? "")) {
+    return null
+  }
+
   const tags = fileData.frontmatter?.tags
   const baseDir = pathToRoot(fileData.slug!)
+
   if (tags && tags.length > 0) {
     return (
       <ul class={classNames(displayClass, "tags")}>
@@ -39,7 +46,7 @@ TagList.css = `
 .section-li > .section > .tags {
   justify-content: flex-end;
 }
-  
+
 .tags > li {
   display: inline-block;
   white-space: nowrap;
