@@ -32,6 +32,7 @@ button#explorer {
   color: var(--dark);
   display: flex;
   align-items: center;
+  opacity: 0.8;
 
   & h2 {
     font-size: 1rem;
@@ -93,7 +94,6 @@ button#explorer {
       opacity 0.2s ease;
     & li > a {
       color: var(--dark);
-      opacity: 0.75;
       pointer-events: all;
     }
   }

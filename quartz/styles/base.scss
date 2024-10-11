@@ -15,7 +15,7 @@ section {
   box-sizing: border-box;
   background-color: var(--light);
   font-family: var(--bodyFont);
-  color: var(--darkgray);
+  color: var(--dark);
 }
 
 .text-highlight {
@@ -25,7 +25,7 @@ section {
 }
 ::selection {
   background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-  color: var(--darkgray);
+  color: var(--dark);
 }
 
 p,
@@ -39,8 +39,8 @@ ol,
 ul,
 .katex,
 .math {
-  color: var(--darkgray);
-  fill: var(--darkgray);
+  color: var(--dark);
+  fill: var(--dark);
   hyphens: auto;
 }
 
@@ -192,13 +192,14 @@ a {
       z-index: 1;
       grid-area: grid-sidebar-left;
       flex-direction: column;
+      padding-top: 2rem;
       @media all and ($mobile) {
-        gap: 0;
+        gap: 2rem;
         align-items: center;
         position: initial;
         display: flex;
         height: unset;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
         padding-top: 2rem;
       }
@@ -390,7 +391,7 @@ figure[data-rehype-pretty-code-figure] {
     width: max-content;
     border-radius: 5px;
     margin-bottom: -0.5rem;
-    color: var(--darkgray);
+    color: var(--dark);
   }
 
   & > pre {

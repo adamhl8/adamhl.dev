@@ -1,4 +1,4 @@
-import { QuartzConfig } from "./quartz/cfg"
+import type { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Quartz 4.0",
+    pageTitle: "adamhl.dev",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,39 +16,39 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "adamhl.dev",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
+        header: "Atkinson Hyperlegible",
         body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "hsl(0, 0%, 90%)",
+          lightgray: "hsl(0, 0%, 75%)",
+          gray: "hsl(0, 0%, 60%)",
+          darkgray: "hsl(0, 0%, 25%)",
+          dark: "hsl(0, 0%, 10%)",
+          secondary: "hsl(150, 40%, 40%)", // 20% darker than darkMode
+          tertiary: "hsl(180, 40%, 30%)", // 10% darker than darkMode
+          highlight: "hsl(150, 40%, 40%, 0.15)",
+          textHighlight: "hsl(150, 40%, 40%, 0.40)",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "hsl(0, 0%, 10%)",
+          lightgray: "hsl(0, 0%, 25%)",
+          gray: "hsl(0, 0%, 60%)",
+          darkgray: "hsl(0, 0%, 75%)",
+          dark: "hsl(0, 0%, 90%)",
+          secondary: "hsl(150, 40%, 60%)",
+          tertiary: "hsl(180, 40%, 40%)",
+          highlight: "hsl(150, 40%, 60%, 0.15)",
+          textHighlight: "hsl(150, 40%, 60%, 0.40)",
         },
       },
     },
@@ -64,9 +64,10 @@ const config: QuartzConfig = {
           light: "github-light",
           dark: "github-dark",
         },
-        keepBackground: false,
+        keepBackground: true,
       }),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      Plugin.HardLineBreaks(),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
