@@ -1,20 +1,15 @@
 ---
 icon: FoNote
+title: "TypeScript 'satisfies' Operator"
+date: 2024-07-15
 ---
 
-# TypeScript Satisfies
+I recently discovered the [TypeScript `satisfies` operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html) which solves a particular typing problem I've come across time and time again.
 
----
+> [!tldr] The `satisfies` Operator
+> In a nutshell, it ensures that something conforms to a specific type while _also_ giving that thing the most specific (inferred) type.
 
-- [ ] Edit
-  - [ ] Just `sectionNames` type instead of `Object.keys`?
-    - "Let's say I want a type that's the string literals of my keys"
-
-^tasks
-
-## Blog
-
-If I have some object like so.
+Let's say we have an object where the keys are strings and the values are objects. And we know that in the future we might add another section like `section3`.
 
 ```ts
 const sections = {
@@ -25,30 +20,24 @@ const sections = {
     detail1: "",
   },
 }
-/*
-Typed as:
-{
-  section1: {
-      detail1: string;
-  };
-  section2: {
-      detail1: string;
-  };
-}
-*/
 ```
 
-Let's say I want to get an array of section names and not have to redefine them:
+Sometimes we might want a type that is the _keys_ of our `sections` object.
 
 ```ts
-// Object.keys() always returns a string[], so we typecast
-const sectionNames = Object.keys(sections) as (keyof typeof sections)[]
-// Typed as: ("section1" | "section2")[]
+type SectionNames = keyof typeof sections
+// The actual inferred type looks like:
+// type SectionNames = "section1" | "section2"
 ```
 
-Cool, this works.
+Cool, now we have type called `SectionNames` that is very specifically one of two string literals (`section1` or `section2`).
 
-I want to enforce that the sections object conforms to a specific shape, so I might define a type and type `sections`:
+But wait, we want the `sections` object to conform to a specific shape. Specifically, we want two things:
+
+- We want to be able to add additional sections to the object
+- Each section should be an object that has the key `detail1` with a `string` value
+
+So we might do something like:
 
 ```ts
 interface SectionDetails {
@@ -63,37 +52,25 @@ const sections: Record<string, SectionDetails> = {
     detail1: "",
   },
 }
-// Typed as: Record<string, SectionDetails>
-// I no longer know what the exact keys are!
 ```
 
-Since I typed `sections` as `{ts} Record<string, SectionDetails>`, TypeScript is no longer inferring the more specific type.
+This allows us to add as many sections as we want (without having to _also_ add the same section key to some overall `Sections` interface) and each section must be an object with the specified key/value pairs.
 
-And this breaks my `sectionNames` type.
+There's a problem though. Let's look at what our `SectionNames` type looks like now:
 
 ```ts
-const sectionNames = Object.keys(sections) as (keyof typeof sections)[]
-// Typed as: string[]
-// because: keyof typeof sections = string
+type SectionNames = keyof typeof sections
+// Now section names is:
+// type SectionNames = string
 ```
 
-We can't have `sections` reference itself in its type:
+Now `SectionNames` is just of type `string`.
 
-```ts
-const sections: Record<keyof typeof sections, SectionDetails> = {
-  section1: {
-    detail1: "",
-  },
-  section2: {
-    detail1: "",
-  },
-}
-// 'sections' is referenced directly or indirectly in its own type annotation. ts(2502)
-```
+Because we typed`sections` as `Record<string, SectionDetails>`, TypeScript is no longer inferring the more specific type.
 
-So the question is, how can I ensure that `sections` conforms to the shape I want while also having the type specify the exact keys and not just `{ts} string`?
+So the question is, how can we ensure that `sections` conforms to the shape we want while also having our `SectionNames` type be the exact keys and not just `string`?
 
-Use `{ts} satisfies`:
+This is where the `satisfies` operator comes in. Instead of specifying the type of `sections`, we say it must _satisfy_ some type:
 
 ```ts
 const sections = {
@@ -107,27 +84,6 @@ const sections = {
 // Still the specific inferred type!
 // And sections must satisfy the defined type.
 
-const sectionNames = Object.keys(sections) as (keyof typeof sections)[]
-// Typed as: ("section1" | "section2")[]
-```
-
-And to show that `sections` must satisfy the defined type:
-
-```ts
-interface SectionDetails {
-  detail1: string
-}
-
-const sections = {
-  section1: {
-    detail1: "",
-  },
-  section2: {
-    detail1: "",
-  },
-  section3: {
-    otherDetail: "",
-  },
-} satisfies Record<string, SectionDetails>
-// Object literal may only specify known properties, and 'otherDetail' does not exist in type 'SectionDetails'. ts(2353)
+type SectionNames = keyof typeof sections
+// type SectionNames = "section1" | "section2"
 ```
