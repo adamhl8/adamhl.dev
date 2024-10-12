@@ -19,7 +19,8 @@
     "test": "tsx ./quartz/util/path.test.ts && tsx ./quartz/depgraph.test.ts",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "obsidian-content": "bun ./obsidian-content.ts",
-    "serve": "npm run obsidian-content && npx quartz build --serve"
+    "serve": "npm run obsidian-content && npx quartz build --serve",
+    "sync": "npm run obsidian-content && npx quartz sync"
   },
   "engines": {
     "npm": ">=9.3.1",

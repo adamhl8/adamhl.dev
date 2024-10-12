@@ -1,7 +1,9 @@
 ---
-title: Home
+title: adamhl.dev
 ---
 
-Hey there :)
+Hey there, I'm Adam.
 
-Take a look at my [[blog/index|Blog]] or maybe my [[Projects]]
+Thanks for checking out my site. I occasionally write about software and things that I think are interesting.
+
+Take a look at my [[blog/index|Blog Posts]] or maybe some of my [[Projects]].
