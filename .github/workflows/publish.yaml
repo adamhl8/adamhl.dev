@@ -39,5 +39,5 @@ jobs:
           curl -X POST \
             -u "$API_USERNAME:$API_PASSWORD" \
             -H "Content-Type: application/json" \
-            -d '{"artifact_url": "${{ steps.artifact-upload-step.outputs.artifact-url }}"}' \
+            -d '{"artifactId": "${{ steps.artifact-upload-step.outputs.artifact-id }}"}' \
             https://api.adamhl.dev/quartz
