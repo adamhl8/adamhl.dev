@@ -1,4 +1,4 @@
-name: Build and Publish
+name: Publish
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - v4
 
 jobs:
-  build-and-deploy:
+  publish:
+    if: false
     runs-on: ubuntu-latest
 
     steps:
