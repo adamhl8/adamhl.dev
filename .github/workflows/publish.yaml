@@ -35,9 +35,10 @@ jobs:
         env:
           API_USERNAME: ${{ secrets.HOMELAB_API_USERNAME }}
           API_PASSWORD: ${{ secrets.HOMELAB_API_PASSWORD }}
+          ARTIFACT_URL: ${{ github.api_url }}/repos/${{ github.repository }}/actions/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}/zip
         run: |
           curl -X POST \
             -u "$API_USERNAME:$API_PASSWORD" \
             -H "Content-Type: application/json" \
-            -d '{"artifactId": "${{ steps.artifact-upload-step.outputs.artifact-id }}"}' \
+            -d '{"artifactUrl": "$ARTIFACT_URL"}' \
             https://api.adamhl.dev/quartz
