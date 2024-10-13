@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./server.dockerfile
+          file: ./caddy.dockerfile
           platforms: linux/amd64
           push: true
           tags: ghcr.io/adamhl8/adamhl.dev:latest
