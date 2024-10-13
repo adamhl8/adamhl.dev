@@ -6,7 +6,7 @@ on:
       - v4
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,9 +45,8 @@ jobs:
 
       - name: Publish to homelab
         env:
-          API_USERNAME: ${{ secrets.HOMELAB_API_USERNAME }}
-          API_PASSWORD: ${{ secrets.HOMELAB_API_PASSWORD }}
+          WATCHTOWER_API_TOKEN: ${{ secrets.WATCHTOWER_API_TOKEN }}
         run: |
           curl -X POST \
-            -u "$API_USERNAME:$API_PASSWORD" \
-            https://api.adamhl.dev/quartz
+            -H "Authorization: Bearer $WATCHTOWER_API_TOKEN" \
+            https://watchtower.adamhl.dev/v1/update
