@@ -12,3 +12,5 @@ description: "Programming-related things I've worked on."
 Write safe shell scripts in Python.
 
 ## eyir
+
+hey joie!! <3
