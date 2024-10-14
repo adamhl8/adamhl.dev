@@ -1,7 +1,7 @@
 ---
 icon: FoStar
 quartz-publish: true
-quartz-content-path: ''
+quartz-content-path: ""
 ---
 
 # Wishlist
@@ -52,8 +52,8 @@ Kitchen Shears
 
 ```md
 |       12U        |
-|:----------------:|
-|       ---        | 
+| :--------------: |
+|       ---        |
 | Patch Panel (1U) |
 |   Switch (1U)    |
 |       ---        |

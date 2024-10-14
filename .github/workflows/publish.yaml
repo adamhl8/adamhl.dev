@@ -13,16 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: ".node-version"
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun i
 
       - name: Build site
-        run: npx quartz build
+        run: bun quartz build
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -38,10 +38,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./caddy.dockerfile
+          tags: ghcr.io/adamhl8/adamhl.dev:latest
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/adamhl8/adamhl.dev:latest
 
       - name: Publish to homelab
         env:
