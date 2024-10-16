@@ -1,3 +1,3 @@
 # adamhl.dev
 
-This is my personal website/blog, build with [Quartz](https://quartz.jzhao.xyz).
+This is my personal website/blog, built with [Quartz](https://quartz.jzhao.xyz).
