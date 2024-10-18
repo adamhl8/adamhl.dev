@@ -13,8 +13,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const { title, description } = Astro.props
 ---
 
-<GlobalStyles />
-
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -40,3 +38,5 @@ const { title, description } = Astro.props
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
+
+<GlobalStyles />
