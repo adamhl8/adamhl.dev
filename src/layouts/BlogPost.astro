@@ -5,9 +5,11 @@ import BaseLayout from "./BaseLayout.astro"
 import TableOfContents from "../components/TableOfContents.astro"
 import type { MarkdownHeading } from "astro"
 
-type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] }
+type BlogProps = CollectionEntry<"blog">["data"]
+type TILProps = CollectionEntry<"til">["data"]
+type Props = (BlogProps | TILProps) & { headings: MarkdownHeading[] }
 
-const { title, description, date, headings } = Astro.props
+const { title, date, description, headings } = Astro.props
 ---
 
 <BaseLayout title={title} description={description}>

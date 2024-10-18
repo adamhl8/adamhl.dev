@@ -1,8 +1,11 @@
 import { getCollection } from "astro:content";
+import type { collections } from "./content/config.ts";
 
-async function getSortedBlogPosts() {
-	const posts = await getCollection("blog");
+type Collection = keyof typeof collections;
+
+async function getSortedCollection(collection: Collection) {
+	const posts = await getCollection(collection);
 	return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-export { getSortedBlogPosts };
+export { getSortedCollection };

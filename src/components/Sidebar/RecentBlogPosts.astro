@@ -1,8 +1,8 @@
 ---
 import FormattedDate from "../FormattedDate.astro"
 import Link from "../Link.astro"
-import { getSortedBlogPosts } from "../../utils"
-const posts = await getSortedBlogPosts()
+import { getSortedCollection } from "../../utils"
+const posts = await getSortedCollection("blog")
 const recentPosts = posts.slice(0, 5)
 ---
 
