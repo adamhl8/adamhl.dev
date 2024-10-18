@@ -1,0 +1,46 @@
+---
+import Link from "./Link.astro"
+
+type Props = {
+  title: string
+}
+
+const { title } = Astro.props
+
+const currentPath = Astro.url.pathname
+const pathSegments = currentPath.split("/").filter(Boolean)
+const isHome = currentPath === "/"
+const homeBreadcrumb = {
+  href: "/",
+  label: "Home",
+}
+const breadcrumbSegments = pathSegments.map((segment, index) => {
+  const href = `/${pathSegments.slice(0, index + 1).join("/")}`
+  const label = index === pathSegments.length - 1 ? title : segment.charAt(0).toUpperCase() + segment.slice(1)
+
+  return {
+    href,
+    label,
+  }
+})
+const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
+---
+
+<nav class="breadcrumbs text-neutral inline border-b border-base-300">
+  <ol class="flex-wrap">
+    {
+      breadcrumbs.map((crumb, index) => {
+        const isCurrentPage = index === breadcrumbs.length - 1
+        return (
+          <li>
+            {isCurrentPage ? (
+              <span aria-current="page">{crumb.label}</span>
+            ) : (
+              <Link href={crumb.href} title={crumb.label} />
+            )}
+          </li>
+        )
+      })
+    }
+  </ol>
+</nav>

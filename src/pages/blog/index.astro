@@ -1,0 +1,23 @@
+---
+import FormattedDate from "../../components/FormattedDate.astro"
+import Link from "../../components/Link.astro"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+import { getSortedBlogPosts } from "../../utils"
+const posts = await getSortedBlogPosts()
+---
+
+<BaseLayout title="Blog" description="adamhl.dev blog posts">
+  <ul class="space-y-8">
+    {
+      posts.map((post) => (
+        <li class="flex flex-col">
+          <Link href={`/blog/${post.id}`} title={post.data.title} titleClass="text-primary font-bold text-xl">
+            <FormattedDate class="text-sm" date={post.data.date} />
+            <p class="text-lg">{post.data.description}</p>
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

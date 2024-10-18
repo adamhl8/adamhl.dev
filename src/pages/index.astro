@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import { Content as Home } from "../home.md"
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <article class="prose max-w-none">
+    <Home />
+  </article>
+</BaseLayout>

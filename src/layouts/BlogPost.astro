@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content"
+import FormattedDate from "../components/FormattedDate.astro"
+import BaseLayout from "./BaseLayout.astro"
+import TableOfContents from "../components/TableOfContents.astro"
+import type { MarkdownHeading } from "astro"
+
+type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] }
+
+const { title, description, date, headings } = Astro.props
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="prose max-w-none">
+    <h1 id="title" class="text-3xl mb-1">{title}</h1>
+    <FormattedDate class="text-lg" date={date} />
+    <hr class="my-8" />
+    <slot />
+  </article>
+
+  {headings.length > 0 && <TableOfContents headings={headings} slot="toc" />}
+</BaseLayout>

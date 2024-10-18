@@ -1,0 +1,41 @@
+---
+import Moon from "./Icons/Moon.astro"
+import Sun from "./Icons/Sun.astro"
+---
+
+<label class="grid cursor-pointer place-items-center">
+  <input
+    type="checkbox"
+    value="dark"
+    class="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
+  />
+  <Sun class="stroke-base-100 fill-base-100 col-start-1 row-start-1 w-3.5 h-3.5" />
+  <Moon class="stroke-base-100 fill-base-100 col-start-2 row-start-1 w-3.5 h-3.5" />
+</label>
+
+<script is:inline>
+  const localStorageTheme = localStorage?.getItem("theme")
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  const theme = localStorageTheme || systemTheme
+
+  document.documentElement.setAttribute("data-theme", theme)
+  localStorage.setItem("theme", theme)
+
+  const handleToggleClick = () => {
+    const themeToggle = document.querySelector(".theme-controller")
+    if (!(themeToggle instanceof HTMLInputElement)) return
+
+    const currentTheme = document.documentElement.getAttribute("data-theme")
+    const newTheme = currentTheme === "light" ? "dark" : "light"
+
+    document.documentElement.setAttribute("data-theme", newTheme)
+    localStorage.setItem("theme", newTheme)
+    themeToggle.checked = newTheme === "dark"
+  }
+
+  const themeToggle = document.querySelector(".theme-controller")
+  if (themeToggle instanceof HTMLInputElement) {
+    themeToggle.checked = theme === "dark"
+    themeToggle.addEventListener("change", handleToggleClick)
+  }
+</script>

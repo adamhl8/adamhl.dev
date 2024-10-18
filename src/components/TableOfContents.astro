@@ -1,0 +1,48 @@
+---
+import type { MarkdownHeading } from "astro"
+import Link from "./Link.astro"
+
+type Props = { headings: MarkdownHeading[] }
+
+const { headings } = Astro.props
+
+const indentClass: Record<number, string> = {
+  1: "ml-0",
+  2: "ml-4",
+  3: "ml-8",
+  4: "ml-12",
+  5: "ml-16",
+  6: "ml-20",
+}
+---
+
+<nav class="sticky top-24">
+  <Link href="#title" title="Table of Contents" titleClass="text-xl font-semibold mb-4" />
+
+  <ol class="space-y-2 pl-4 border-l border-base-300">
+    {
+      headings.map((heading) => (
+        <li class={`${indentClass[heading.depth]}`}>
+          <Link href={`#${heading.slug}`} title={heading.text} />
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const id = entry.target.getAttribute("id")
+      if (entry.intersectionRatio > 0) {
+        document.querySelector(`nav li a[href="#${id}"]`)?.classList.add("text-secondary")
+      } else {
+        document.querySelector(`nav li a[href="#${id}"]`)?.classList.remove("text-secondary")
+      }
+    }
+  })
+
+  for (const section of document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")) {
+    observer.observe(section)
+  }
+</script>

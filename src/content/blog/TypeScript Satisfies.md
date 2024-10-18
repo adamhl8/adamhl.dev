@@ -1,0 +1,90 @@
+---
+title: "TypeScript 'satisfies' Operator"
+description: "A quick overview of the 'satisfies' operator in TypeScript."
+date: 2024-07-15
+tags: [TypeScript]
+---
+
+I recently discovered the [TypeScript `satisfies` operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html) which solves a particular typing problem I've come across time and time again.
+
+> [!tldr] The `satisfies` Operator
+> In a nutshell, it ensures that something conforms to a specific type while _also_ giving that thing the most specific (inferred) type.
+
+Let's say we have an object where the keys are strings and the values are objects. And we know that in the future we might add another section like `section3`.
+
+```ts
+const sections = {
+  section1: {
+    detail1: "",
+  },
+  section2: {
+    detail1: "",
+  },
+}
+```
+
+Sometimes we might want a type that is the _keys_ of our `sections` object.
+
+```ts
+type SectionNames = keyof typeof sections
+// The actual inferred type looks like:
+// type SectionNames = "section1" | "section2"
+```
+
+Cool, now we have type called `SectionNames` that is very specifically one of two string literals (`section1` or `section2`).
+
+But wait, we want the `sections` object to conform to a specific shape. Specifically, we want two things:
+
+- We want to be able to add additional sections to the object
+- Each section should be an object that has the key `detail1` with a `string` value
+
+So we might do something like:
+
+```ts
+interface SectionDetails {
+  detail1: string
+}
+
+const sections: Record<string, SectionDetails> = {
+  section1: {
+    detail1: "",
+  },
+  section2: {
+    detail1: "",
+  },
+}
+```
+
+This allows us to add as many sections as we want (without having to _also_ add the same section key to some overall `Sections` interface) and each section must be an object with the specified key/value pairs.
+
+There's a problem though. Let's look at what our `SectionNames` type looks like now:
+
+```ts
+type SectionNames = keyof typeof sections
+// Now section names is:
+// type SectionNames = string
+```
+
+Now `SectionNames` is just of type `string`.
+
+Because we typed`sections` as `Record<string, SectionDetails>`, TypeScript is no longer inferring the more specific type.
+
+So the question is, how can we ensure that `sections` conforms to the shape we want while also having our `SectionNames` type be the exact keys and not just `string`?
+
+This is where the `satisfies` operator comes in. Instead of specifying the type of `sections`, we say it must _satisfy_ some type:
+
+```ts
+const sections = {
+  section1: {
+    detail1: "",
+  },
+  section2: {
+    detail1: "",
+  },
+} satisfies Record<string, SectionDetails>
+// Still the specific inferred type!
+// And sections must satisfy the defined type.
+
+type SectionNames = keyof typeof sections
+// type SectionNames = "section1" | "section2"
+```

@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+type Props = HTMLAttributes<"a"> & {
+  title?: string | HTMLElement
+  titleClass?: string
+}
+
+const { class: className, title, titleClass, ...props } = Astro.props
+---
+
+<a class:list={[className, title ? "group" : "hover:text-accent transition-colors"]} {...props}>
+  {title && <span class:list={[titleClass, "block group-hover:text-accent transition-colors"]}>{title}</span>}
+  <slot />
+</a>

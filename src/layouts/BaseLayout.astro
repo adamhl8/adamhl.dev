@@ -1,0 +1,46 @@
+---
+import BaseHead from "../components/BaseHead.astro"
+import ThemeToggle from "../components/ThemeToggle.astro"
+import Nav from "../components/Sidebar/Nav.astro"
+import Title from "../components/Sidebar/Title.astro"
+import RecentBlogPosts from "../components/Sidebar/RecentBlogPosts.astro"
+import Breadcrumbs from "../components/Breadcrumbs.astro"
+
+type Props = {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class="flex justify-center p-8">
+    <div class="absolute top-8 right-8 z-10">
+      <ThemeToggle />
+    </div>
+
+    <div class="grid grid-cols-5 max-w-[80rem]">
+      <aside class="space-y-6 mr-16">
+        <Title />
+        <Nav />
+        <RecentBlogPosts />
+      </aside>
+
+      <main class="col-span-3 mt-8 space-y-8">
+        <Breadcrumbs title={title} />
+        <slot />
+        <hr class="border-base-300" />
+      </main>
+
+      <aside class="ml-16">
+        <slot name="toc" />
+      </aside>
+    </div>
+  </body>
+</html>
