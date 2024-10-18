@@ -1,5 +1,6 @@
 import tailwindTypography from "@tailwindcss/typography";
 import daisyui from "daisyui";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const colors = {
 	light: {
@@ -23,7 +24,12 @@ const colors = {
 export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: ["Atkinson Hyperlegible", ...defaultTheme.fontFamily.sans],
+				mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+			},
+		},
 	},
 	darkMode: ["selector", '[data-theme="dark"]'],
 	plugins: [tailwindTypography, daisyui],
