@@ -1,18 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import FormattedDate from "../components/FormattedDate.astro"
-import BaseLayout from "./BaseLayout.astro"
+import Base from "./Base.astro"
 import TableOfContents from "../components/TableOfContents.astro"
 import type { MarkdownHeading } from "astro"
 
-type BlogProps = CollectionEntry<"blog">["data"]
-type TILProps = CollectionEntry<"til">["data"]
-type Props = (BlogProps | TILProps) & { headings: MarkdownHeading[] }
+type BlogProps = CollectionEntry<"blog">
+type TILProps = CollectionEntry<"til">
+type ShareProps = CollectionEntry<"share">
+type Props = (BlogProps | TILProps | ShareProps) & { headings: MarkdownHeading[] }
 
-const { title, date, description, headings } = Astro.props
+const { data, headings } = Astro.props
+const { title, date, description } = data
 ---
 
-<BaseLayout title={title} description={description}>
+<Base title={title} description={description ?? ""}>
   <article class="prose max-w-none">
     <h1 id="title" class="text-3xl mb-1">{title}</h1>
     <FormattedDate class="text-lg" date={date} />
@@ -21,4 +23,4 @@ const { title, date, description, headings } = Astro.props
   </article>
 
   {headings.length > 0 && <TableOfContents headings={headings} slot="toc" />}
-</BaseLayout>
+</Base>

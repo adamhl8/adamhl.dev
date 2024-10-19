@@ -1,13 +1,13 @@
 ---
 import FormattedDate from "../../components/FormattedDate.astro"
 import Link from "../../components/Link.astro"
-import BaseLayout from "../../layouts/BaseLayout.astro"
+import Base from "../../layouts/Base.astro"
 
 import { getSortedCollection } from "../../utils"
 const posts = await getSortedCollection("blog")
 ---
 
-<BaseLayout title="Blog" description="adamhl.dev blog posts">
+<Base title="Blog" description="adamhl.dev blog posts">
   <ul class="space-y-8">
     {
       posts.map((post) => (
@@ -20,4 +20,4 @@ const posts = await getSortedCollection("blog")
       ))
     }
   </ul>
-</BaseLayout>
+</Base>

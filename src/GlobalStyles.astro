@@ -13,4 +13,34 @@
   .prose a {
     @apply text-primary hover:text-accent transition-colors;
   }
+
+  /* Callouts */
+  .callout {
+    mix-blend-mode: unset !important;
+    @apply px-5 pb-0 !important;
+  }
+
+  .callout-title {
+    @apply items-center !important;
+    @apply gap-2 !important;
+  }
+
+  [data-theme="light"] {
+    .callout {
+      background-color: rgb(from var(--callout-color-light) r g b / 0.2) !important;
+    }
+    .callout-title {
+      color: var(--callout-color-light) !important;
+    }
+  }
+
+  [data-theme="dark"] {
+    .callout {
+      background-color: rgb(from var(--callout-color-dark) r g b / 0.2) !important;
+    }
+    .callout-title {
+      color: var(--callout-color-dark) !important;
+    }
+  }
+  /* End Callouts */
 </style>

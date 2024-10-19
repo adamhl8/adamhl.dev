@@ -1,13 +1,13 @@
 ---
 import FormattedDate from "../../components/FormattedDate.astro"
 import Link from "../../components/Link.astro"
-import BaseLayout from "../../layouts/BaseLayout.astro"
+import Base from "../../layouts/Base.astro"
 
 import { getSortedCollection } from "../../utils"
 const posts = await getSortedCollection("til")
 ---
 
-<BaseLayout title="TIL" description="adamhl.dev TIL posts">
+<Base title="TIL" description="adamhl.dev TIL posts">
   <hgroup class="space-y-2">
     <h1 class="text-3xl font-bold">Today I Learned</h1>
     <p>These are small snippets of things I learned or found interesting. Think of them like "micro" blog posts.</p>
@@ -24,4 +24,4 @@ const posts = await getSortedCollection("til")
       ))
     }
   </ul>
-</BaseLayout>
+</Base>
