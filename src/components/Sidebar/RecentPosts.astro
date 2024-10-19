@@ -1,0 +1,31 @@
+---
+import FormattedDate from "../FormattedDate.astro"
+import Link from "../Link.astro"
+import { getSortedCollection } from "../../utils.ts"
+import type { CollectionNames } from "../../utils.ts"
+
+type Props = {
+  collectionName: CollectionNames
+  title: string
+}
+const { collectionName, title } = Astro.props
+
+const posts = await getSortedCollection(collectionName)
+const recentPosts = posts.slice(0, 3)
+---
+
+<section class="space-y-4">
+  <h3 class="text-xl font-bold">{title}</h3>
+
+  <ul class="space-y-4">
+    {
+      recentPosts.map((post) => (
+        <li>
+          <Link href={`/${collectionName}/${post.id}`} title={post.data.title} titleClass="font-bold text-primary">
+            <FormattedDate class="text-sm" date={post.data.date} />
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
+</section>

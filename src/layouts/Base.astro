@@ -3,7 +3,7 @@ import BaseHead from "../components/BaseHead.astro"
 import ThemeToggle from "../components/ThemeToggle.astro"
 import Nav from "../components/Sidebar/Nav.astro"
 import Title from "../components/Sidebar/Title.astro"
-import RecentBlogPosts from "../components/Sidebar/RecentBlogPosts.astro"
+import RecentPosts from "../components/Sidebar/RecentPosts.astro"
 import Breadcrumbs from "../components/Breadcrumbs.astro"
 
 type Props = {
@@ -29,7 +29,8 @@ const { title, description } = Astro.props
       <aside class="space-y-6 mr-16">
         <Title />
         <Nav />
-        <RecentBlogPosts />
+        <RecentPosts collectionName="blog" title="Recent Blog Posts" />
+        <RecentPosts collectionName="til" title="Recent TIL Posts" />
       </aside>
 
       <main class="col-span-3 mt-8 space-y-8">
