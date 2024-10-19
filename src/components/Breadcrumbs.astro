@@ -26,13 +26,13 @@ const breadcrumbSegments = pathSegments.map((segment, index) => {
 const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
 ---
 
-<nav class="breadcrumbs text-neutral inline border-b border-base-300">
+<nav class="breadcrumbs inline-block border-b border-base-300">
   <ol class="flex-wrap">
     {
       breadcrumbs.map((crumb, index) => {
         const isCurrentPage = index === breadcrumbs.length - 1
         return (
-          <li>
+          <li class="text-wrap text-neutral">
             {isCurrentPage ? (
               <span aria-current="page">{crumb.label}</span>
             ) : (

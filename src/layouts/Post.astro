@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content"
-import FormattedDate from "../components/FormattedDate.astro"
 import Base from "./Base.astro"
 import TableOfContents from "../components/TableOfContents.astro"
 import type { MarkdownHeading } from "astro"
+import Title from "../components/Title.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">
@@ -11,14 +11,13 @@ type ShareProps = CollectionEntry<"share">
 type Props = (BlogProps | TILProps | ShareProps) & { headings: MarkdownHeading[] }
 
 const { data, headings } = Astro.props
-const { title, date, description } = data
+const { title, date, description = "" } = data
 ---
 
-<Base title={title} description={description ?? ""}>
+<Base title={title} description={description}>
+  <Title title={title} date={date} description={description} />
+
   <article class="prose max-w-none">
-    <h1 id="title" class="text-3xl mb-1">{title}</h1>
-    <FormattedDate class="text-lg" date={date} />
-    <hr class="my-8" />
     <slot />
   </article>
 

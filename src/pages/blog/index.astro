@@ -1,23 +1,10 @@
 ---
-import FormattedDate from "../../components/FormattedDate.astro"
-import Link from "../../components/Link.astro"
 import Base from "../../layouts/Base.astro"
-
-import { getSortedCollection } from "../../utils"
-const posts = await getSortedCollection("blog")
+import PostList from "../../components/PostList.astro"
+import Title from "../../components/Title.astro"
 ---
 
 <Base title="Blog" description="adamhl.dev blog posts">
-  <ul class="space-y-8">
-    {
-      posts.map((post) => (
-        <li class="flex flex-col">
-          <Link href={`/blog/${post.id}`} title={post.data.title} titleClass="text-primary font-bold text-xl">
-            <FormattedDate class="text-sm" date={post.data.date} />
-            <p class="text-lg">{post.data.description}</p>
-          </Link>
-        </li>
-      ))
-    }
-  </ul>
+  <Title title="Blog Posts" description="All of my blog posts." />
+  <PostList collectionName="blog" />
 </Base>

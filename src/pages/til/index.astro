@@ -1,27 +1,13 @@
 ---
-import FormattedDate from "../../components/FormattedDate.astro"
-import Link from "../../components/Link.astro"
+import Title from "../../components/Title.astro"
+import PostList from "../../components/PostList.astro"
 import Base from "../../layouts/Base.astro"
-
-import { getSortedCollection } from "../../utils"
-const posts = await getSortedCollection("til")
 ---
 
 <Base title="TIL" description="adamhl.dev TIL posts">
-  <hgroup class="space-y-2">
-    <h1 class="text-3xl font-bold">Today I Learned</h1>
-    <p>These are small snippets of things I learned or found interesting. Think of them like "micro" blog posts.</p>
-  </hgroup>
-
-  <ul class="space-y-8">
-    {
-      posts.map((post) => (
-        <li class="flex flex-col">
-          <Link href={`/til/${post.id}`} title={post.data.title} titleClass="text-primary font-bold text-xl">
-            <FormattedDate class="text-sm" date={post.data.date} />
-          </Link>
-        </li>
-      ))
-    }
-  </ul>
+  <Title
+    title="Today I Learned"
+    description="These are small snippets of things I learned or found interesting. Think of them like 'micro' blog posts."
+  />
+  <PostList collectionName="til" />
 </Base>
