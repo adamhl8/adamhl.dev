@@ -19,7 +19,7 @@ const indentClass: Record<number, string> = {
 <nav class="sticky top-24">
   <Link href="#title" title="Table of Contents" titleClass="text-xl font-semibold mb-4" />
 
-  <ol class="space-y-2 pl-4 border-l border-base-300">
+  <ol class="space-y-2 border-l border-base-300 pl-4">
     {
       headings.map((heading) => (
         <li class={`${indentClass[heading.depth]}`}>

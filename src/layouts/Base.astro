@@ -20,18 +20,18 @@ const { title, description } = Astro.props
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="flex flex-col m-8 md:grid md:grid-cols-5 md:justify-self-center md:max-w-[80rem]">
-    <div class="absolute top-4 right-4">
+  <body class="m-8 flex flex-col md:grid md:max-w-[80rem] md:grid-cols-5 md:justify-self-center">
+    <div class="absolute right-4 top-4">
       <ThemeToggle />
     </div>
 
-    <div class="flex justify-between items-start md:hidden">
+    <div class="flex items-start justify-between md:hidden">
       <MobileDrawer />
       <Title />
       <div class="w-8"></div>
     </div>
 
-    <div class="hidden mr-16 md:block">
+    <div class="mr-16 hidden md:block">
       <Sidebar />
     </div>
 
@@ -41,7 +41,7 @@ const { title, description } = Astro.props
       <hr class="border-base-300" />
     </main>
 
-    <aside class="hidden ml-16 md:block">
+    <aside class="ml-16 hidden md:block">
       <slot name="toc" />
     </aside>
   </body>

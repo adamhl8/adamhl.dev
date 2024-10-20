@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "obsidian-share": "./obsidian-share.ts",
-    "lint": "tsc --noEmit && astro check && biome check --write ."
+    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -29,7 +29,12 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/bun": "^1.1.11",
     "daisyui": "^4.12.13",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "yaml": "^2.6.0"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }
