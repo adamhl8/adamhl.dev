@@ -12,7 +12,7 @@ const { title, date, description } = Astro.props
 <hgroup class="space-y-2">
   <h1 class="text-3xl font-bold">{title}</h1>
   {date && <FormattedDate class="text-lg" date={date} />}
-  <p class="text-neutral">{description}</p>
+  <p class="opacity-75">{description}</p>
 </hgroup>
 
 <hr class="border-base-300" />
