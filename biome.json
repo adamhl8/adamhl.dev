@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "linter": {
+    "rules": {
+      "all": true,
+      "style": {
+        "useBlockStatements": "off",
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": false
+          }
+        },
+        "noNamespaceImport": "off",
+        "useFilenamingConvention": "off",
+        "noDefaultExport": "off"
+      }
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded"
+    },
+    "globals": ["Bun"]
+  },
+  "files": { "ignore": [".astro", "dist"] },
+  "overrides": [
+    {
+      "include": ["src/**/*.astro"],
+      "linter": { "rules": { "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" } } }
+    },
+    {
+      "include": ["obsidian-share.ts"],
+      "linter": { "rules": { "correctness": { "noNodejsModules": "off" }, "suspicious": { "noConsole": "off" } } }
+    }
+  ]
+}

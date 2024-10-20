@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content"
-import Base from "./Base.astro"
-import TableOfContents from "../components/TableOfContents.astro"
 import type { MarkdownHeading } from "astro"
 import Title from "../components/PageTitle.astro"
+import TableOfContents from "../components/TableOfContents.astro"
+import Base from "./Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">

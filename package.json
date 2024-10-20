@@ -4,10 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "bun lint && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "obsidian-share": "./obsidian-share.ts"
+    "obsidian-share": "./obsidian-share.ts",
+    "lint": "tsc --noEmit && astro check && biome check --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -24,9 +25,11 @@
     "typescript": "^5.6.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@tailwindcss/typography": "^0.5.15",
     "@types/bun": "^1.1.11",
     "daisyui": "^4.12.13",
     "yaml": "^2.6.0"
-  }
+  },
+  "trustedDependencies": ["@biomejs/biome"]
 }
