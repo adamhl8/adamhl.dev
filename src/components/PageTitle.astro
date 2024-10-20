@@ -5,14 +5,16 @@ type Props = {
   title: string
   date?: Date
   description: string
+  readingTime?: string
 }
-const { title, date, description } = Astro.props
+const { title, date, description, readingTime } = Astro.props
 ---
 
-<hgroup class="space-y-2">
+<hgroup class="">
   <h1 class="text-3xl font-bold">{title}</h1>
   {date && <FormattedDate class="text-lg" date={date} />}
-  <p class="opacity-75">{description}</p>
+  {readingTime && <div class="opacity-75">{readingTime}</div>}
+  <p class="mt-4 opacity-75">{description}</p>
 </hgroup>
 
 <hr class="border-base-300" />

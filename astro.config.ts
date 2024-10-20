@@ -7,6 +7,7 @@ import tailwind from "@astrojs/tailwind"
 
 import rehypeCallouts from "rehype-callouts"
 import remarkBreaks from "remark-breaks"
+import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +20,7 @@ export default defineConfig({
     tailwind(),
   ],
   markdown: {
-    remarkPlugins: [remarkBreaks],
+    remarkPlugins: [remarkBreaks, remarkReadingTime],
     rehypePlugins: [rehypeCallouts],
   },
 })

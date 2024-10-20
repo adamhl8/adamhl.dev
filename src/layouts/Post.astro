@@ -1,24 +1,25 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import type { MarkdownHeading } from "astro"
-import Title from "../components/PageTitle.astro"
+import type { CollectionEntry, RenderResult } from "astro:content"
+import PageTitle from "../components/PageTitle.astro"
 import TableOfContents from "../components/TableOfContents.astro"
 import Base from "./Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">
 type ShareProps = CollectionEntry<"share">
-type Props = (BlogProps | TILProps | ShareProps) & { headings: MarkdownHeading[] }
+type Props = (BlogProps | TILProps | ShareProps) & { renderedPost: RenderResult }
 
-const { data, headings } = Astro.props
+const { data, renderedPost } = Astro.props
 const { title, date, description = "" } = data
+const { Content, headings, remarkPluginFrontmatter } = renderedPost
+const { readingTime } = remarkPluginFrontmatter
 ---
 
 <Base title={title} description={description}>
-  <Title title={title} date={date} description={description} />
+  <PageTitle title={title} date={date} description={description} readingTime={readingTime} />
 
   <article class="prose max-w-none">
-    <slot />
+    <Content />
   </article>
 
   {headings.length > 0 && <TableOfContents headings={headings} slot="toc" />}
