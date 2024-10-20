@@ -14,9 +14,15 @@ const homeBreadcrumb = {
   href: "/",
   label: "Home",
 }
+
+const capitalizeSegment = (segment: string) => {
+  if (segment === "til") return "TIL"
+  return segment.charAt(0).toUpperCase() + segment.slice(1)
+}
+
 const breadcrumbSegments = pathSegments.map((segment, index) => {
   const href = `/${pathSegments.slice(0, index + 1).join("/")}`
-  const label = index === pathSegments.length - 1 ? title : segment.charAt(0).toUpperCase() + segment.slice(1)
+  const label = index === pathSegments.length - 1 ? title : capitalizeSegment(segment)
 
   return {
     href,
@@ -26,13 +32,18 @@ const breadcrumbSegments = pathSegments.map((segment, index) => {
 const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
 ---
 
-<nav class="breadcrumbs inline-block border-b border-base-300">
-  <ol class="flex-wrap">
+<nav class="inline-block border-b border-base-300">
+  <ol class="flex flex-wrap items-center">
     {
       breadcrumbs.map((crumb, index) => {
         const isCurrentPage = index === breadcrumbs.length - 1
         return (
-          <li class="-z-10 text-wrap text-neutral">
+          <li class="flex items-center opacity-75">
+            {index > 0 && (
+              <span class="mx-2 opacity-50" aria-hidden="true">
+                /
+              </span>
+            )}
             {isCurrentPage ? (
               <span aria-current="page">{crumb.label}</span>
             ) : (
