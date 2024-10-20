@@ -8,9 +8,12 @@ export async function GET(context) {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
+    stylesheet: "/rss/styles.xsl",
     items: posts.map((post) => ({
-      ...post.data,
-      link: `/blog/${post.id}`,
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.date,
+      link: `/blog/${post.id}/`,
     })),
   })
 }
