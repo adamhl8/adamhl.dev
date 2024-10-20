@@ -25,13 +25,14 @@ const navLinks = [
 ]
 
 const { pathname } = Astro.url
+const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/, "")
 ---
 
 <nav>
   <menu class="space-y-2">
     {
       navLinks.map((link) => {
-        const isActive = link.href === pathname
+        const isActive = link.href === cleanPathname
         return (
           <li>
             <Link href={link.href} title={link.label} titleClass={isActive ? "font-bold" : ""} />
