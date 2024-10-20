@@ -11,7 +11,13 @@ import remarkBreaks from "remark-breaks"
 // https://astro.build/config
 export default defineConfig({
   site: "https://adamhl.dev",
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes("/share/"),
+    }),
+    tailwind(),
+  ],
   markdown: {
     remarkPlugins: [remarkBreaks],
     rehypePlugins: [rehypeCallouts],
