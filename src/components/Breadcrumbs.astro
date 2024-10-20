@@ -32,7 +32,7 @@ const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
       breadcrumbs.map((crumb, index) => {
         const isCurrentPage = index === breadcrumbs.length - 1
         return (
-          <li class="text-wrap text-neutral">
+          <li class="-z-10 text-wrap text-neutral">
             {isCurrentPage ? (
               <span aria-current="page">{crumb.label}</span>
             ) : (

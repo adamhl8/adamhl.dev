@@ -1,0 +1,17 @@
+---
+import Menu from "../Icons/Menu.astro"
+import Sidebar from "../Sidebar/Sidebar.astro"
+---
+
+<div class="drawer w-min">
+  <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+  <label for="mobile-drawer">
+    <Menu class="size-8" />
+  </label>
+  <aside class="drawer-side">
+    <label for="mobile-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+    <div class="bg-base-200 min-h-full w-80 max-w-[60%] p-6">
+      <Sidebar />
+    </div>
+  </aside>
+</div>

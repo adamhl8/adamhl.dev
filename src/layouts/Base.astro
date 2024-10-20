@@ -1,10 +1,10 @@
 ---
 import BaseHead from "../components/BaseHead.astro"
 import ThemeToggle from "../components/ThemeToggle.astro"
-import Nav from "../components/Sidebar/Nav.astro"
 import Title from "../components/Sidebar/Title.astro"
-import RecentPosts from "../components/Sidebar/RecentPosts.astro"
 import Breadcrumbs from "../components/Breadcrumbs.astro"
+import MobileDrawer from "../components/Mobile/MobileDrawer.astro"
+import Sidebar from "../components/Sidebar/Sidebar.astro"
 
 type Props = {
   title: string
@@ -20,28 +20,29 @@ const { title, description } = Astro.props
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="flex justify-center p-8">
-    <div class="absolute top-8 right-8 z-10">
+  <body class="flex flex-col m-8 md:grid md:grid-cols-5 md:justify-self-center md:max-w-[80rem]">
+    <div class="absolute top-4 right-4">
       <ThemeToggle />
     </div>
 
-    <div class="grid grid-cols-5 max-w-[80rem]">
-      <aside class="space-y-6 mr-16">
-        <Title />
-        <Nav />
-        <RecentPosts collectionName="blog" title="Recent Blog Posts" />
-        <RecentPosts collectionName="til" title="Recent TIL Posts" />
-      </aside>
-
-      <main class="col-span-3 mt-8 space-y-8">
-        <Breadcrumbs title={title} />
-        <slot />
-        <hr class="border-base-300" />
-      </main>
-
-      <aside class="ml-16">
-        <slot name="toc" />
-      </aside>
+    <div class="flex justify-between items-start md:hidden">
+      <MobileDrawer />
+      <Title />
+      <div class="w-8"></div>
     </div>
+
+    <div class="hidden mr-16 md:block">
+      <Sidebar />
+    </div>
+
+    <main class="mt-8 space-y-8 md:col-span-3">
+      <Breadcrumbs title={title} />
+      <slot />
+      <hr class="border-base-300" />
+    </main>
+
+    <aside class="hidden ml-16 md:block">
+      <slot name="toc" />
+    </aside>
   </body>
 </html>
