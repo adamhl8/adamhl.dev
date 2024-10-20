@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry, RenderResult } from "astro:content"
 import PageTitle from "../components/PageTitle.astro"
+import Prose from "../components/Prose.astro"
 import TableOfContents from "../components/TableOfContents.astro"
 import Base from "./Base.astro"
 
@@ -18,9 +19,9 @@ const { readingTime } = remarkPluginFrontmatter
 <Base title={title} description={description}>
   <PageTitle title={title} date={date} description={description} readingTime={readingTime} />
 
-  <article class="prose max-w-none">
+  <Prose>
     <Content />
-  </article>
+  </Prose>
 
   {headings.length > 0 && <TableOfContents headings={headings} slot="toc" />}
 </Base>

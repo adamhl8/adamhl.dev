@@ -1,0 +1,28 @@
+---
+const links = "[&_a]:text-primary [&_a]:transition-colors hover:[&_a]:text-accent"
+
+const callouts = "[&_.callout]:px-5 [&_.callout]:pb-0 [&_.callout]:[mix-blend-mode:unset]"
+const calloutTitle = "[&_.callout-title]:items-center [&_.callout-title]:gap-2"
+
+const calloutBgColorDark = "group-data-[theme=dark]/html:[&_.callout]:bg-[rgb(from_var(--callout-color-dark)r_g_b/0.2)]"
+const calloutTitleColorDark = "group-data-[theme=dark]/html:[&_.callout-title]:text-[--callout-color-dark]"
+
+const calloutBgColorLight =
+  "group-data-[theme=light]/html:[&_.callout]:bg-[rgb(from_var(--callout-color-light)r_g_b/0.2)]"
+const calloutTitleColorLight = "group-data-[theme=light]/html:[&_.callout-title]:text-[--callout-color-light]"
+---
+
+<article
+  class:list={[
+    "prose max-w-none text-base-content",
+    links,
+    callouts,
+    calloutTitle,
+    calloutBgColorDark,
+    calloutTitleColorDark,
+    calloutBgColorLight,
+    calloutTitleColorLight,
+  ]}
+>
+  <slot />
+</article>

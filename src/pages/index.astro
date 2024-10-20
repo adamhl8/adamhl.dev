@@ -1,11 +1,12 @@
 ---
+import Prose from "../components/Prose.astro"
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts.ts"
 import { Content as Home } from "../home.md"
 import Base from "../layouts/Base.astro"
 ---
 
 <Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <article class="prose max-w-none">
+  <Prose>
     <Home />
-  </article>
+  </Prose>
 </Base>
