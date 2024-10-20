@@ -14,14 +14,22 @@ import Sun from "./Icons/Sun.astro"
 </label>
 
 <script is:inline>
-  const localStorageTheme = localStorage?.getItem("theme")
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  const theme = localStorageTheme || systemTheme
+  function initializeTheme() {
+    const localStorageTheme = localStorage?.getItem("theme")
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    const theme = localStorageTheme || systemTheme
 
-  document.documentElement.setAttribute("data-theme", theme)
-  localStorage.setItem("theme", theme)
+    document.documentElement.setAttribute("data-theme", theme)
+    localStorage.setItem("theme", theme)
 
-  const handleToggleClick = () => {
+    const themeToggle = document.querySelector(".theme-controller")
+    if (!(themeToggle instanceof HTMLInputElement)) return
+
+    themeToggle.checked = theme === "dark"
+    themeToggle.addEventListener("change", handleToggleClick)
+  }
+
+  function handleToggleClick() {
     const themeToggle = document.querySelector(".theme-controller")
     if (!(themeToggle instanceof HTMLInputElement)) return
 
@@ -33,9 +41,5 @@ import Sun from "./Icons/Sun.astro"
     themeToggle.checked = newTheme === "dark"
   }
 
-  const themeToggle = document.querySelector(".theme-controller")
-  if (themeToggle instanceof HTMLInputElement) {
-    themeToggle.checked = theme === "dark"
-    themeToggle.addEventListener("change", handleToggleClick)
-  }
+  initializeTheme()
 </script>
