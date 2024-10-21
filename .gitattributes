@@ -1,1 +1,2 @@
 *.xsl linguist-vendored
+*.js linguist-vendored

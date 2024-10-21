@@ -18,7 +18,7 @@ import Sun from "./Icons/Sun.astro"
 <script is:inline>
   function initializeTheme() {
     const localStorageTheme = localStorage?.getItem("theme")
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
     const theme = localStorageTheme || systemTheme
 
     document.documentElement.setAttribute("data-theme", theme)
