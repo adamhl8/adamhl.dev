@@ -13,7 +13,7 @@ const colors = {
     blue: "hsl(200deg 80% 75%)",
     purple: "hsl(275deg 80% 75%)",
   },
-  grey: (opacity: number) => `hsl(0deg 0% ${opacity}%)`,
+  grey: (opacity: number) => `hsl(0deg 0% ${opacity.toString()}%)`,
   info: "hsl(200deg 100% 50%)",
   success: "hsl(160deg 100% 35%)",
   warning: "hsl(40deg 100% 50%)",

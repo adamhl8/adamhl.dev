@@ -9,6 +9,9 @@
         "noNamespaceImport": "off",
         "useFilenamingConvention": "off",
         "noDefaultExport": "off"
+      },
+      "correctness": {
+        "noUndeclaredDependencies": "off"
       }
     }
   },
@@ -22,7 +25,7 @@
     },
     "globals": ["Bun"]
   },
-  "files": { "ignore": [".astro", "dist"] },
+  "files": { "ignore": [".astro", "dist", "eslint.jsx.d.ts"] },
   "overrides": [
     {
       "include": ["src/**/*.astro"],

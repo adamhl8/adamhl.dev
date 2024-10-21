@@ -20,7 +20,7 @@ interface FileDetails {
 
 async function copySharedFile(filePath: string): Promise<FileDetails | undefined> {
   const content = await fs.readFile(filePath, "utf-8")
-  const frontmatterMatch = content.match(FRONTMATTER_REGEX)
+  const frontmatterMatch = FRONTMATTER_REGEX.exec(content)
 
   if (!frontmatterMatch?.[1]) return
 
@@ -44,7 +44,7 @@ async function processFile(fileDetails: FileDetails) {
   const { destFilePath, content, frontmatter } = fileDetails
 
   // Remove the title heading
-  const titleMatch = content.match(TITLE_REGEX)
+  const titleMatch = TITLE_REGEX.exec(content)
   let processedContent = content.replace(TITLE_REGEX, "")
 
   // Update frontmatter

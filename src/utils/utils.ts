@@ -8,17 +8,4 @@ async function getSortedCollection<T extends CollectionNames>(collection: T) {
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 }
 
-let languageColors: Record<string, { color: string }>
-
-async function getLanguageColors() {
-  if (languageColors) return languageColors
-
-  const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
-  if (!colorsResp.ok) throw new Error(`Failed to fetch language colors: ${colorsResp.status} ${colorsResp.statusText}`)
-
-  languageColors = await colorsResp.json()
-
-  return languageColors
-}
-
-export { getSortedCollection, getLanguageColors }
+export { getSortedCollection }

@@ -1,11 +1,11 @@
 ---
 import FormattedDate from "./FormattedDate.astro"
 
-type Props = {
+interface Props {
   title: string
   date?: Date
   description: string
-  readingTime?: string
+  readingTime?: string | undefined
 }
 const { title, date, description, readingTime } = Astro.props
 ---

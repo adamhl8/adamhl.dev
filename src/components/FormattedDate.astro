@@ -1,5 +1,5 @@
 ---
-type Props = {
+interface Props {
   class?: string
   date: Date
 }
@@ -7,7 +7,7 @@ type Props = {
 const { date, class: classNames } = Astro.props
 ---
 
-<time class={classNames} datetime={date.toISOString()}>
+<time class:list={[classNames]} datetime={date.toISOString()}>
   {
     date.toLocaleDateString("en-us", {
       year: "numeric",

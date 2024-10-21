@@ -2,7 +2,9 @@
 import type { MarkdownHeading } from "astro"
 import Link from "./Link.astro"
 
-type Props = { headings: MarkdownHeading[] }
+interface Props {
+  headings: MarkdownHeading[]
+}
 
 const { headings } = Astro.props
 
@@ -22,7 +24,7 @@ const indentClass: Record<number, string> = {
   <ol class="space-y-2 border-l border-base-300 pl-4">
     {
       headings.map((heading) => (
-        <li class={`${indentClass[heading.depth]}`}>
+        <li class:list={[indentClass[heading.depth]]}>
           <Link href={`#${heading.slug}`} title={heading.text} />
         </li>
       ))

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry, RenderResult } from "astro:content"
+import * as v from "valibot"
 import PageTitle from "../components/PageTitle.astro"
 import Prose from "../components/Prose.astro"
 import TableOfContents from "../components/TableOfContents.astro"
@@ -13,7 +14,7 @@ type Props = (BlogProps | TILProps | ShareProps) & { renderedPost: RenderResult 
 const { data, renderedPost } = Astro.props
 const { title, date, description = "" } = data
 const { Content, headings, remarkPluginFrontmatter } = renderedPost
-const { readingTime } = remarkPluginFrontmatter
+const readingTime = v.parse(v.optional(v.string()), remarkPluginFrontmatter.readingTime)
 ---
 
 <Base title={title} description={description}>
