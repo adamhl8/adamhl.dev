@@ -2,6 +2,7 @@
 import GitFork from "./Icons/GitFork.astro"
 import GitHub from "./Icons/GitHub.astro"
 import Star from "./Icons/Star.astro"
+import { getLanguageColors } from "../utils/utils.ts"
 
 type Props = {
   repo: string
@@ -9,17 +10,19 @@ type Props = {
 
 const { repo } = Astro.props
 
-const repoResp = await fetch(`https://api.github.com/repos/${repo}`, {
-  headers: {
-    Accept: "application/vnd.github+json",
-    Authorization: `Bearer ${import.meta.env.GITHUB_ASTRO_TOKEN}`,
-    "X-GitHub-Api-Version": "2022-11-28",
-  },
-})
+// fallback to unauthenticated requests if GITHUB_ASTRO_TOKEN is not set so this works in CI
+const repoFetchOptions = import.meta.env.GITHUB_ASTRO_TOKEN
+  ? {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${import.meta.env.GITHUB_ASTRO_TOKEN}`,
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    }
+  : {}
+const repoResp = await fetch(`https://api.github.com/repos/${repo}`, repoFetchOptions)
 const repoData = await repoResp.json()
-
-const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
-const colors = await colorsResp.json()
+const languageColors = await getLanguageColors()
 ---
 
 <div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
@@ -33,7 +36,7 @@ const colors = await colorsResp.json()
 
   <aside class="flex flex-wrap items-center space-x-4">
     <div class="flex items-center space-x-1">
-      <div class="size-3 rounded-full" style={`background-color: ${colors[repoData.language]?.color};`}></div>
+      <div class="size-3 rounded-full" style={`background-color: ${languageColors[repoData.language]?.color};`}></div>
       <span class="text-sm">{repoData.language}</span>
     </div>
     <div class="flex items-center space-x-4">
