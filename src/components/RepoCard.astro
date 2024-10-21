@@ -1,0 +1,16 @@
+---
+type Props = {
+  repo: string
+}
+
+const { repo } = Astro.props
+---
+
+<div class="repo-card-container">
+  <div class="skeleton h-28 w-full"></div>
+  <div
+    class="repo-card hidden [&>div]:min-h-28 [&>div]:!border-base-300 [&>div]:!bg-base-200 [&_*]:!text-base-content [&_a]:!text-secondary [&_svg]:!fill-base-content/75"
+    data-repo={repo}
+  >
+  </div>
+</div>
