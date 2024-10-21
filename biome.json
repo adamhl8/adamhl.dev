@@ -5,12 +5,7 @@
       "all": true,
       "style": {
         "useBlockStatements": "off",
-        "useNamingConvention": {
-          "level": "error",
-          "options": {
-            "strictCase": false
-          }
-        },
+        "useNamingConvention": "off",
         "noNamespaceImport": "off",
         "useFilenamingConvention": "off",
         "noDefaultExport": "off"

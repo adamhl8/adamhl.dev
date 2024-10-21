@@ -4,8 +4,6 @@ import RepoCard from "../components/RepoCard.astro"
 import Base from "../layouts/Base.astro"
 ---
 
-<script is:inline src="https://tarptaeya.github.io/repo-card/repo-card.js"></script>
-
 <Base title="Projects" description="adamhl.dev projects">
   <PageTitle title="Projects" description="Some of my programming projects." />
 
@@ -20,26 +18,3 @@ import Base from "../layouts/Base.astro"
     <RepoCard repo="adamhl8/cosmerecollection.com" />
   </div>
 </Base>
-
-<script>
-  function handleRepoCards() {
-    const containers = document.querySelectorAll(".repo-card-container")
-    for (const container of containers) {
-      const skeleton = container.querySelector(".skeleton")
-      const repoCard = container.querySelector(".repo-card")
-      if (!skeleton || !repoCard) continue
-
-      const observer = new MutationObserver(() => {
-        if (repoCard.children.length > 0) {
-          skeleton.classList.add("hidden")
-          repoCard.classList.remove("hidden")
-          observer.disconnect()
-        }
-      })
-
-      observer.observe(repoCard, { childList: true })
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", handleRepoCards)
-</script>

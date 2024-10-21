@@ -1,16 +1,58 @@
 ---
+import GitFork from "./Icons/GitFork.astro"
+import GitHub from "./Icons/GitHub.astro"
+import Star from "./Icons/Star.astro"
+
 type Props = {
   repo: string
 }
 
 const { repo } = Astro.props
+
+const repoResp = await fetch(`https://api.github.com/repos/${repo}`, {
+  headers: {
+    Accept: "application/vnd.github+json",
+    Authorization: `Bearer ${import.meta.env.GITHUB_ASTRO_TOKEN}`,
+    "X-GitHub-Api-Version": "2022-11-28",
+  },
+})
+const repoData = await repoResp.json()
+
+const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
+const colors = await colorsResp.json()
 ---
 
-<div class="repo-card-container">
-  <div class="skeleton h-28 w-full"></div>
-  <div
-    class="repo-card hidden [&>div]:min-h-28 [&>div]:!border-base-300 [&>div]:!bg-base-200 [&_*]:!text-base-content [&_a]:!text-secondary [&_svg]:!fill-base-content/75"
-    data-repo={repo}
-  >
-  </div>
+<div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
+  <hgroup class="flex flex-col space-y-2">
+    <header class="flex items-center space-x-2">
+      <GitHub class="size-5 flex-shrink-0 opacity-75" />
+      <a class="text-secondary transition-colors hover:text-accent" href={repoData.html_url}>{repoData.name}</a>
+    </header>
+    {repoData.description ? <p class="text-sm">{repoData.description}</p> : null}
+  </hgroup>
+
+  <aside class="flex flex-wrap items-center space-x-4">
+    <div class="flex items-center space-x-1">
+      <div class="size-3 rounded-full" style={`background-color: ${colors[repoData.language]?.color};`}></div>
+      <span class="text-sm">{repoData.language}</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      {
+        repoData.stargazers_count ? (
+          <div class="flex items-center space-x-1">
+            <Star class="size-4 opacity-75" />
+            <span class="text-sm">{repoData.stargazers_count}</span>
+          </div>
+        ) : null
+      }
+      {
+        repoData.forks ? (
+          <div class="flex items-center space-x-1">
+            <GitFork class="size-4 opacity-75" />
+            <span class="text-sm">{repoData.forks}</span>
+          </div>
+        ) : null
+      }
+    </div>
+  </aside>
 </div>
