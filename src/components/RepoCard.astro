@@ -21,6 +21,8 @@ const repoFetchOptions = import.meta.env.GITHUB_ASTRO_TOKEN
     }
   : {}
 const repoResp = await fetch(`https://api.github.com/repos/${repo}`, repoFetchOptions)
+if (!repoResp.ok) throw new Error(`Failed to fetch repo data for ${repo}: ${repoResp.status} ${repoResp.statusText}`)
+
 const repoData = await repoResp.json()
 const languageColors = await getLanguageColors()
 ---
