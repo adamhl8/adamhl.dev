@@ -11,7 +11,8 @@
         "noDefaultExport": "off"
       },
       "correctness": {
-        "noUndeclaredDependencies": "off"
+        "noUndeclaredDependencies": "off",
+        "noNodejsModules": "off"
       }
     }
   },
@@ -32,8 +33,8 @@
       "linter": { "rules": { "correctness": { "noUnusedVariables": "off", "noUnusedImports": "off" } } }
     },
     {
-      "include": ["obsidian-share.ts"],
-      "linter": { "rules": { "correctness": { "noNodejsModules": "off" }, "suspicious": { "noConsole": "off" } } }
+      "include": ["obsidian-share.ts", "minify.ts"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
     }
   ]
 }

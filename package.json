@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "bun lint && astro build",
+    "build": "bun lint && astro build && bun minify",
     "preview": "astro preview",
     "astro": "astro",
     "obsidian-share": "./obsidian-share.ts",
-    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint ."
+    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint .",
+    "minify": "minify -a -r --ext.xsl=text/xml -o ./dist/ ./dist/"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
