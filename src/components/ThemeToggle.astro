@@ -1,6 +1,5 @@
 ---
-import Moon from "./Icons/Moon.astro"
-import Sun from "./Icons/Sun.astro"
+import { Icon } from "astro-icon/components"
 ---
 
 <button id="theme-toggle" class="grid cursor-pointer place-items-center" aria-label="Toggle theme">
@@ -11,8 +10,8 @@ import Sun from "./Icons/Sun.astro"
     aria-hidden="true"
     tabindex="-1"
   />
-  <Sun class="col-start-1 row-start-1 h-3.5 w-3.5 fill-base-100 stroke-base-100" />
-  <Moon class="col-start-2 row-start-1 h-3.5 w-3.5 fill-base-100 stroke-base-100" />
+  <Icon name="tabler:sun-high" class="col-start-1 row-start-1 size-3.5 fill-base-100 stroke-base-100" />
+  <Icon name="tabler:moon-filled" class="col-start-2 row-start-1 size-3.5 fill-base-100 stroke-base-100" />
 </button>
 
 <script is:inline>

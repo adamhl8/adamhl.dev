@@ -1,5 +1,5 @@
 ---
-import Menu from "../Icons/Menu.astro"
+import { Icon } from "astro-icon/components"
 import Sidebar from "../Sidebar/Sidebar.astro"
 ---
 
@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar/Sidebar.astro"
   <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
   <label for="mobile-drawer">
     <span class="sr-only">open sidebar</span>
-    <Menu class="size-8" />
+    <Icon name="tabler:menu-2" class="size-8" />
   </label>
   <aside class="drawer-side z-50">
     <label for="mobile-drawer" aria-label="close sidebar" class="drawer-overlay"></label>

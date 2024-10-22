@@ -1,7 +1,5 @@
 ---
-import GitHub from "../Icons/GitHub.astro"
-import LinkedIn from "../Icons/LinkedIn.astro"
-import RSS from "../Icons/RSS.astro"
+import { Icon } from "astro-icon/components"
 import Link from "../Link.astro"
 ---
 
@@ -10,14 +8,14 @@ import Link from "../Link.astro"
 
   <div class="flex items-center space-x-2">
     <Link class="opacity-75" href="https://github.com/adamhl8" target="_blank" aria-label="GitHub">
-      <GitHub class="size-7" />
+      <Icon name="tabler:brand-github" class="size-7" />
     </Link>
     <Link class="opacity-75" href="https://www.linkedin.com/in/adamlangbert" target="_blank" aria-label="LinkedIn">
-      <LinkedIn class="size-7" />
+      <Icon name="tabler:brand-linkedin" class="size-7" />
     </Link>
     <div class="divider divider-horizontal [&:after]:bg-base-300 [&:before]:bg-base-300"></div>
     <Link class="opacity-75" href="/rss.xml" target="_blank" aria-label="RSS">
-      <RSS class="size-7" />
+      <Icon name="tabler:rss" class="size-7" />
     </Link>
   </div>
 </section>

@@ -1,10 +1,8 @@
 import mdx from "@astrojs/mdx"
-import { defineConfig } from "astro/config"
-
 import sitemap from "@astrojs/sitemap"
-
 import tailwind from "@astrojs/tailwind"
-
+import icon from "astro-icon"
+import { defineConfig } from "astro/config"
 import rehypeCallouts from "rehype-callouts"
 import remarkBreaks from "remark-breaks"
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
@@ -18,6 +16,7 @@ export default defineConfig({
       filter: (page) => !page.includes("/share/"),
     }),
     tailwind(),
+    icon(),
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],

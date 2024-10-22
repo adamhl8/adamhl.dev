@@ -1,8 +1,5 @@
 ---
-import GitFork from "../Icons/GitFork.astro"
-import GitHub from "../Icons/GitHub.astro"
-import Star from "../Icons/Star.astro"
-
+import { Icon } from "astro-icon/components"
 import { getLanguageColors, getRepoData } from "./utils.ts"
 
 interface Props {
@@ -18,7 +15,7 @@ const languageColors = await getLanguageColors()
 <div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
   <hgroup class="flex flex-col space-y-2">
     <header class="flex items-center space-x-2">
-      <GitHub class="size-5 flex-shrink-0 opacity-75" />
+      <Icon name="tabler:brand-github" class="size-5 flex-shrink-0 opacity-75" />
       <a class="text-secondary transition-colors hover:text-accent" href={repoData.html_url}>{repoData.name}</a>
     </header>
     {repoData.description ? <p class="text-sm">{repoData.description}</p> : null}
@@ -38,7 +35,7 @@ const languageColors = await getLanguageColors()
       {
         repoData.stargazers_count ? (
           <div class="flex items-center space-x-1">
-            <Star class="size-4 opacity-75" />
+            <Icon name="tabler:star" class="size-4 opacity-75" />
             <span class="text-sm">{repoData.stargazers_count}</span>
           </div>
         ) : null
@@ -46,7 +43,7 @@ const languageColors = await getLanguageColors()
       {
         repoData.forks ? (
           <div class="flex items-center space-x-1">
-            <GitFork class="size-4 opacity-75" />
+            <Icon name="tabler:git-fork" class="size-4 opacity-75" />
             <span class="text-sm">{repoData.forks}</span>
           </div>
         ) : null
