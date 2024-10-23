@@ -67,7 +67,7 @@ type SectionNames = keyof typeof sections
 
 Now `SectionNames` is just of type `string`.
 
-Because we typed`sections` as `Record<string, SectionDetails>`, TypeScript is no longer inferring the more specific type.
+Because we typed `sections` as `Record<string, SectionDetails>`, TypeScript is no longer inferring the more specific type.
 
 So the question is, how can we ensure that `sections` conforms to the shape we want while also having our `SectionNames` type be the exact keys and not just `string`?
 
