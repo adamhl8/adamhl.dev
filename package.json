@@ -4,12 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "bun lint && astro build && bun minify",
+    "build": "rm -rf dist .astro && bun lint && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "obsidian-share": "./obsidian-share.ts",
-    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint .",
-    "minify": "minify -a -r --ext.xsl=text/xml -o ./dist/ ./dist/"
+    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -17,9 +16,11 @@
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
+    "@expressive-code/plugin-line-numbers": "^0.37.1",
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
     "@fontsource/atkinson-hyperlegible": "^5.1.0",
     "astro": "^5.0.0-beta.5",
+    "astro-expressive-code": "^0.37.1",
     "astro-icon": "^1.1.1",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
