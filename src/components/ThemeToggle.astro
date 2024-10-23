@@ -6,12 +6,18 @@ import { Icon } from "astro-icon/components"
   <input
     type="checkbox"
     value="dark"
-    class="theme-controller toggle col-span-2 col-start-1 row-start-1 bg-base-content"
+    class="theme-controller toggle col-span-2 col-start-1 row-start-1 bg-base-content hover:bg-base-content/75"
     aria-hidden="true"
     tabindex="-1"
   />
-  <Icon name="tabler:sun-high" class="col-start-1 row-start-1 size-3.5 fill-base-100 stroke-base-100" />
-  <Icon name="tabler:moon-filled" class="col-start-2 row-start-1 size-3.5 fill-base-100 stroke-base-100" />
+  <Icon
+    name="tabler:sun-high"
+    class="pointer-events-none col-start-1 row-start-1 size-3.5 fill-base-100 stroke-base-100 text-base-100"
+  />
+  <Icon
+    name="tabler:moon-filled"
+    class="pointer-events-none col-start-2 row-start-1 size-3.5 fill-base-100 stroke-base-100 text-base-100"
+  />
 </button>
 
 <script is:inline>
