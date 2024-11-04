@@ -1,5 +1,6 @@
 import tailwindTypography from "@tailwindcss/typography"
 import daisyui from "daisyui"
+import type { Config } from "tailwindcss"
 import defaultTheme from "tailwindcss/defaultTheme"
 
 const colors = {
@@ -20,8 +21,7 @@ const colors = {
   error: "hsl(0deg 100% 65%)",
 }
 
-/** @type {import('tailwindcss').Config} */
-export default {
+const config: Config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
@@ -84,3 +84,5 @@ export default {
     ],
   },
 }
+
+export default config
