@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "obsidian-share": "./obsidian-share.ts",
+    "upgrade": "bunx @astrojs/upgrade beta",
     "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint ."
   },
   "dependencies": {

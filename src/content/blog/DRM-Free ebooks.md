@@ -1,0 +1,76 @@
+---
+title: "How I get DRM-free ebooks"
+description: "Because DRM on content I buy makes me sad."
+date: 2024-11-15
+tags: [ebooks, reading, books]
+---
+
+I've been reading a lot of [Brandon Sanderson](https://www.brandonsanderson.com) lately, and one of the things that I really appreciate is that he (his company) publishes DRM-free ebooks. That means I can:
+
+- Archive them and not worry about losing access to them in the future
+- Read them with my preferred ereader/app
+
+Nowadays I usually just buy my ebooks from [eBooks.com](https://www.ebooks.com) because they make it really easy to download the actual ebook file (usually an `epub`).
+
+Recently, I found a new book I wanted to read. Unfortunately, it comes with DRM.
+
+![eBooks.com DRM notice](./assets/DRM-Free%20ebooks/ebooks.com_drm_notice.png)
+
+_This is from the bottom of the product page on eBooks.com._
+
+For the reasons I stated above, it would be real nice if I could get a DRM-free copy of this book.
+
+But it's not always possible to purchase a DRM-free version of an ebook, so instead we can purchase the DRM/encrypted version and decrypt it using a few pieces of software.
+
+I still specifically use [eBooks.com](https://www.ebooks.com) to buy (encrypted) ebooks because they tend to provide ebooks encrypted with [Adobe Digital Editions](https://www.adobe.com/solutions/ebook/digital-editions.html) which, as you'll see shortly, is pretty easy to remove.
+
+> [!warning] Notice
+> This is to help you remove DRM from ebooks that you purchased/obtained **legally**. Do not share/redistribute copies unless given explicit permission by the copyright holder(s) to do so.
+
+## Setting everything up
+
+> [!note]
+> This was all done on macOS, so this might vary slightly depending on your OS.
+
+We need to download/install three things:
+
+- [Adobe Digital Editions](https://www.adobe.com/solutions/ebook/digital-editions/download.html)
+- [calibre](https://calibre-ebook.com/download)
+- [DeDRM Plugin](https://github.com/noDRM/DeDRM_tools) for calibre
+  - I use the latest alpha/nightly build which can be downloaded [here](https://github.com/noDRM/DeDRM_tools_autorelease/releases)
+
+### Adobe Digital Editions
+
+Once downloaded and installed, open it up and go to **Help** > **Authorize Computer**.
+
+It will ask you to sign in, but you can just check the box for `I want to Authroize my computer without an ID` and authorize that way. Once you're authorized, you're good to go with this.
+
+### calibre
+
+Go through the initial calibre setup until you're on the main page.
+
+Separately, download the DeDRM plugin and extract the ZIP file. There should be a `DeDRM_plugin.zip` file. This is what we're going to import into calibre.
+
+- Go to **Preferences** > **Plugins** > **Load plugin from file**
+- Select the `DeDRM_plugin.zip` from before. Restart calibre if it asks
+- Go back to **Preferences** > **Plugins**, find the DeDRM plugin (`Show only user installed plugins`), click it, and click **Customize plugin**
+- **Adobe Digital Editions ebooks** > click the "**+**"
+
+If you've properly setup and authorized Adobe Digital Editions, it should automatically add your key.
+
+You can close out/apply everything and you're ready to go.
+
+## Getting your DRM-free ebook
+
+> [!note]
+> The following is how it works when downloading from eBooks.com, but it should be the same for any site that provides a Adobe Digital Editions encrypted ebook.
+
+When you go to download your (encrypted) ebook, you'll notice that it doesn't actually download the book at all. It instead downloads a file called `URLLink.acsm`. This is a "Adobe Content Server Message" file. Basically, it's a bit of XML that contains the necessary information to actually download your book.
+
+- Once your ebook is downloaded inside of Adobe Digital Editions, right click on it to open up the file location. You should see the (still encrypted) epub file
+- Take note of the file location (or move it somewhere more convenient)
+- In calibre, **Add books** > select your encrypted epub file
+  - At this point, the DeDRM plugin runs and decrypts your ebook
+- Once it's added in calibre, **Right Click** > **Open book folder**
+
+Enjoy your DRM-free ebook :)
