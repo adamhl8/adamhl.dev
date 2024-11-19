@@ -2,41 +2,32 @@
 icon: FoStar
 share: true
 title: Wishlist
-date: 2024-10-19
+date: 2024-11-19
 ---
 
+## Actually want
+
+[Work Sharp Ken Onion Knife Sharpener Tool](https://www.amazon.com/dp/B0CXG57C4F)
+[Inovelli Thread Matter Smart Fan Switch](https://inovelli.com/products/thread-matter-white-series-smart-fan-switch-3-speed-ceiling-on-off-exhaust?variant=42786398044325)
+[Benriner Mandoline Slicer](https://www.amazon.com/dp/B01CZXJJBU)
+[FixHub Soldering Iron](https://www.ifixit.com/products/fixhub-power-series-smart-soldering-iron)
+
+## One day
+
 [Busy Status Bar](https://busy.bar)
-[Inovelli Thread Matter Smart Switch](https://inovelli.com/products/thread-matter-white-series-smart-fan-switch-3-speed-ceiling-on-off-exhaust?variant=42786398044325)
-[sipeed NanoKVM](https://sipeed.com/nanokvm/pcie)
-
-bench scraper
-mandoline
-
-One Wheel Tire
-Wallet
+[Ninja SLUSHi](https://www.ninjakitchen.com/products/ninja-slushi-professional-frozen-drink-maker-zidFS301)
 [Ninja SL401 DoubleStack Air Fryer](https://www.amazon.com/dp/B0CZS6SS3Y)
 [Cuisinart Bread Maker Machine - CBK-110P1](https://www.amazon.com/gp/product/B07C8V4FDR)
+One Wheel Tire
 
-## Media
-
-[Tiny Epic Dungeons Gaming Mat](https://www.gamelyngames.com/product/pre-order-tiny-epic-dungeons-gaming-mat/)
-[Tiny Epic Dungeons - Potions & Peril](https://www.gamelyngames.com/product/tiny-epic-dungeons-kickstarter-deluxe-promo-potions-peril/)
-[Tiny Epic Dungeons Stories Expansion](https://www.gamelyngames.com/product/tiny-epic-dungeons-stories-expansion/)
+### Media
 
 [World of Warcraft Chronicle Volume 3](https://www.amazon.com/dp/1616558474)
 [World of Warcraft Chronicle Volume 4](https://www.amazon.com/dp/1506731910)
-[Attack on Titan: Colossal Edition](https://www.amazon.com/dp/1612629717)
 [Halo Encyclopedia (Deluxe Edition)](https://www.amazon.com/dp/1506731163)
+[Attack on Titan: Colossal Edition](https://www.amazon.com/dp/1612629717)
 
-## Tools
-
-[PINECIL – Smart Mini Portable Soldering Iron (Version 2)](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/)
-[FixHub Portable Soldering Station - iFixit](https://www.ifixit.com/fixhub)
-[Work Sharp Ken Onion Knife Sharpener Tool](https://www.amazon.com/dp/B0CXG57C4F)
-Immersion Blender
-Kitchen Shears
-
-## Server
+### Server
 
 [StarTech.com 12U Server Rack](https://www.amazon.com/dp/B00P1RJ9LS)
 [5 Pack of 1U Blank Panel](https://www.amazon.com/dp/B0925TPJFG)
@@ -53,8 +44,8 @@ Kitchen Shears
 
 ```md
 |       12U        |
-| :--------------: |
-|       ---        |
+|:----------------:|
+|       ---        | 
 | Patch Panel (1U) |
 |   Switch (1U)    |
 |       ---        |
