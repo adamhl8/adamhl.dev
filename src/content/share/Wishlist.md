@@ -2,7 +2,7 @@
 icon: FoStar
 share: true
 title: Wishlist
-date: 2024-11-19
+date: 2024-11-20
 ---
 
 ## Actually want
@@ -10,12 +10,13 @@ date: 2024-11-19
 [Work Sharp Ken Onion Knife Sharpener Tool](https://www.amazon.com/dp/B0CXG57C4F)
 [Inovelli Thread Matter Smart Fan Switch](https://inovelli.com/products/thread-matter-white-series-smart-fan-switch-3-speed-ceiling-on-off-exhaust?variant=42786398044325)
 [Benriner Mandoline Slicer](https://www.amazon.com/dp/B01CZXJJBU)
+[Busy Status Bar](https://busy.bar)
 [FixHub Soldering Iron](https://www.ifixit.com/products/fixhub-power-series-smart-soldering-iron)
+[Ninja SLUSHi](https://www.ninjakitchen.com/products/ninja-slushi-professional-frozen-drink-maker-zidFS301)
+[Halo Encyclopedia (Deluxe Edition)](https://www.amazon.com/dp/1506731163)
 
 ## One day
 
-[Busy Status Bar](https://busy.bar)
-[Ninja SLUSHi](https://www.ninjakitchen.com/products/ninja-slushi-professional-frozen-drink-maker-zidFS301)
 [Ninja SL401 DoubleStack Air Fryer](https://www.amazon.com/dp/B0CZS6SS3Y)
 [Cuisinart Bread Maker Machine - CBK-110P1](https://www.amazon.com/gp/product/B07C8V4FDR)
 One Wheel Tire
@@ -24,7 +25,6 @@ One Wheel Tire
 
 [World of Warcraft Chronicle Volume 3](https://www.amazon.com/dp/1616558474)
 [World of Warcraft Chronicle Volume 4](https://www.amazon.com/dp/1506731910)
-[Halo Encyclopedia (Deluxe Edition)](https://www.amazon.com/dp/1506731163)
 [Attack on Titan: Colossal Edition](https://www.amazon.com/dp/1612629717)
 
 ### Server
@@ -44,8 +44,8 @@ One Wheel Tire
 
 ```md
 |       12U        |
-|:----------------:|
-|       ---        | 
+| :--------------: |
+|       ---        |
 | Patch Panel (1U) |
 |   Switch (1U)    |
 |       ---        |
