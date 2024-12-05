@@ -1,8 +1,8 @@
 ---
-icon: FoStar
+icon: FaStar
 share: true
 title: Wishlist
-date: 2024-11-20
+date: 2024-12-05
 ---
 
 ## Actually want
@@ -14,6 +14,7 @@ date: 2024-11-20
 [FixHub Soldering Iron](https://www.ifixit.com/products/fixhub-power-series-smart-soldering-iron)
 [Ninja SLUSHi](https://www.ninjakitchen.com/products/ninja-slushi-professional-frozen-drink-maker-zidFS301)
 [Halo Encyclopedia (Deluxe Edition)](https://www.amazon.com/dp/1506731163)
+Exercise/Floor Mat for Treadmill
 
 ## One day
 
@@ -42,9 +43,8 @@ One Wheel Tire
 
 [Sliger CX3150x](https://www.sliger.com/products/rackmount/3u/cx3150x/)
 
-```md
 |       12U        |
-| :--------------: |
+|:----------------:|
 |       ---        |
 | Patch Panel (1U) |
 |   Switch (1U)    |
@@ -57,4 +57,3 @@ One Wheel Tire
 |       ---        |
 |     PDU (1U)     |
 |     UPS (1U)     |
-```
