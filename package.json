@@ -19,7 +19,7 @@
     "@expressive-code/plugin-line-numbers": "^0.38.3",
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
     "@fontsource/atkinson-hyperlegible": "^5.1.0",
-    "astro": "5.0.2",
+    "astro": "5.0.8",
     "astro-expressive-code": "^0.38.3",
     "astro-icon": "^1.1.4",
     "astro-robots-txt": "^1.0.0",
