@@ -44,7 +44,7 @@ One Wheel Tire
 [Sliger CX3150x](https://www.sliger.com/products/rackmount/3u/cx3150x/)
 
 |       12U        |
-|:----------------:|
+| :--------------: |
 |       ---        |
 | Patch Panel (1U) |
 |   Switch (1U)    |
