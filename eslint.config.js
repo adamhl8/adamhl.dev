@@ -4,15 +4,17 @@ import astro from "eslint-plugin-astro"
 import globals from "globals"
 import tseslint from "typescript-eslint"
 
-export default [
+export default tseslint.config(
+  { ignores: ["**/*.js", "**/*.mjs", ".astro", "dist"] },
   pluginJs.configs.recommended,
   biome,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
-  ...astro.configs.all,
-  ...astro.configs["jsx-a11y-strict"],
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
+  astro.configs.all,
+  astro.configs["jsx-a11y-strict"],
   {
     languageOptions: {
+      ecmaVersion: "latest",
       parserOptions: {
         // https://github.com/ota-meshi/astro-eslint-parser/issues/331
         project: true,
@@ -27,5 +29,4 @@ export default [
       "astro/sort-attributes": "off",
     },
   },
-  { ignores: ["**/*.js", "**/*.mjs", ".astro", "dist"] },
-]
+)

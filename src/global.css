@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@theme {
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-primary: hsl(125deg 100% 25%);
+  --color-secondary: hsl(200deg 100% 32%);
+  --color-accent: hsl(275deg 100% 32%);
+  --color-base-100: hsl(0deg 0% 90%);
+  --color-base-200: hsl(0deg 0% 80%);
+  --color-base-300: hsl(0deg 0% 70%);
+  --color-primary-content: hsl(0deg 0% 10%);
+  --color-secondary-content: hsl(0deg 0% 10%);
+  --color-accent-content: hsl(0deg 0% 10%);
+  --color-base-content: hsl(0deg 0% 10%);
+  --color-neutral: hsl(0deg 0% 25%);
+  --color-neutral-content: hsl(0deg 0% 90%);
+  --color-info: hsl(200deg 100% 50%);
+  --color-success: hsl(160deg 100% 35%);
+  --color-warning: hsl(40deg 100% 50%);
+  --color-error: hsl(0deg 100% 65%);
+  --color-info-content: hsl(0deg 0% 10%);
+  --color-success-content: hsl(0deg 0% 10%);
+  --color-warning-content: hsl(0deg 0% 10%);
+  --color-error-content: hsl(0deg 0% 10%);
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: hsl(125deg 80% 75%);
+  --color-secondary: hsl(200deg 80% 75%);
+  --color-accent: hsl(275deg 80% 75%);
+  --color-base-100: hsl(0deg 0% 10%);
+  --color-base-200: hsl(0deg 0% 20%);
+  --color-base-300: hsl(0deg 0% 30%);
+  --color-primary-content: hsl(0deg 0% 90%);
+  --color-secondary-content: hsl(0deg 0% 90%);
+  --color-accent-content: hsl(0deg 0% 90%);
+  --color-base-content: hsl(0deg 0% 90%);
+  --color-neutral: hsl(0deg 0% 75%);
+  --color-neutral-content: hsl(0deg 0% 90%);
+  --color-info: hsl(200deg 100% 50%);
+  --color-success: hsl(160deg 100% 35%);
+  --color-warning: hsl(40deg 100% 50%);
+  --color-error: hsl(0deg 100% 65%);
+  --color-info-content: hsl(0deg 0% 10%);
+  --color-success-content: hsl(0deg 0% 10%);
+  --color-warning-content: hsl(0deg 0% 10%);
+  --color-error-content: hsl(0deg 0% 10%);
+}
+
+article.prose {
+  a {
+    @apply text-primary hover:text-accent no-underline transition-colors;
+  }
+
+  code:not(pre > code) {
+    @apply bg-base-200 rounded-md px-1.5 py-0.5 font-normal before:content-none after:content-none;
+  }
+
+  .callout {
+    @apply px-5 pb-0 [mix-blend-mode:unset] group-data-[theme=dark]/html:bg-(--callout-color-dark)/20 group-data-[theme=light]/html:bg-(--callout-color-light)/20;
+  }
+
+  .callout-title {
+    @apply items-center gap-2 group-data-[theme=dark]/html:text-(--callout-color-dark) group-data-[theme=light]/html:text-(--callout-color-light);
+  }
+}

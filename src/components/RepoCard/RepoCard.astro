@@ -12,11 +12,11 @@ const repoData = await getRepoData(repo)
 const languageColors = await getLanguageColors()
 ---
 
-<div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
+<div class="border-base-300 bg-base-200 flex flex-col justify-between space-y-3 rounded-md border p-4">
   <hgroup class="flex flex-col space-y-2">
     <header class="flex items-center space-x-2">
       <Icon name="tabler:brand-github" class="size-5 flex-shrink-0 opacity-75" />
-      <a class="text-secondary transition-colors hover:text-accent" href={repoData.html_url}>{repoData.name}</a>
+      <a class="text-secondary hover:text-accent transition-colors" href={repoData.html_url}>{repoData.name}</a>
     </header>
     {repoData.description ? <p class="text-sm">{repoData.description}</p> : null}
   </hgroup>

@@ -5,6 +5,7 @@ import MobileDrawer from "../components/Mobile/MobileDrawer.astro"
 import Sidebar from "../components/Sidebar/Sidebar.astro"
 import Title from "../components/Sidebar/Title.astro"
 import ThemeToggle from "../components/ThemeToggle.astro"
+import "../global.css"
 
 interface Props {
   title: string
@@ -21,7 +22,7 @@ const { title, description } = Astro.props
   </head>
 
   <body class="m-8 flex flex-col md:grid md:max-w-[80rem] md:grid-cols-5 md:justify-self-center">
-    <div class="absolute right-4 top-4">
+    <div class="absolute top-4 right-4">
       <ThemeToggle />
     </div>
 

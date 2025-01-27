@@ -1,6 +1,6 @@
 import mdx from "@astrojs/mdx"
-import tailwind from "@astrojs/tailwind"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
+import tailwindcss from "@tailwindcss/vite"
 import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
 import icon from "astro-icon"
 import robotsTxt from "astro-robots-txt"
@@ -30,10 +30,12 @@ const webmanifestOptions: WebmanifestOptions = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://adamhl.dev",
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     expressiveCode(expressiveCodeOptions),
     mdx(),
-    tailwind(),
     icon(),
     sitemap({ exclude: ["share/**"] }),
     robotsTxt(),
