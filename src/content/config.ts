@@ -12,17 +12,17 @@ const optionalDescription = baseSchema.extend({
 })
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/blog" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
   schema: baseSchema,
 })
 
 const til = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/til" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/til" }),
   schema: optionalDescription,
 })
 
 const share = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/share" }),
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/share" }),
   schema: optionalDescription,
 })
 

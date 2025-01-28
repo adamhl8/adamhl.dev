@@ -7,7 +7,6 @@ import robotsTxt from "astro-robots-txt"
 import sitemap from "astro-sitemap"
 import webmanifest, { type WebmanifestOptions } from "astro-webmanifest"
 import { defineConfig } from "astro/config"
-import rehypeCallouts from "rehype-callouts"
 import remarkBreaks from "remark-breaks"
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
 
@@ -43,6 +42,5 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],
-    rehypePlugins: [rehypeCallouts],
   },
 })

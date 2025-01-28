@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components"
+import { marked } from "marked"
+
+const callouts = {
+  info: {
+    icon: "tabler:info-circle",
+    color: "bg-callout-info/10",
+    borderColor: "border-callout-info",
+    iconColor: "text-callout-info",
+  },
+  question: {
+    icon: "tabler:help-circle",
+    color: "bg-callout-question/10",
+    borderColor: "border-callout-question",
+    iconColor: "text-callout-question",
+  },
+  success: {
+    icon: "tabler:circle-check",
+    color: "bg-callout-success/10",
+    borderColor: "border-callout-success",
+    iconColor: "text-callout-success",
+  },
+  warning: {
+    icon: "tabler:alert-triangle",
+    color: "bg-callout-warning/10",
+    borderColor: "border-callout-warning",
+    iconColor: "text-callout-warning",
+  },
+  danger: {
+    icon: "tabler:alert-circle",
+    color: "bg-callout-danger/10",
+    borderColor: "border-callout-danger",
+    iconColor: "text-callout-danger",
+  },
+  failure: {
+    icon: "tabler:circle-x",
+    color: "bg-callout-failure/10",
+    borderColor: "border-callout-failure",
+    iconColor: "text-callout-failure",
+  },
+  note: {
+    icon: "tabler:pencil",
+    color: "bg-callout-note/10",
+    borderColor: "border-callout-note",
+    iconColor: "text-callout-note",
+  },
+  summary: {
+    icon: "tabler:clipboard-list",
+    color: "bg-callout-summary/10",
+    borderColor: "border-callout-summary",
+    iconColor: "text-callout-summary",
+  },
+  tip: {
+    icon: "tabler:bulb",
+    color: "bg-callout-tip/10",
+    borderColor: "border-callout-tip",
+    iconColor: "text-callout-tip",
+  },
+  bug: {
+    icon: "tabler:bug",
+    color: "bg-callout-bug/10",
+    borderColor: "border-callout-bug",
+    iconColor: "text-callout-bug",
+  },
+  example: {
+    icon: "tabler:list",
+    color: "bg-callout-example/10",
+    borderColor: "border-callout-example",
+    iconColor: "text-callout-example",
+  },
+  quote: {
+    icon: "tabler:quote",
+    color: "bg-callout-quote/10",
+    borderColor: "border-callout-quote",
+    iconColor: "text-callout-quote",
+  },
+}
+
+type CalloutType = keyof typeof callouts
+interface Props {
+  type: CalloutType
+  title?: string
+}
+
+const { type, title } = Astro.props
+const markdownTitle = title && (await marked.parse(title))
+
+const callout = callouts[type]
+---
+
+<div class:list={["space-y-2 rounded-sm border-l-4 px-4 py-3", callout.color, callout.borderColor]}>
+  <div class="flex items-center space-x-3">
+    <Icon name={callout.icon} class:list={["size-6", callout.iconColor]} aria-hidden="true" />
+    <div class:list={["prose-p:my-0 font-bold", { capitalize: !title }]} set:html={markdownTitle ?? type} />
+  </div>
+  <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
+    <slot />
+  </div>
+</div>

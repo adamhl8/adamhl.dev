@@ -10,13 +10,13 @@ export default tseslint.config(
   biome,
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
-  astro.configs.all,
-  astro.configs["jsx-a11y-strict"],
+  astro.configs["flat/all"],
+  astro.configs["flat/jsx-a11y-strict"],
   {
     languageOptions: {
       ecmaVersion: "latest",
       parserOptions: {
-        // https://github.com/ota-meshi/astro-eslint-parser/issues/331
+        // would prefer to use projectService here, but can't: https://github.com/ota-meshi/astro-eslint-parser/issues/331
         project: true,
         tsconfigRootDir: import.meta.dirname,
       },
@@ -27,6 +27,12 @@ export default tseslint.config(
     rules: {
       "astro/semi": "off",
       "astro/sort-attributes": "off",
+    },
+  },
+  {
+    files: ["src/components/Callout.astro"],
+    rules: {
+      "astro/no-set-html-directive": "off",
     },
   },
 )

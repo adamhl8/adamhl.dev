@@ -5,10 +5,15 @@ date: 2024-07-15
 tags: [TypeScript]
 ---
 
+import Callout from "../../components/Callout.astro"
+
 I recently discovered the [TypeScript `satisfies` operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html) which solves a particular typing problem I've come across time and time again.
 
-> [!tldr] The `satisfies` Operator
-> In a nutshell, it ensures that something conforms to a specific type while _also_ giving that thing the most specific (inferred) type.
+<Callout type="summary" title="The `satisfies` operator">
+
+In a nutshell, it ensures that something conforms to a specific type while _also_ giving that thing the most specific (inferred) type.
+
+</Callout>
 
 Let's say we have an object where the keys are strings and the values are objects. And we know that in the future we might add another section like `section3`.
 

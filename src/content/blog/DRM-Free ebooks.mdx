@@ -5,6 +5,8 @@ date: 2024-11-15
 tags: [ebooks, reading, books]
 ---
 
+import Callout from "../../components/Callout.astro"
+
 I've been reading a lot of [Brandon Sanderson](https://www.brandonsanderson.com) lately, and one of the things that I really appreciate is that he (his company) publishes DRM-free ebooks. That means I can:
 
 - Archive them and not worry about losing access to them in the future
@@ -24,13 +26,19 @@ But it's not always possible to purchase a DRM-free version of an ebook, so inst
 
 I still specifically use [eBooks.com](https://www.ebooks.com) to buy (encrypted) ebooks because they tend to provide ebooks encrypted with [Adobe Digital Editions](https://www.adobe.com/solutions/ebook/digital-editions.html) which, as you'll see shortly, is pretty easy to remove.
 
-> [!warning] Notice
-> This is to help you remove DRM from ebooks that you purchased/obtained **legally**. Do not share/redistribute copies unless given explicit permission by the copyright holder(s) to do so.
+<Callout type="warning" title="Notice">
+
+This is to help you remove DRM from ebooks that you purchased/obtained **legally**. Do not share/redistribute copies unless given explicit permission by the copyright holder(s) to do so.
+
+</Callout>
 
 ## Setting everything up
 
-> [!note]
-> This was all done on macOS, so this might vary slightly depending on your OS.
+<Callout type="note">
+
+This was all done on macOS, so this might vary slightly depending on your OS.
+
+</Callout>
 
 We need to download/install three things:
 
@@ -62,8 +70,11 @@ You can close out/apply everything and you're ready to go.
 
 ## Getting your DRM-free ebook
 
-> [!note]
-> The following is how it works when downloading from eBooks.com, but it should be the same for any site that provides a Adobe Digital Editions encrypted ebook.
+<Callout type="note">
+
+The following is how it works when downloading from eBooks.com, but it should be the same for any site that provides a Adobe Digital Editions encrypted ebook.
+
+</Callout>
 
 When you go to download your (encrypted) ebook, you'll notice that it doesn't actually download the book at all. It instead downloads a file called `URLLink.acsm`. This is a "Adobe Content Server Message" file. Basically, it's a bit of XML that contains the necessary information to actually download your book.
 

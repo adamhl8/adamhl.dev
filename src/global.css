@@ -3,7 +3,14 @@
   --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
+
 @plugin "@tailwindcss/typography";
+@custom-variant prose-inline-code {
+  & :is(:where(code:not(pre > code)):not(:where([class~="not-prose"], [class~="not-prose"] *))) {
+    @slot;
+  }
+}
+
 @plugin "daisyui";
 @plugin "daisyui/theme" {
   name: "light";
@@ -27,6 +34,19 @@
   --color-success-content: hsl(0deg 0% 10%);
   --color-warning-content: hsl(0deg 0% 10%);
   --color-error-content: hsl(0deg 0% 10%);
+
+  --color-callout-info: rgb(8, 109, 221);
+  --color-callout-question: rgb(236, 117, 0);
+  --color-callout-success: rgb(8, 185, 78);
+  --color-callout-warning: rgb(236, 117, 0);
+  --color-callout-danger: rgb(233, 49, 71);
+  --color-callout-failure: rgb(233, 49, 71);
+  --color-callout-note: rgb(8, 109, 221);
+  --color-callout-summary: rgb(0, 191, 188);
+  --color-callout-tip: rgb(0, 191, 188);
+  --color-callout-bug: rgb(233, 49, 71);
+  --color-callout-example: rgb(120, 82, 238);
+  --color-callout-quote: rgb(158, 158, 158);
 }
 @plugin "daisyui/theme" {
   name: "dark";
@@ -50,22 +70,32 @@
   --color-success-content: hsl(0deg 0% 10%);
   --color-warning-content: hsl(0deg 0% 10%);
   --color-error-content: hsl(0deg 0% 10%);
+
+  --color-callout-info: rgb(2, 122, 255);
+  --color-callout-question: rgb(233, 151, 63);
+  --color-callout-success: rgb(68, 207, 110);
+  --color-callout-warning: rgb(233, 151, 63);
+  --color-callout-danger: rgb(251, 70, 76);
+  --color-callout-failure: rgb(251, 70, 76);
+  --color-callout-note: rgb(2, 122, 255);
+  --color-callout-summary: rgb(83, 223, 221);
+  --color-callout-tip: rgb(83, 223, 221);
+  --color-callout-bug: rgb(251, 70, 76);
+  --color-callout-example: rgb(168, 130, 255);
+  --color-callout-quote: rgb(158, 158, 158);
 }
 
-article.prose {
-  a {
-    @apply text-primary hover:text-accent no-underline transition-colors;
-  }
-
-  code:not(pre > code) {
-    @apply bg-base-200 rounded-md px-1.5 py-0.5 font-normal before:content-none after:content-none;
-  }
-
-  .callout {
-    @apply px-5 pb-0 [mix-blend-mode:unset] group-data-[theme=dark]/html:bg-(--callout-color-dark)/20 group-data-[theme=light]/html:bg-(--callout-color-light)/20;
-  }
-
-  .callout-title {
-    @apply items-center gap-2 group-data-[theme=dark]/html:text-(--callout-color-dark) group-data-[theme=light]/html:text-(--callout-color-light);
-  }
+@theme {
+  --color-callout-info: var(--color-callout-info);
+  --color-callout-question: var(--color-callout-question);
+  --color-callout-success: var(--color-callout-success);
+  --color-callout-warning: var(--color-callout-warning);
+  --color-callout-danger: var(--color-callout-danger);
+  --color-callout-failure: var(--color-callout-failure);
+  --color-callout-note: var(--color-callout-note);
+  --color-callout-summary: var(--color-callout-summary);
+  --color-callout-tip: var(--color-callout-tip);
+  --color-callout-bug: var(--color-callout-bug);
+  --color-callout-example: var(--color-callout-example);
+  --color-callout-quote: var(--color-callout-quote);
 }

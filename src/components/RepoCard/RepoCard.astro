@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components"
+import Link from "../Link.astro"
 import { getLanguageColors, getRepoData } from "./utils.ts"
 
 interface Props {
@@ -16,7 +17,7 @@ const languageColors = await getLanguageColors()
   <hgroup class="flex flex-col space-y-2">
     <header class="flex items-center space-x-2">
       <Icon name="tabler:brand-github" class="size-5 flex-shrink-0 opacity-75" />
-      <a class="text-secondary hover:text-accent transition-colors" href={repoData.html_url}>{repoData.name}</a>
+      <Link class="text-secondary" href={repoData.html_url}>{repoData.name}</Link>
     </header>
     {repoData.description ? <p class="text-sm">{repoData.description}</p> : null}
   </hgroup>
