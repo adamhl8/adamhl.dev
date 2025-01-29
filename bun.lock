@@ -19,7 +19,7 @@
         "astro-robots-txt": "^1.0.0",
         "astro-sitemap": "^1.0.0",
         "astro-webmanifest": "^1.0.0",
-        "daisyui": "^5.0.0-beta.2",
+        "daisyui": "^5.0.0-beta.3",
         "marked": "^15.0.6",
         "mdast-util-to-string": "^4.0.0",
         "reading-time": "^1.5.0",
@@ -614,7 +614,7 @@
 
     "csso": ["csso@5.0.5", "", { "dependencies": { "css-tree": "~2.2.0" } }, "sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ=="],
 
-    "daisyui": ["daisyui@5.0.0-beta.2", "", {}, "sha512-H1gXtcQhjcKze3UBq23dJUyKYIxHrVIKb6XtDfnSh6Ft4d0BMfPOwuvzIsuEe5PkbBm9kZH0ny+aQqiDosqpPQ=="],
+    "daisyui": ["daisyui@5.0.0-beta.3", "", {}, "sha512-O05OpyuwrIz+jcxUh00vLtAeH0JIhc+cyez7J7aeZfUxcXAg1OqNt9vS13Bv4ICue1SrPhY/YISJI9YUNQOrqw=="],
 
     "damerau-levenshtein": ["damerau-levenshtein@1.0.8", "", {}, "sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA=="],
 
@@ -1306,7 +1306,7 @@
 
     "prebuild-install": ["prebuild-install@7.1.3", "", { "dependencies": { "detect-libc": "^2.0.0", "expand-template": "^2.0.3", "github-from-package": "0.0.0", "minimist": "^1.2.3", "mkdirp-classic": "^0.5.3", "napi-build-utils": "^2.0.0", "node-abi": "^3.3.0", "pump": "^3.0.0", "rc": "^1.2.7", "simple-get": "^4.0.0", "tar-fs": "^2.0.0", "tunnel-agent": "^0.6.0" }, "bin": { "prebuild-install": "bin.js" } }, "sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug=="],
 
-    "preferred-pm": ["preferred-pm@4.0.0", "", { "dependencies": { "find-up-simple": "^1.0.0", "find-yarn-workspace-root2": "1.2.16", "which-pm": "^3.0.0" } }, "sha512-gYBeFTZLu055D8Vv3cSPox/0iTPtkzxpLroSYYA7WXgRi31WCJ51Uyl8ZiPeUUjyvs2MBzK+S8v9JVUgHU/Sqw=="],
+    "preferred-pm": ["preferred-pm@4.1.0", "", { "dependencies": { "find-up-simple": "^1.0.0", "find-yarn-workspace-root2": "1.2.16", "which-pm": "^3.0.0" } }, "sha512-cNKMVcSvE3hZBRukdRsvPtlUaM2fYLFbIvBz620XaDA5SjHsCRsAjNE2baI90Hh7QvJIjCHJYnpPtyqJ1/kOjQ=="],
 
     "prelude-ls": ["prelude-ls@1.2.1", "", {}, "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="],
 

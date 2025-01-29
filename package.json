@@ -27,7 +27,7 @@
     "astro-robots-txt": "^1.0.0",
     "astro-sitemap": "^1.0.0",
     "astro-webmanifest": "^1.0.0",
-    "daisyui": "^5.0.0-beta.2",
+    "daisyui": "^5.0.0-beta.3",
     "marked": "^15.0.6",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
