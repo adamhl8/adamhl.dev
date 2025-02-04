@@ -9,7 +9,7 @@ type Props = HTMLAttributes<"a"> & {
 const { class: className, title, titleClass, ...props } = Astro.props
 ---
 
-<a class:list={[className, { group: title, "hover:text-accent transition-colors": !title }]} {...props}>
-  {title && <span class:list={[titleClass, "group-hover:text-accent block transition-colors"]}>{title}</span>}
+<a class:list={[className, { group: title, "transition-colors hover:text-accent": !title }]} {...props}>
+  {title && <span class:list={[titleClass, "block transition-colors group-hover:text-accent"]}>{title}</span>}
   <slot />
 </a>

@@ -1,5 +1,6 @@
 ---
 import type { CollectionNames } from "../utils/utils.ts"
+
 import { getSortedCollection } from "../utils/utils.ts"
 import FormattedDate from "./FormattedDate.astro"
 import Link from "./Link.astro"
@@ -19,7 +20,7 @@ const posts = await getSortedCollection(collectionName)
         <Link
           href={`/${collectionName}/${post.id}`}
           title={post.data.title}
-          titleClass="text-primary font-bold text-xl"
+          titleClass="text-xl font-bold text-primary"
         >
           <FormattedDate class="text-sm" date={post.data.date} />
         </Link>

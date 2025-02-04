@@ -25,7 +25,7 @@ const navLinks = [
 ]
 
 const { pathname } = Astro.url
-const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/, "")
+const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/v, "")
 ---
 
 <nav>

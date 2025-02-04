@@ -1,27 +1,27 @@
 {
   "name": "adamhl.dev",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "rm -rf dist .astro && bun lint && astro build",
-    "preview": "astro preview",
     "astro": "astro",
+    "build": "rm -rf dist .astro && bun lint && astro build",
+    "dev": "astro dev",
+    "lint": "astro check && tsc --noEmit && prettier --write . && eslint .",
     "obsidian-share": "./obsidian-share.ts",
-    "upgrade": "bunx @astrojs/upgrade",
-    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write . && eslint ."
+    "preview": "astro preview",
+    "upgrade": "bunx @astrojs/upgrade"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
-    "@astrojs/mdx": "^4.0.7",
+    "@astrojs/mdx": "^4.0.8",
     "@astrojs/rss": "^4.0.11",
     "@expressive-code/plugin-line-numbers": "^0.40.1",
     "@fontsource-variable/jetbrains-mono": "^5.1.2",
     "@fontsource/atkinson-hyperlegible": "^5.1.1",
     "@iconify-json/tabler": "^1.2.15",
     "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.0",
-    "astro": "^5.1.10",
+    "@tailwindcss/vite": "^4.0.3",
+    "astro": "^5.2.5",
     "astro-expressive-code": "^0.40.1",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
@@ -32,25 +32,21 @@
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "remark-breaks": "^4.0.0",
-    "tailwindcss": "^4.0.0",
+    "tailwindcss": "^4.0.3",
     "valibot": "^0.42.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@eslint/js": "^9.19.0",
-    "@types/bun": "^1.2.1",
-    "@types/eslint__js": "^8.42.3",
+    "@adamhl8/ts-project-configs": "^0.10.0",
+    "@types/bun": "^1.2.2",
     "eslint": "^9.19.0",
-    "eslint-config-biome": "^1.9.4",
-    "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^15.14.0",
     "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0",
+    "typescript-eslint": "^8.23.0",
     "yaml": "^2.7.0"
   },
-  "trustedDependencies": ["@biomejs/biome", "@parcel/watcher", "esbuild", "sharp"]
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "esbuild",
+    "sharp"
+  ]
 }

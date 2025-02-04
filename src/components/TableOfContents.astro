@@ -1,5 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro"
+
 import Link from "./Link.astro"
 
 interface Props {
@@ -19,9 +20,9 @@ const indentClass: Record<number, string> = {
 ---
 
 <nav class="sticky top-24">
-  <Link href="#title" title="Table of Contents" titleClass="text-xl font-semibold mb-4" />
+  <Link href="#title" title="Table of Contents" titleClass="mb-4 text-xl font-semibold" />
 
-  <ol class="border-base-300 space-y-2 border-l pl-4">
+  <ol class="space-y-2 border-l border-base-300 pl-4">
     {
       headings.map((heading) => (
         <li class:list={[indentClass[heading.depth]]}>

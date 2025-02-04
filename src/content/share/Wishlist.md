@@ -1,8 +1,7 @@
 ---
-icon: FaStar
 share: true
 title: Wishlist
-date: 2025-01-15
+date: 2025-02-02
 ---
 
 ## Actually want
@@ -51,3 +50,16 @@ One Wheel Tire
 |       ---        |
 |     PDU (1U)     |
 |     UPS (1U)     |
+
+### MiniRack
+
+|         8U         |
+| :----------------: |
+| Patch Panel (0.5U) |
+| Patch Panel (z1U)  |
+|    Switch (1U)     |
+|       Server       |
+|       Server       |
+|     PSU / HDDs     |
+|     PSU / HDDs     |
+|        UPS         |

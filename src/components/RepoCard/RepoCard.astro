@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components"
+
 import Link from "../Link.astro"
 import { getLanguageColors, getRepoData } from "./utils.ts"
 
@@ -13,13 +14,13 @@ const repoData = await getRepoData(repo)
 const languageColors = await getLanguageColors()
 ---
 
-<div class="border-base-300 bg-base-200 flex flex-col justify-between space-y-3 rounded-md border p-4">
+<div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
   <hgroup class="flex flex-col space-y-2">
     <header class="flex items-center space-x-2">
       <Icon name="tabler:brand-github" class="size-5 flex-shrink-0 opacity-75" />
       <Link class="text-secondary" href={repoData.html_url}>{repoData.name}</Link>
     </header>
-    {repoData.description ? <p class="text-sm">{repoData.description}</p> : null}
+    {repoData.description ? <p class="text-sm">{repoData.description}</p> : undefined}
   </hgroup>
 
   <aside class="flex flex-wrap items-center space-x-4">
@@ -39,7 +40,7 @@ const languageColors = await getLanguageColors()
             <Icon name="tabler:star" class="size-4 opacity-75" />
             <span class="text-sm">{repoData.stargazers_count}</span>
           </div>
-        ) : null
+        ) : undefined
       }
       {
         repoData.forks ? (
@@ -47,7 +48,7 @@ const languageColors = await getLanguageColors()
             <Icon name="tabler:git-fork" class="size-4 opacity-75" />
             <span class="text-sm">{repoData.forks}</span>
           </div>
-        ) : null
+        ) : undefined
       }
     </div>
   </aside>
