@@ -36,7 +36,7 @@
     "valibot": "^0.42.1"
   },
   "devDependencies": {
-    "@adamhl8/ts-project-configs": "^0.10.0",
+    "@adamhl8/ts-project-configs": "^0.11.1",
     "@types/bun": "^1.2.2",
     "eslint": "^9.19.0",
     "prettier": "^3.4.2",
