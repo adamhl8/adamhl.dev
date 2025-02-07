@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@adamhl8/ts-project-configs/dist/tsconfig.json",
+  "extends": "./node_modules/eslint-config-builder/dist/tsconfig.json",
   "include": ["**/*", ".astro/types.d.ts"],
   "exclude": ["dist", "src/pages/rss.xml.js"],
   "compilerOptions": {

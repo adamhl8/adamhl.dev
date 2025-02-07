@@ -1,4 +1,4 @@
-import { prettierConfig } from "@adamhl8/ts-project-configs"
+import { prettierConfig } from "eslint-config-builder"
 
 export default {
   ...prettierConfig,
