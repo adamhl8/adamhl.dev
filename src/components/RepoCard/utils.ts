@@ -12,6 +12,7 @@ const RepoSchema = v.object({
 /**
  * Fetches the repo data from the GitHub API using `GITHUB_ASTRO_TOKEN` if available,
  * otherwise falls back to unauthenticated requests (rate limited)
+ *
  * @param repo The repo name: e.g. "adamhl8/my-repo"
  * @returns The repo data: {@link RepoSchema}
  */
@@ -42,6 +43,7 @@ let languageColorsPromise: Promise<LanguageColors> | undefined
 
 /**
  * Fetches the language colors from: {@link https://raw.githubusercontent.com/ozh/github-colors/master/colors.json}
+ *
  * @returns The language colors: {@link LanguageColors}
  */
 async function getLanguageColors() {

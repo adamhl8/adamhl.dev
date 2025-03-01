@@ -6,6 +6,7 @@ export type CollectionNames = keyof typeof collections
 
 /**
  * A wrapper around Astro's {@link getCollection} that sorts the collection by date
+ *
  * @param collection One of {@link CollectionNames}
  * @returns The sorted collection
  */

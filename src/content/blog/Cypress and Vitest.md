@@ -44,13 +44,15 @@ Like I mentioned at the beginning, the root of the problem is th at Cypress type
 So we want TypeScript to exclude our Cypress config and make sure we're not adding the Cypress types via `types`:
 
 ```jsonc title="tsconfig.json"
-"include": ["src", "**/*.ts"],
+{
+  "include": ["src", "**/*.ts"],
   "exclude": ["cypress.config.ts", "cypress/"],
   "compilerOptions": {
     // other options...
     "types": [ ... ],
     // make sure this doesn't contain "cypress"
   }
+}
 ```
 
 Note that we also exclude our `cypress/` directory; we don't want this config to apply to our Cypress test files or else we'll get a bunch of TypeScript errors because none of the Cypress types will be in this scope.
