@@ -1,9 +1,8 @@
 import type { RemarkPlugin } from "@astrojs/markdown-remark"
 import type { Root } from "mdast"
-import type { VFile } from "vfile"
-
 import { toString as mdastToString } from "mdast-util-to-string"
 import getReadingTime from "reading-time"
+import type { VFile } from "vfile"
 
 const processReadingTime = (tree: Root, file: VFile) => {
   const textOnPage = mdastToString(tree)

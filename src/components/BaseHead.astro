@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets"
+
 import { SITE_TITLE } from "../consts.ts"
 
 interface Props {
@@ -23,14 +25,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-  rel="stylesheet"
-/>
-
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL("rss.xml", Astro.site)} />
+
+<Font cssVariable="--font-atkinson-hyperlegible" preload />
+<Font cssVariable="--font-jetbrains-mono" preload />
 
 <script is:inline defer src="https://umami.adamhl.dev/script.js" data-website-id="923498a7-4a41-412a-adb8-97ae3905b284"
 ></script>

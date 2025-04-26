@@ -1,15 +1,12 @@
-import type { AstroExpressiveCodeOptions } from "astro-expressive-code"
-import type { WebmanifestOptions } from "astro-webmanifest"
-
 import mdx from "@astrojs/mdx"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import tailwindcss from "@tailwindcss/vite"
-import expressiveCode from "astro-expressive-code"
+import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
 import icon from "astro-icon"
 import robotsTxt from "astro-robots-txt"
 import sitemap from "astro-sitemap"
-import webmanifest from "astro-webmanifest"
-import { defineConfig } from "astro/config"
+import webmanifest, { type WebmanifestOptions } from "astro-webmanifest"
+import { defineConfig, fontProviders } from "astro/config"
 import remarkBreaks from "remark-breaks"
 
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
@@ -37,6 +34,25 @@ export default defineConfig({
   site: "https://adamhl.dev",
   vite: {
     plugins: [tailwindcss()],
+  },
+  experimental: {
+    preserveScriptOrder: true,
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Atkinson Hyperlegible",
+        cssVariable: "--font-atkinson-hyperlegible",
+        styles: ["normal", "italic"],
+        weights: [400, 700],
+      },
+      {
+        provider: fontProviders.google(),
+        name: "JetBrains Mono",
+        cssVariable: "--font-jetbrains-mono",
+        styles: ["normal", "italic"],
+        weights: ["100 800"],
+      },
+    ],
   },
   integrations: [
     expressiveCode(expressiveCodeOptions),
