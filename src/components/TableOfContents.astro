@@ -1,5 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro"
+import { Icon } from "astro-icon/components"
 
 import Link from "./Link.astro"
 
@@ -11,21 +12,31 @@ const { headings } = Astro.props
 
 const indentClass: Record<number, string> = {
   1: "ml-0",
-  2: "ml-4",
-  3: "ml-8",
-  4: "ml-12",
-  5: "ml-16",
-  6: "ml-20",
+  2: "ml-0",
+  3: "ml-4",
+  4: "ml-8",
+  5: "ml-12",
+  6: "ml-16",
 }
 ---
 
 <nav class="sticky top-24">
-  <Link href="#title" title="Table of Contents" titleClass="mb-4 text-xl font-semibold" />
+  <Link
+    href="#title"
+    title="Table of Contents"
+    class="flex items-center justify-between"
+    titleClass="text-xl font-semibold"
+  >
+    <Icon name="tabler:chevron-up" class="size-5 opacity-50" />
+  </Link>
 
-  <ol class="space-y-2 border-l border-base-300 pl-4">
+  <ol class="mt-4 ml-0 space-y-2">
     {
       headings.map((heading) => (
-        <li class:list={[indentClass[heading.depth]]}>
+        <li
+          class:list={[indentClass[heading.depth], "border-l-2 border-base-300 pl-4 transition-colors"]}
+          data-heading-id={heading.slug}
+        >
           <Link href={`#${heading.slug}`} title={heading.text} />
         </li>
       ))
@@ -37,10 +48,14 @@ const indentClass: Record<number, string> = {
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       const id = entry.target.getAttribute("id")
+      const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
+
       if (entry.intersectionRatio > 0) {
-        document.querySelector(`nav li a[href="#${id}"]`)?.classList.add("text-secondary")
+        tocItem?.classList.remove("border-base-300")
+        tocItem?.classList.add("border-secondary")
       } else {
-        document.querySelector(`nav li a[href="#${id}"]`)?.classList.remove("text-secondary")
+        tocItem?.classList.remove("border-secondary")
+        tocItem?.classList.add("border-base-300")
       }
     }
   })

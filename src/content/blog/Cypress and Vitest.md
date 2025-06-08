@@ -2,7 +2,7 @@
 title: "Using Cypress and Vitest in the same project"
 description: "How to set up a TypeScript project with both Cypress and Vitest."
 date: 2025-01-28
-tags: [TypeScript, testing]
+tags: [typescript, testing]
 ---
 
 If you're trying to add Cypress to a project that's already using Vitest (or vice-versa), you're probably going to run into a problem where functions like `expect` suddenly break. Or more specifically, TypeScript starts complaining about them.
