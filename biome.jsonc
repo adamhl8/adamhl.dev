@@ -4,12 +4,12 @@
   "files": {
     "includes": ["**", "!.astro/**", "!dist/**"]
   },
-  "assist": {
-    "enabled": false
-  },
   "overrides": [
     {
       "includes": ["**/*.astro"],
+      "assist": {
+        "enabled": false
+      },
       "linter": {
         "rules": {
           "correctness": {

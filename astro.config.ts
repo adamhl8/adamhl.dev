@@ -1,5 +1,6 @@
 import mdx from "@astrojs/mdx"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
+import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, fontProviders } from "astro/config"
 import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
@@ -64,5 +65,6 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],
+    rehypePlugins: [sectionize],
   },
 })

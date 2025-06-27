@@ -16,6 +16,7 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@expressive-code/plugin-line-numbers": "^0.41.2",
+    "@hbsnow/rehype-sectionize": "^1.0.7",
     "@iconify-json/tabler": "^1.2.19",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
