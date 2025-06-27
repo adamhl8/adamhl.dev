@@ -1,0 +1,269 @@
+---
+title: "Leveraging (abusing?) external formatters in Zed"
+description: "I really like formatting my code I guess"
+date: 2025-07-27
+tags: [zed]
+---
+
+import Callout from "../../components/Callout.astro"
+
+[Zed](https://zed.dev) has a neat feature where you can use an [external formatter](https://zed.dev/docs/configuring-zed#formatter) to format your code:
+
+```json
+{
+  "formatter": {
+    "external": {
+      "command": "prettier",
+      "arguments": ["--stdin-filepath", "{buffer_path}"]
+    }
+  }
+}
+```
+
+You can even specify multiple formatters in an array:
+
+```json
+{
+  "formatter": [
+    { "language_server": { "name": "rust-analyzer" } },
+    {
+      "external": {
+        "command": "sed",
+        "arguments": ["-e", "s/ *$//"]
+      }
+    }
+  ]
+}
+```
+
+However, this doesn't work like I would expect it to.
+
+From the Zed documentation:
+
+<Callout type="quote">
+
+Here `rust-analyzer` will be used first to format the code, followed by a call of sed. If any of the formatters fails, the subsequent ones will still be executed.
+
+</Callout>
+
+This also means that if the first formatter _succeeds_, the second formatter will still be executed. So the last formatter specified always wins. This makes sense for use cases where you want to modify the output of a previous formatter.
+
+But I'd like to **specify multiple formatters where the additional formatters are used as _fallbacks_.**
+
+I use [Biome](https://biomejs.dev) to format/lint a lot of my TypeScript projects. Biome's [language support](https://biomejs.dev/internals/language-support) is pretty limited compared to [Prettier's](https://prettier.io/docs), especially when you take into account all of the [plugins](https://github.com/un-ts/prettier/tree/master/packages/sh) available for Prettier.
+
+So I want to use Prettier to format files that Biome doesn't support.
+
+> Wait, can't you do this by specifying Biome last in the list of formatters? Biome will run last and overwrite anything Prettier changed, so it "wins" for any files it supports, right?
+>
+> ```json
+> {
+>   "formatter": [
+>     {
+>       "external": {
+>         "command": "prettier",
+>         "arguments": ["--stdin-filepath", "{buffer_path}"]
+>       }
+>     },
+>     { "language_server": { "name": "biome" } }
+>   ]
+> }
+> ```
+
+You're right, but this has some limitations:
+
+- Running multiple formatters can lead to unexpected results (there are situations where changes the first formatter make could affect the second formatter)
+- Running multiple formatters is slower
+- What if I want to change the arguments passed to the formatter based on some condition?
+
+We could probably come up with more reasons to want to do something custom.
+
+## A "formatter" is just some executable
+
+This is where we can start having some fun. At a basic level, a formatter is some executable that takes the contents of the current file on `stdin` and writes the formatted contents to `stdout`.
+
+Which means specifying a script as our formatter is perfectly valid:
+
+```json
+{
+  "external": {
+    "command": "format-wrapper.bash"
+  }
+}
+```
+
+<br></br>
+
+<Callout type="tip">
+
+This assumes `format-wrapper.bash` is in your `PATH`. You can specify an absolute path if needed.
+
+</Callout>
+
+Let's write a simple formatter:
+
+```bash title="format-wrapper.bash"
+#!/usr/bin/env bash
+
+input="$(< /dev/stdin)"
+
+echo "// this is from our formatter!"
+echo "${input}"
+```
+
+<br></br>
+
+<Callout type="tip">
+
+If the process exits with a non-zero status, Zed will show a warning that the formatter failed and will not apply any changes to the buffer.
+
+</Callout>
+
+Then imagine we run Zed's formatting command on a file like this:
+
+```js title="example.js"
+console.log("hello world")
+```
+
+We would get this:
+
+```js title="example.js"
+// this is from our formatter!
+console.log("hello world")
+```
+
+Well, obviously this didn't do any actual formatting, and if we ran it again, it would append another comment, but you get the idea.
+
+Let's make our formatter a little better. You may have noticed from above that Zed provides a special `{buffer_path}` argument. This is generally used by the formatter to determine the kind of file it's working with based on the extension.
+
+<Callout type="info">
+
+Remember, formatters in this context work with whatever they get on `stdin`. They don't read the file's contents directly or write to it directly. The passed in file path doesn't even need to exist!
+
+</Callout>
+
+<br></br>
+
+```json
+{
+  "external": {
+    "command": "format-wrapper.bash",
+    "arguments": ["{buffer_path}"]
+  }
+}
+```
+
+<br></br>
+
+```bash title="format-wrapper.bash"
+#!/usr/bin/env bash
+
+input="$(< /dev/stdin)"
+
+buffer_path="${1}"
+
+echo -n "${input}" | prettier --stdin-filepath "${buffer_path}"
+# prettier writes the formatted output to stdout which will replace the buffer contents
+```
+
+We basically just recreated what Zed was already doing in the example at the start of this post, but now we're in a script so we can do whatever we want!
+
+That's pretty much it, but read on if you're curious about how I solved my particular problem.
+
+## My custom formatter
+
+Specifically, this is what I want to do:
+
+1. Use Biome
+2. _if the above fails_, use Prettier with the project's configuration
+3. _if the above fails_, use Prettier with my "global" configuration
+   - I have a `~/.prettierrc.mjs` file that I use for formatting one-off files.
+     e.g. `prettier --config ~/.prettierrc.mjs --write <some-file>`
+
+This is what I came up with:
+
+```bash title="format-wrapper.bash" wrap=false
+#!/usr/bin/env bash
+
+buffer_path="${1}"
+prettier_config="${2}" # the path to the prettier config which will be used by global prettier
+
+input="$(< /dev/stdin)"
+
+errors="" # a string to collect errors from each formatter
+
+# This function is called after each formatter runs
+# If the formatter failed, the error will be collected and the script will continue
+# If the formatter succeeded, we print the output to stdout and exit
+handle_output() {
+  local status="${1}"
+  local output="${2}"
+  local identifier="${3}"
+
+  # if the output is empty, it's likely a formatter failed, printed nothing, but didn't exit with a non-zero status
+  # regardless of the reason it's empty, we don't want to continue or else we'd replace the current buffer with nothing
+  if [[ "${status}" -gt 0 || -z "${output}" ]]; then
+    [[ -z "${output}" ]] && output="format-wrapper: something went wrong, output is empty"
+    errors="${errors}\n${identifier}: [exit status ${status}] ${output}\n--------"
+    return "${status}"
+  fi
+
+  echo "${output}"
+  exit 0
+}
+
+# Biome
+if [[ -f biome.json || -f biome.jsonc ]]; then
+  biome_project_cmd="$(pwd)"/node_modules/.bin/biome
+  if [[ -f "${biome_project_cmd}" ]]; then
+    output="$(echo -n "${input}" | "${biome_project_cmd}" check --stdin-file-path="${buffer_path}" --write 2>&1)"
+    handle_output $? "${output}" "biome (${biome_project_cmd})"
+  fi
+fi
+
+# Project Prettier
+# if we don't give --find-config-path an argument, it won't check the cwd
+prettier_project_config="$(prettier --find-config-path ' ' 2> /dev/null)"
+# if prettier doesn't find a config, the string will be empty
+# prettier will look outside the cwd for a config, so the project config must exist within the cwd if we're going to use it (i.e. don't use the config if it starts with '../')
+if [[ -n "${prettier_project_config}" && ! "${prettier_project_config}" =~ ^\.\.\/ ]]; then
+  prettier_project_cmd="$(pwd)"/node_modules/.bin/prettier
+  if [[ -f "${prettier_project_cmd}" ]]; then
+    output="$(echo -n "${input}" | "${prettier_project_cmd}" --stdin-filepath "${buffer_path}" 2>&1)"
+    handle_output $? "${output}" "prettier (${prettier_project_cmd})"
+  fi
+fi
+
+# Global Prettier
+output="$(echo -n "${input}" | prettier --stdin-filepath "${buffer_path}" --config "${prettier_config}" 2>&1)"
+handle_output $? "${output}" "prettier ($(type -p prettier))"
+
+# if we got here, none of the formatters succeeded
+echo -n -e "\n--------${errors}" >&2
+exit 1
+```
+
+A lot of the complexity here is due to the fact that we want to capture any errors that occur and display them in the Zed log should all of the formatters fail.
+
+The relevant part of my Zed config looks like this:
+
+```json title="~/.config/zed/settings.json"
+{
+  "formatter": {
+    "external": {
+      "command": "format-wrapper.bash",
+      "arguments": ["{buffer_path}", "/Users/adam/.prettierrc.mjs"]
+    }
+  },
+  "languages": {
+    "Rust": { "formatter": "language_server" },
+    "Dockerfile": { "formatter": "language_server" },
+    "Prisma": { "formatter": "language_server" },
+    "SQL": { "formatter": "language_server" }
+  }
+}
+```
+
+Note that I have my formatter set as the top-level formatter, which means by default _every_ file will be formatted using my script. Obviously this won't work for all files, so I set the formatter back to `language_server` for specific languages.
+
+You could certainly flip this and set the top-level formatter to `language_server` or `auto` and use your custom formatter only for specific languages. Whatever seems easier to you.

@@ -10,7 +10,9 @@ import Base from "./Base.astro"
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">
 type ShareProps = CollectionEntry<"share">
-type Props = (BlogProps | TILProps | ShareProps) & { renderedPost: RenderResult }
+type Props = (BlogProps | TILProps | ShareProps) & {
+  renderedPost: RenderResult
+}
 
 const { data, renderedPost } = Astro.props
 const { title, date, description = "" } = data

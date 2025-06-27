@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/noUnknownProperty: daisyUI uses custom properties */
 @import "tailwindcss";
 @theme {
   --font-sans: var(--font-atkinson-hyperlegible);
@@ -11,7 +12,9 @@
   }
 }
 
-@plugin "daisyui";
+@plugin "daisyui" {
+  logs: false;
+}
 @plugin "daisyui/theme" {
   name: "light";
   --color-primary: hsl(125deg 100% 25%);

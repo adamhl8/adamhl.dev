@@ -46,7 +46,7 @@ let languageColorsPromise: Promise<LanguageColors> | undefined
  *
  * @returns The language colors: {@link LanguageColors}
  */
-async function getLanguageColors() {
+function getLanguageColors() {
   if (!languageColorsPromise) {
     const fetchLanguageColors = async () => {
       const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
