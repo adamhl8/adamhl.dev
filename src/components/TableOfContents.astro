@@ -47,7 +47,6 @@ const indentClass: Record<number, string> = {
 <script>
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
-      // Get the heading element within the section
       const heading = entry.target.querySelector("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
       const id = heading?.getAttribute("id")
       const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
