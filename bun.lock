@@ -27,7 +27,7 @@
         "valibot": "v1.0.0-rc.0",
       },
       "devDependencies": {
-        "@adamhl8/configs": "^0.3.0",
+        "@adamhl8/configs": "^0.4.1",
         "@biomejs/biome": "^2.0.6",
         "@types/bun": "^1.2.17",
         "prettier": "^3.6.2",
@@ -42,7 +42,7 @@
     "esbuild",
   ],
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@0.3.0", "", { "dependencies": { "@prettier/plugin-xml": "^3.4.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.13", "prettier-plugin-toml": "^2.0.5" } }, "sha512-zWQu8xnognxMlDrRApE1205ntf74H1CqEY1fwdV3J14oy9YFkJILTNwBZjTNwAabqA6MYQoASYyV3p3UXlaYuQ=="],
+    "@adamhl8/configs": ["@adamhl8/configs@0.4.1", "", { "dependencies": { "@prettier/plugin-xml": "^3.4.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.13", "prettier-plugin-toml": "^2.0.5" } }, "sha512-4qcnOgUkqeFv4p3ull4aMQLg5vS/s50O6a8X+VrKDQrk+MtAml+fhbyS6KiYZMXOJylkDF3ofF3UNPRCSpBYJQ=="],
 
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
 

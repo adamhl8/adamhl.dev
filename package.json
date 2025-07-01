@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "rm -rf dist .astro && bun lint && astro build",
+    "bundle": "rm -rf dist .astro && bun lint && astro build",
     "dev": "astro dev",
     "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write",
     "obsidian-share": "./obsidian-share.ts",
@@ -35,7 +35,7 @@
     "valibot": "v1.0.0-rc.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.3.0",
+    "@adamhl8/configs": "^0.4.1",
     "@biomejs/biome": "^2.0.6",
     "@types/bun": "^1.2.17",
     "prettier": "^3.6.2",

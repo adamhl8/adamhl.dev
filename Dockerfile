@@ -5,7 +5,7 @@ COPY package.json .
 COPY bun.lock .
 RUN bun i
 COPY . .
-RUN bun run build
+RUN bun bundle
 
 FROM caddy:latest
 COPY Caddyfile /etc/caddy/Caddyfile
