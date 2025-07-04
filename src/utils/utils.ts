@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content"
 
-import type { collections } from "../content/config.ts"
+import type { collections } from "@/content/config.ts"
 
 export type CollectionNames = keyof typeof collections
 

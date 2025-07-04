@@ -1,6 +1,7 @@
 {
   "extends": "@adamhl8/configs/tsconfig",
   "compilerOptions": {
+    "baseUrl": ".",
     "rewriteRelativeImportExtensions": false,
     "noEmit": true,
     "jsx": "preserve"
