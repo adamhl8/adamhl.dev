@@ -36,7 +36,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.8.1",
+    "@adamhl8/configs": "^0.8.2",
     "@biomejs/biome": "^2.0.6",
     "@types/bun": "^1.2.18",
     "prettier": "^3.6.2",
