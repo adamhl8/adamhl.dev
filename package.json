@@ -20,7 +20,7 @@
     "@iconify-json/tabler": "^1.2.19",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.10.2",
+    "astro": "^5.11.0",
     "astro-expressive-code": "^0.41.2",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
@@ -35,9 +35,9 @@
     "valibot": "v1.0.0-rc.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.4.1",
+    "@adamhl8/configs": "^0.8.1",
     "@biomejs/biome": "^2.0.6",
-    "@types/bun": "^1.2.17",
+    "@types/bun": "^1.2.18",
     "prettier": "^3.6.2",
     "typescript": "^5.8.3",
     "yaml": "^2.8.0"
