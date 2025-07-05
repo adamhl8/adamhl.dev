@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write",
     "obsidian-share": "./obsidian-share.ts",
+    "prepare": "find .githooks -type f -exec ln -srf {} .git/hooks/ \\; || true",
     "preview": "astro preview",
     "upgrade": "bunx @astrojs/upgrade"
   },
@@ -42,11 +43,5 @@
     "prettier": "^3.6.2",
     "typescript": "^5.8.3",
     "yaml": "^2.8.0"
-  },
-  "trustedDependencies": [
-    "@parcel/watcher",
-    "@tailwindcss/oxide",
-    "esbuild",
-    "sharp"
-  ]
+  }
 }
