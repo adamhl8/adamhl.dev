@@ -3,10 +3,10 @@
   "compilerOptions": {
     "rewriteRelativeImportExtensions": false,
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
+    "baseUrl": ".",
     "jsx": "preserve"
   },
   "include": ["**/*", ".astro/types.d.ts"],
