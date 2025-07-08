@@ -10,6 +10,7 @@ import sitemap from "astro-sitemap"
 import webmanifest, { type WebmanifestOptions } from "astro-webmanifest"
 import remarkBreaks from "remark-breaks"
 
+// biome-ignore lint/plugin/import-paths: astro doesn't resolve path aliases in the config
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
 
 const expressiveCodeOptions: AstroExpressiveCodeOptions = {
