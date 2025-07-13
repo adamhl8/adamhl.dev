@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "Adam Langbert",
+    "label": "Senior Software Engineer",
+    "email": "adamhl@pm.me",
+    "phone": "941-504-8001",
+    "url": "https://adamhl.dev",
+    "location": {
+      "city": "Austin",
+      "region": "TX"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "adamhl8",
+        "url": "https://github.com/adamhl8"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "adamlangbert",
+        "url": "https://www.linkedin.com/in/adamlangbert/"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": ["TypeScript/JavaScript", "HTML", "CSS", "Python", "Java", "Lua", "Golang", "Rust", "SQL"]
+    },
+    {
+      "name": "Technologies",
+      "keywords": [
+        "React",
+        "TailwindCSS",
+        "Git",
+        "POSIX/Unix/Linux",
+        "Docker",
+        "Node",
+        "Spring/Spring Boot",
+        "PostgreSQL",
+        "Prisma"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "keywords": ["AWS", "GitHub Actions", "GitLab CI/CD", "TCP/IP", "DNS"]
+    }
+  ],
+  "work": [
+    {
+      "name": "Geode",
+      "url": "https://www.geode.io",
+      "position": "Senior Software Engineer",
+      "startDate": "November, 2024",
+      "endDate": "Present",
+      "summary": "Full-stack software engineer developing custom solutions for diverse clients, ranging from mobile apps to data automation services. Focused on delivering end-to-end solutions that meet specific client requirements and business objectives.",
+      "highlights": [
+        "Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription system to enable monetization.",
+        "Built automated data processing service, streamlining client workflows and reducing manual data handling overhead."
+      ]
+    },
+    {
+      "name": "US Army - Army Software Factory",
+      "position": "Software Engineer",
+      "startDate": "June, 2022",
+      "endDate": "Present",
+      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and ensuring security and compliance throughout the organization. The team plays a pivotal role in setting technical standards and providing support across app development teams.",
+      "highlights": [
+        "Develops and maintains a comprehensive full-stack web application starter template, which significantly reduces time to production and increases developer efficiency for 15+ app teams.",
+        "Maintains over 20 frontend/backend packages, providing reusable solutions that streamline development processes.",
+        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base."
+      ]
+    },
+    {
+      "name": "US Army",
+      "position": "25S - Satellite Communication Systems Operator-Maintainer",
+      "location": "Landstuhl, Germany",
+      "startDate": "2019",
+      "endDate": "June, 2022",
+      "summary": "Duties included the installation, configuration, maintenance, and operation of various fixed SATCOM terminals in support of both military and commercial end-users.",
+      "highlights": [
+        "Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols to troubleshoot and resolve issues.",
+        "Configured networking equipment such as routers, switches, modems, circuits, trunk groups, and other related equipment."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "ts-explicit-errors",
+      "keywords": ["TypeScript", "Library"],
+      "description": "A concise and type-safe error handling library for TypeScript, allowing users to treat errors as values in order to write more safe, readable, and maintainable code.",
+      "url": "https://github.com/adamhl8/ts-explicit-errors"
+    },
+    {
+      "name": "dataviewjs-habit-tracker",
+      "keywords": ["TypeScript", "obsidian.md", "Plugin"],
+      "description": "A code snippet for the Obsidian plugin Dataview, designed to generate a dynamic table without requiring specific Dataview annotations.",
+      "url": "https://github.com/adamhl8/dataviewjs-habit-tracker"
+    },
+    {
+      "name": "astro-validate-env",
+      "keywords": ["TypeScript", "Astro", "Integration"],
+      "description": "An integration for the Astro web framework that provides a flexible system for defining and validating environment variables.",
+      "url": "https://github.com/adamhl8/astro-validate-env"
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Maryland",
+      "area": "Computer Science",
+      "studyType": "BS",
+      "score": "3.99"
+    },
+    {
+      "institution": "University of Maryland",
+      "area": "Computer Science",
+      "studyType": "AA",
+      "score": "4.0"
+    }
+  ]
+}

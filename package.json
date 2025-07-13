@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "bundle": "rm -rf dist .astro && bun lint && astro build",
+    "bundle": "rm -rf dist .astro && bun generate:resume && bun lint && astro build",
+    "generate:resume": "resumed render ./src/pages/_resume/resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html",
     "dev": "astro dev",
     "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write",
     "obsidian-share": "./obsidian-share.ts",
@@ -40,7 +41,9 @@
     "@adamhl8/configs": "^0.9.1",
     "@biomejs/biome": "^2.1.1",
     "@types/bun": "^1.2.18",
+    "jsonresume-theme-react-tailwind": "^1.2.0",
     "prettier": "^3.6.2",
+    "resumed": "^6.0.0",
     "typescript": "^5.8.3",
     "yaml": "^2.8.0"
   }

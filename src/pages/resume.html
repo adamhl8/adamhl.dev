@@ -1,0 +1,1055 @@
+<!doctype html>
+<html class="font-semimedium bg-white text-base/tight text-primary" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
+    <title>Adam Langbert</title>
+    <style>
+      /*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+      @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+      @layer properties;
+      @layer theme, base, components, utilities;
+      @layer theme {
+        :root,
+        :host {
+          --font-sans: "Source Sans 3", Helvetica, Arial, sans-serif;
+          --font-mono:
+            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+          --color-gray-100: oklch(96.7% 0.003 264.542);
+          --color-white: #fff;
+          --spacing: 0.25rem;
+          --text-xs: 0.75rem;
+          --text-sm: 0.875rem;
+          --text-sm--line-height: calc(1.25 / 0.875);
+          --text-base: 1rem;
+          --text-lg: 1.125rem;
+          --text-4xl: 2.25rem;
+          --font-weight-medium: 500;
+          --font-weight-bold: 700;
+          --leading-tight: 1.25;
+          --radius-sm: 0.25rem;
+          --radius-lg: 0.5rem;
+          --default-font-family: var(--font-sans);
+          --default-mono-font-family: var(--font-mono);
+          --color-primary: #39424b;
+          --color-secondary: #56817a;
+          --font-weight-lighter: 350;
+          --font-weight-semimedium: 450;
+          --text-smaller: 0.8125rem;
+          --text-md: 0.9375rem;
+        }
+      }
+      @layer base {
+        *,
+        ::after,
+        ::before,
+        ::backdrop,
+        ::file-selector-button {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          border: 0 solid;
+        }
+        html,
+        :host {
+          line-height: 1.5;
+          -webkit-text-size-adjust: 100%;
+          tab-size: 4;
+          font-family: var(
+            --default-font-family,
+            ui-sans-serif,
+            system-ui,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji"
+          );
+          font-feature-settings: var(--default-font-feature-settings, normal);
+          font-variation-settings: var(--default-font-variation-settings, normal);
+          -webkit-tap-highlight-color: transparent;
+        }
+        hr {
+          height: 0;
+          color: inherit;
+          border-top-width: 1px;
+        }
+        abbr:where([title]) {
+          -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        a {
+          color: inherit;
+          -webkit-text-decoration: inherit;
+          text-decoration: inherit;
+        }
+        b,
+        strong {
+          font-weight: bolder;
+        }
+        code,
+        kbd,
+        samp,
+        pre {
+          font-family: var(
+            --default-mono-font-family,
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            "Liberation Mono",
+            "Courier New",
+            monospace
+          );
+          font-feature-settings: var(--default-mono-font-feature-settings, normal);
+          font-variation-settings: var(--default-mono-font-variation-settings, normal);
+          font-size: 1em;
+        }
+        small {
+          font-size: 80%;
+        }
+        sub,
+        sup {
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+          vertical-align: baseline;
+        }
+        sub {
+          bottom: -0.25em;
+        }
+        sup {
+          top: -0.5em;
+        }
+        table {
+          text-indent: 0;
+          border-color: inherit;
+          border-collapse: collapse;
+        }
+        :-moz-focusring {
+          outline: auto;
+        }
+        progress {
+          vertical-align: baseline;
+        }
+        summary {
+          display: list-item;
+        }
+        ol,
+        ul,
+        menu {
+          list-style: none;
+        }
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          display: block;
+          vertical-align: middle;
+        }
+        img,
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+        button,
+        input,
+        select,
+        optgroup,
+        textarea,
+        ::file-selector-button {
+          font: inherit;
+          font-feature-settings: inherit;
+          font-variation-settings: inherit;
+          letter-spacing: inherit;
+          color: inherit;
+          border-radius: 0;
+          background-color: transparent;
+          opacity: 1;
+        }
+        :where(select:is([multiple], [size])) optgroup {
+          font-weight: bolder;
+        }
+        :where(select:is([multiple], [size])) optgroup option {
+          padding-inline-start: 20px;
+        }
+        ::file-selector-button {
+          margin-inline-end: 4px;
+        }
+        ::placeholder {
+          opacity: 1;
+        }
+        @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+          ::placeholder {
+            color: currentcolor;
+            @supports (color: color-mix(in lab, red, red)) {
+              color: color-mix(in oklab, currentcolor 50%, transparent);
+            }
+          }
+        }
+        textarea {
+          resize: vertical;
+        }
+        ::-webkit-search-decoration {
+          -webkit-appearance: none;
+        }
+        ::-webkit-date-and-time-value {
+          min-height: 1lh;
+          text-align: inherit;
+        }
+        ::-webkit-datetime-edit {
+          display: inline-flex;
+        }
+        ::-webkit-datetime-edit-fields-wrapper {
+          padding: 0;
+        }
+        ::-webkit-datetime-edit,
+        ::-webkit-datetime-edit-year-field,
+        ::-webkit-datetime-edit-month-field,
+        ::-webkit-datetime-edit-day-field,
+        ::-webkit-datetime-edit-hour-field,
+        ::-webkit-datetime-edit-minute-field,
+        ::-webkit-datetime-edit-second-field,
+        ::-webkit-datetime-edit-millisecond-field,
+        ::-webkit-datetime-edit-meridiem-field {
+          padding-block: 0;
+        }
+        :-moz-ui-invalid {
+          box-shadow: none;
+        }
+        button,
+        input:where([type="button"], [type="reset"], [type="submit"]),
+        ::file-selector-button {
+          appearance: button;
+        }
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          height: auto;
+        }
+        [hidden]:where(:not([hidden="until-found"])) {
+          display: none !important;
+        }
+      }
+      @layer utilities {
+        .col-span-2 {
+          grid-column: span 2 / span 2;
+        }
+        .col-span-5 {
+          grid-column: span 5 / span 5;
+        }
+        .m-\[0\.15rem\] {
+          margin: 0.15rem;
+        }
+        .mt-1\.5 {
+          margin-top: calc(var(--spacing) * 1.5);
+        }
+        .mt-4 {
+          margin-top: calc(var(--spacing) * 4);
+        }
+        .mt-10 {
+          margin-top: calc(var(--spacing) * 10);
+        }
+        .mr-\[0\.15rem\] {
+          margin-right: 0.15rem;
+        }
+        .mb-2\.5 {
+          margin-bottom: calc(var(--spacing) * 2.5);
+        }
+        .mb-4 {
+          margin-bottom: calc(var(--spacing) * 4);
+        }
+        .mb-8 {
+          margin-bottom: calc(var(--spacing) * 8);
+        }
+        .mb-10 {
+          margin-bottom: calc(var(--spacing) * 10);
+        }
+        .ml-\[0\.15rem\] {
+          margin-left: 0.15rem;
+        }
+        .flex {
+          display: flex;
+        }
+        .grid {
+          display: grid;
+        }
+        .h-\[1px\] {
+          height: 1px;
+        }
+        .w-11 {
+          width: calc(var(--spacing) * 11);
+        }
+        .w-\[815px\] {
+          width: 815px;
+        }
+        .cursor-pointer {
+          cursor: pointer;
+        }
+        .list-inside {
+          list-style-position: inside;
+        }
+        .list-disc {
+          list-style-type: disc;
+        }
+        .grid-cols-1 {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .grid-cols-7 {
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+        }
+        .flex-wrap {
+          flex-wrap: wrap;
+        }
+        .items-center {
+          align-items: center;
+        }
+        .justify-items-center {
+          justify-items: center;
+        }
+        .space-y-1 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+            margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+          }
+        }
+        .space-y-2 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+            margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+          }
+        }
+        .space-y-3\.5 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(calc(var(--spacing) * 3.5) * var(--tw-space-y-reverse));
+            margin-block-end: calc(calc(var(--spacing) * 3.5) * calc(1 - var(--tw-space-y-reverse)));
+          }
+        }
+        .space-y-4 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+            margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+          }
+        }
+        .space-y-6 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+            margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+          }
+        }
+        .space-x-1\.5 {
+          :where(& > :not(:last-child)) {
+            --tw-space-x-reverse: 0;
+            margin-inline-start: calc(calc(var(--spacing) * 1.5) * var(--tw-space-x-reverse));
+            margin-inline-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-x-reverse)));
+          }
+        }
+        .space-x-2 {
+          :where(& > :not(:last-child)) {
+            --tw-space-x-reverse: 0;
+            margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
+            margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
+          }
+        }
+        .space-x-4 {
+          :where(& > :not(:last-child)) {
+            --tw-space-x-reverse: 0;
+            margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
+            margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
+          }
+        }
+        .rounded-lg {
+          border-radius: var(--radius-lg);
+        }
+        .rounded-sm {
+          border-radius: var(--radius-sm);
+        }
+        .border {
+          border-style: var(--tw-border-style);
+          border-width: 1px;
+        }
+        .border-t-8 {
+          border-top-style: var(--tw-border-style);
+          border-top-width: 8px;
+        }
+        .border-secondary {
+          border-color: var(--color-secondary);
+        }
+        .bg-\[ghostwhite\] {
+          background-color: ghostwhite;
+        }
+        .bg-secondary {
+          background-color: var(--color-secondary);
+        }
+        .bg-white {
+          background-color: var(--color-white);
+        }
+        .p-12 {
+          padding: calc(var(--spacing) * 12);
+        }
+        .p-\[0\.15rem\] {
+          padding: 0.15rem;
+        }
+        .px-4 {
+          padding-inline: calc(var(--spacing) * 4);
+        }
+        .py-2 {
+          padding-block: calc(var(--spacing) * 2);
+        }
+        .pr-\[0\.15rem\] {
+          padding-right: 0.15rem;
+        }
+        .pl-\[0\.15rem\] {
+          padding-left: 0.15rem;
+        }
+        .text-4xl\/tight {
+          font-size: var(--text-4xl);
+          line-height: var(--leading-tight);
+        }
+        .text-base\/tight {
+          font-size: var(--text-base);
+          line-height: var(--leading-tight);
+        }
+        .text-lg\/tight {
+          font-size: var(--text-lg);
+          line-height: var(--leading-tight);
+        }
+        .text-md\/tight {
+          font-size: var(--text-md);
+          line-height: var(--leading-tight);
+        }
+        .text-sm {
+          font-size: var(--text-sm);
+          line-height: var(--tw-leading, var(--text-sm--line-height));
+        }
+        .text-sm\/tight {
+          font-size: var(--text-sm);
+          line-height: var(--leading-tight);
+        }
+        .text-smaller\/3\.5 {
+          font-size: var(--text-smaller);
+          line-height: calc(var(--spacing) * 3.5);
+        }
+        .text-xs\/tight {
+          font-size: var(--text-xs);
+          line-height: var(--leading-tight);
+        }
+        .leading-\[1\] {
+          --tw-leading: 1;
+          line-height: 1;
+        }
+        .font-bold {
+          --tw-font-weight: var(--font-weight-bold);
+          font-weight: var(--font-weight-bold);
+        }
+        .font-lighter {
+          --tw-font-weight: var(--font-weight-lighter);
+          font-weight: var(--font-weight-lighter);
+        }
+        .font-medium {
+          --tw-font-weight: var(--font-weight-medium);
+          font-weight: var(--font-weight-medium);
+        }
+        .font-semimedium {
+          --tw-font-weight: var(--font-weight-semimedium);
+          font-weight: var(--font-weight-semimedium);
+        }
+        .text-\[dimgray\] {
+          color: dimgray;
+        }
+        .text-primary {
+          color: var(--color-primary);
+        }
+        .text-secondary {
+          color: var(--color-secondary);
+        }
+        .italic {
+          font-style: italic;
+        }
+        .shadow-\[0_0_25px_rgba\(0\,0\,0\,0\.25\)\] {
+          --tw-shadow: 0 0 25px var(--tw-shadow-color, rgba(0, 0, 0, 0.25));
+          box-shadow:
+            var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+            var(--tw-shadow);
+        }
+        .hover\:bg-gray-100 {
+          &:hover {
+            @media (hover: hover) {
+              background-color: var(--color-gray-100);
+            }
+          }
+        }
+        .print\:m-0 {
+          @media print {
+            margin: calc(var(--spacing) * 0);
+          }
+        }
+        .print\:hidden {
+          @media print {
+            display: none;
+          }
+        }
+        .print\:w-full {
+          @media print {
+            width: 100%;
+          }
+        }
+        .print\:p-0 {
+          @media print {
+            padding: calc(var(--spacing) * 0);
+          }
+        }
+        .print\:shadow-none {
+          @media print {
+            --tw-shadow: 0 0 #0000;
+            box-shadow:
+              var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+              var(--tw-shadow);
+          }
+        }
+      }
+      @page {
+        size: letter;
+      }
+      @property --tw-space-y-reverse {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-space-x-reverse {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-border-style {
+        syntax: "*";
+        inherits: false;
+        initial-value: solid;
+      }
+      @property --tw-leading {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-font-weight {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-shadow-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-shadow-alpha {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 100%;
+      }
+      @property --tw-inset-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-inset-shadow-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-inset-shadow-alpha {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 100%;
+      }
+      @property --tw-ring-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-ring-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-inset-ring-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-inset-ring-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-ring-inset {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-ring-offset-width {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 0px;
+      }
+      @property --tw-ring-offset-color {
+        syntax: "*";
+        inherits: false;
+        initial-value: #fff;
+      }
+      @property --tw-ring-offset-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @layer properties {
+        @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+          ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+          *,
+          ::before,
+          ::after,
+          ::backdrop {
+            --tw-space-y-reverse: 0;
+            --tw-space-x-reverse: 0;
+            --tw-border-style: solid;
+            --tw-leading: initial;
+            --tw-font-weight: initial;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-color: initial;
+            --tw-shadow-alpha: 100%;
+            --tw-inset-shadow: 0 0 #0000;
+            --tw-inset-shadow-color: initial;
+            --tw-inset-shadow-alpha: 100%;
+            --tw-ring-color: initial;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-inset-ring-color: initial;
+            --tw-inset-ring-shadow: 0 0 #0000;
+            --tw-ring-inset: initial;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-offset-shadow: 0 0 #0000;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body class="mt-10 mb-10 grid grid-cols-1 justify-items-center print:m-0">
+    <div class="mb-8 print:hidden">
+      <button
+        type="button"
+        id="print-button"
+        class="flex cursor-pointer items-center space-x-2 rounded-lg border border-secondary bg-white px-4 py-2 font-medium hover:bg-gray-100"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="tabler-icon tabler-icon-download"
+        >
+          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+          <path d="M7 11l5 5l5 -5"></path>
+          <path d="M12 4l0 12"></path></svg
+        ><span>Print / Save as PDF</span>
+      </button>
+      <script>
+        document.getElementById("print-button").onclick = () => window.print()
+      </script>
+    </div>
+    <main class="w-[815px] p-12 shadow-[0_0_25px_rgba(0,0,0,0.25)] print:w-full print:p-0 print:shadow-none">
+      <div class="mb-4 border-t-8 border-secondary"></div>
+      <h1 class="text-4xl/tight font-bold">Adam Langbert</h1>
+      <h2 class="text-lg/tight font-bold text-secondary">Senior Software Engineer</h2>
+      <div class="mt-4 grid grid-cols-7 space-x-4">
+        <section class="col-span-2 space-y-6">
+          <div>
+            <div>
+              <h3 class="font-lighter">About</h3>
+              <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="none"
+                class="tabler-icon tabler-icon-map-pin-filled"
+              >
+                <path
+                  d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z"
+                ></path></svg
+              ><span class="text-sm">Austin, TX</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="none"
+                class="tabler-icon tabler-icon-mail-filled"
+              >
+                <path
+                  d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z"
+                ></path>
+                <path
+                  d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z"
+                ></path></svg
+              ><span class="text-sm"
+                ><a href="mailto:adamhl@pm.me" target="_blank" rel="noreferrer">adamhl@pm.me</a></span
+              >
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="none"
+                class="tabler-icon tabler-icon-phone-filled"
+              >
+                <path
+                  d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z"
+                ></path></svg
+              ><span class="text-sm"><a href="tel:941-504-8001" target="_blank" rel="noreferrer">941-504-8001</a></span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="none"
+                class="tabler-icon tabler-icon-brand-github-filled"
+              >
+                <path
+                  d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13.3 0 0 1 4.59 -.08l.456 .08l.396 .083l.161 -.1c1.385 -.84 2.487 -1.17 3.322 -1.148l.164 .008l.147 .017l.076 .014l.05 .011l.144 .047a1 1 0 0 1 .53 .514a5.2 5.2 0 0 1 .397 2.91l-.047 .267l-.046 .196l.123 .163c.574 .795 .93 1.728 1.03 2.707l.023 .295l.007 .272c0 3.855 -1.659 5.883 -4.644 6.68l-.245 .061l-.132 .029l.014 .161l.008 .157l.004 .365l-.002 .213l-.003 3.834a1 1 0 0 1 -.883 .993l-.117 .007h-6a1 1 0 0 1 -.993 -.883l-.007 -.117v-.734c-1.818 .26 -3.03 -.424 -4.11 -1.878l-.535 -.766c-.28 -.396 -.455 -.579 -.589 -.644l-.048 -.019a1 1 0 0 1 .564 -1.918c.642 .188 1.074 .568 1.57 1.239l.538 .769c.76 1.079 1.36 1.459 2.609 1.191l.001 -.678l-.018 -.168a5.03 5.03 0 0 1 -.021 -.824l.017 -.185l.019 -.12l-.108 -.024c-2.976 -.71 -4.703 -2.573 -4.875 -6.139l-.01 -.31l-.004 -.292a5.6 5.6 0 0 1 .908 -3.051l.152 -.222l.122 -.163l-.045 -.196a5.2 5.2 0 0 1 .145 -2.642l.1 -.282l.106 -.253a1 1 0 0 1 .529 -.514l.144 -.047l.154 -.03z"
+                ></path></svg
+              ><span class="text-sm"
+                ><a href="https://github.com/adamhl8" target="_blank" rel="noreferrer">adamhl8</a></span
+              >
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="none"
+                class="tabler-icon tabler-icon-brand-linkedin-filled"
+              >
+                <path
+                  d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1 -5 5h-10a5 5 0 0 1 -5 -5v-10a5 5 0 0 1 5 -5zm-9 8a1 1 0 0 0 -1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0 -1 -1m6 0a3 3 0 0 0 -1.168 .236l-.125 .057a1 1 0 0 0 -1.707 .707v5a1 1 0 0 0 2 0v-3a1 1 0 0 1 2 0v3a1 1 0 0 0 2 0v-3a3 3 0 0 0 -3 -3m-6 -3a1 1 0 0 0 -.993 .883l-.007 .127a1 1 0 0 0 1.993 .117l.007 -.127a1 1 0 0 0 -1 -1"
+                ></path></svg
+              ><span class="text-sm"
+                ><a href="https://www.linkedin.com/in/adamlangbert/" target="_blank" rel="noreferrer"
+                  >adamlangbert</a
+                ></span
+              >
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="tabler-icon tabler-icon-world"
+              >
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                <path d="M3.6 9h16.8"></path>
+                <path d="M3.6 15h16.8"></path>
+                <path d="M11.5 3a17 17 0 0 0 0 18"></path>
+                <path d="M12.5 3a17 17 0 0 1 0 18"></path></svg
+              ><span class="text-sm"><a href="https://adamhl.dev" target="_blank" rel="noreferrer">adamhl.dev</a></span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h3 class="font-lighter">Education</h3>
+              <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="text-md/tight">University of Maryland</div>
+                <div class="text-sm/tight font-bold text-secondary">BS in Computer Science</div>
+                <div class="font-lighter text-sm/tight italic">GPA: 3.99</div>
+              </div>
+              <div>
+                <div class="text-md/tight">University of Maryland</div>
+                <div class="text-sm/tight font-bold text-secondary">AA in Computer Science</div>
+                <div class="font-lighter text-sm/tight italic">GPA: 4.0</div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div>
+              <div>
+                <h3 class="font-lighter">Languages</h3>
+                <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+              </div>
+              <div class="flex flex-wrap">
+                <span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight"
+                  >TypeScript/JavaScript</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">HTML</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">CSS</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Python</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Java</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Lua</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Golang</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Rust</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">SQL</span>
+              </div>
+            </div>
+            <div>
+              <div>
+                <h3 class="font-lighter">Technologies</h3>
+                <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+              </div>
+              <div class="flex flex-wrap">
+                <span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">React</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">TailwindCSS</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Git</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">POSIX/Unix/Linux</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Docker</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Node</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Spring/Spring Boot</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">PostgreSQL</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Prisma</span>
+              </div>
+            </div>
+            <div>
+              <div>
+                <h3 class="font-lighter">DevOps</h3>
+                <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+              </div>
+              <div class="flex flex-wrap">
+                <span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">AWS</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">GitHub Actions</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">GitLab CI/CD</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">TCP/IP</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">DNS</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="col-span-5 space-y-4">
+          <div>
+            <div>
+              <h3 class="font-lighter">Experience</h3>
+              <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+            </div>
+            <div class="space-y-3.5">
+              <div class="space-y-2">
+                <header>
+                  <div class="text-md/tight font-bold">Senior Software Engineer</div>
+                  <div class="space-x-1.5 text-sm/tight">
+                    <span class="font-bold text-secondary">Geode</span
+                    ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
+                      ><span>•</span
+                      ><a href="https://www.geode.io" target="_blank" rel="noreferrer">www.geode.io</a></span
+                    ><span>|</span><span class="font-lighter italic">November, 2024 - Present</span>
+                  </div>
+                </header>
+                <div class="space-y-1">
+                  <p class="text-smaller/3.5">
+                    Full-stack software engineer developing custom solutions for diverse clients, ranging from mobile
+                    apps to data automation services. Focused on delivering end-to-end solutions that meet specific
+                    client requirements and business objectives.
+                  </p>
+                  <ul class="text-smaller/3.5 list-inside list-disc">
+                    <li>
+                      Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription
+                      system to enable monetization.
+                    </li>
+                    <li>
+                      Built automated data processing service, streamlining client workflows and reducing manual data
+                      handling overhead.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <header>
+                  <div class="text-md/tight font-bold">Software Engineer</div>
+                  <div class="space-x-1.5 text-sm/tight">
+                    <span class="font-bold text-secondary">US Army - Army Software Factory</span><span>|</span
+                    ><span class="font-lighter italic">June, 2022 - Present</span>
+                  </div>
+                </header>
+                <div class="space-y-1">
+                  <p class="text-smaller/3.5">
+                    Tech lead for an internal tools team, focusing on accelerating development processes and ensuring
+                    security and compliance throughout the organization. The team plays a pivotal role in setting
+                    technical standards and providing support across app development teams.
+                  </p>
+                  <ul class="text-smaller/3.5 list-inside list-disc">
+                    <li>
+                      Develops and maintains a comprehensive full-stack web application starter template, which
+                      significantly reduces time to production and increases developer efficiency for 15+ app teams.
+                    </li>
+                    <li>
+                      Maintains over 20 frontend/backend packages, providing reusable solutions that streamline
+                      development processes.
+                    </li>
+                    <li>
+                      Developed and delivered targeted programming curriculum, mentoring new developers and enriching
+                      the organization&#x27;s technical knowledge base.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <header>
+                  <div class="text-md/tight font-bold">25S - Satellite Communication Systems Operator-Maintainer</div>
+                  <div class="space-x-1.5 text-sm/tight">
+                    <span class="font-bold text-secondary">US Army</span><span>|</span
+                    ><span class="font-lighter italic">2019 - June, 2022</span>
+                  </div>
+                </header>
+                <div class="space-y-1">
+                  <p class="text-smaller/3.5">
+                    Duties included the installation, configuration, maintenance, and operation of various fixed SATCOM
+                    terminals in support of both military and commercial end-users.
+                  </p>
+                  <ul class="text-smaller/3.5 list-inside list-disc">
+                    <li>
+                      Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols to troubleshoot and
+                      resolve issues.
+                    </li>
+                    <li>
+                      Configured networking equipment such as routers, switches, modems, circuits, trunk groups, and
+                      other related equipment.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h3 class="font-lighter">Open Source Projects</h3>
+              <div class="mt-1.5 mb-2.5 h-[1px] w-11 bg-secondary"></div>
+            </div>
+            <div class="space-y-3.5">
+              <div>
+                <header class="space-x-1.5">
+                  <span class="text-md/tight font-bold">ts-explicit-errors</span
+                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
+                    ><span>•</span
+                    ><a href="https://github.com/adamhl8/ts-explicit-errors" target="_blank" rel="noreferrer"
+                      >github.com/adamhl8/ts-explicit-errors</a
+                    ></span
+                  >
+                </header>
+                <div class="space-y-2">
+                  <div>
+                    <span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >TypeScript</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >Library</span
+                    >
+                  </div>
+                  <p class="text-smaller/3.5">
+                    A concise and type-safe error handling library for TypeScript, allowing users to treat errors as
+                    values in order to write more safe, readable, and maintainable code.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <header class="space-x-1.5">
+                  <span class="text-md/tight font-bold">dataviewjs-habit-tracker</span
+                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
+                    ><span>•</span
+                    ><a href="https://github.com/adamhl8/dataviewjs-habit-tracker" target="_blank" rel="noreferrer"
+                      >github.com/adamhl8/dataviewjs-habit-tracker</a
+                    ></span
+                  >
+                </header>
+                <div class="space-y-2">
+                  <div>
+                    <span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >TypeScript</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >obsidian.md</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >Plugin</span
+                    >
+                  </div>
+                  <p class="text-smaller/3.5">
+                    A code snippet for the Obsidian plugin Dataview, designed to generate a dynamic table without
+                    requiring specific Dataview annotations.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <header class="space-x-1.5">
+                  <span class="text-md/tight font-bold">astro-validate-env</span
+                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
+                    ><span>•</span
+                    ><a href="https://github.com/adamhl8/astro-validate-env" target="_blank" rel="noreferrer"
+                      >github.com/adamhl8/astro-validate-env</a
+                    ></span
+                  >
+                </header>
+                <div class="space-y-2">
+                  <div>
+                    <span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >TypeScript</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >Astro</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      >Integration</span
+                    >
+                  </div>
+                  <p class="text-smaller/3.5">
+                    An integration for the Astro web framework that provides a flexible system for defining and
+                    validating environment variables.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
