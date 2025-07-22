@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/correctness/noUnknownProperty: daisyUI uses custom properties */
 @import "tailwindcss";
 @theme {
-  --font-sans: var(--font-atkinson-hyperlegible);
+  --font-sans: var(--font-atkinson-hyperlegible-next);
   --font-mono: var(--font-jetbrains-mono);
 }
 

@@ -42,16 +42,14 @@ export default defineConfig({
     fonts: [
       {
         provider: fontProviders.google(),
-        name: "Atkinson Hyperlegible",
-        cssVariable: "--font-atkinson-hyperlegible",
-        styles: ["normal", "italic"],
-        weights: [400, 700],
+        name: "Atkinson Hyperlegible Next",
+        cssVariable: "--font-atkinson-hyperlegible-next",
+        weights: ["200 800"],
       },
       {
         provider: fontProviders.google(),
         name: "JetBrains Mono",
         cssVariable: "--font-jetbrains-mono",
-        styles: ["normal", "italic"],
         weights: ["100 800"],
       },
     ],

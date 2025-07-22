@@ -27,11 +27,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL("rss.xml", Astro.site)} />
 
-<Font cssVariable="--font-atkinson-hyperlegible" preload />
-<Font cssVariable="--font-jetbrains-mono" preload />
+<Font cssVariable="--font-atkinson-hyperlegible-next" />
+<Font cssVariable="--font-jetbrains-mono" />
 
-<script is:inline defer src="https://umami.adamhl.dev/script.js" data-website-id="923498a7-4a41-412a-adb8-97ae3905b284"
-></script>
+<!-- <script is:inline defer src="https://umami.adamhl.dev/script.js" data-website-id="923498a7-4a41-412a-adb8-97ae3905b284"
+></script> -->
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
