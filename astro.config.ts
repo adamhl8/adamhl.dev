@@ -47,10 +47,31 @@ export default defineConfig({
         weights: ["200 800"],
       },
       {
-        provider: fontProviders.google(),
-        name: "JetBrains Mono",
-        cssVariable: "--font-jetbrains-mono",
-        weights: ["100 800"],
+        provider: "local",
+        name: "Iosevka",
+        cssVariable: "--font-iosevka",
+        variants: [
+          {
+            src: ["./src/fonts/Iosevka-Regular.ttf"],
+            style: "normal",
+            weight: "400",
+          },
+          {
+            src: ["./src/fonts/Iosevka-Bold.ttf"],
+            style: "normal",
+            weight: "700",
+          },
+          {
+            src: ["./src/fonts/Iosevka-Italic.ttf"],
+            style: "italic",
+            weight: "400",
+          },
+          {
+            src: ["./src/fonts/Iosevka-BoldItalic.ttf"],
+            style: "italic",
+            weight: "700",
+          },
+        ],
       },
     ],
   },

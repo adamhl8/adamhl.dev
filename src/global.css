@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @theme {
   --font-sans: var(--font-atkinson-hyperlegible-next);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-mono: var(--font-iosevka);
 }
 
 @plugin "@tailwindcss/typography";
