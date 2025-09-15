@@ -499,7 +499,7 @@ Top 50 packages by total number of versions published:
 50. @knapsack/utils -> 8323 total versions
 ```
 
-<br></br>
+<br>
 
 ```
 Top 50 packages that follow semver by largest number in version:
