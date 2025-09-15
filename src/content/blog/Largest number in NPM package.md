@@ -7,13 +7,13 @@ tags: [npm, typescript, javascript]
 
 I was recently working on a project that uses the [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js-v3). When updating the dependencies in said project, I noticed that the version of that dependency was `v3.888.0`. Eight hundred eighty eight. That's a big number as far as versions go.
 
-That got me thinking. I wonder what package in the [npm registry](https://www.npmjs.com) has the largest number in its version. Could be a major, minor, or patch version, and it doesn't have to be the latest version of the package. In other words, out of the three numbers in `<major>.<minor>.<patch>` for each version for each package, what is the largest number I can find?
+That got me thinking: I wonder what package in the [npm registry](https://www.npmjs.com) has the largest number in its version. It could be a major, minor, or patch version, and it doesn't have to be the latest version of the package. In other words, out of the three numbers in `<major>.<minor>.<patch>` for each version for each package, what is the largest number I can find?
 
 **TL;DR? [Jump to the results](#results)** to see the answer.
 
 ## The npm API
 
-Obviously npm has some kind of API, so it shouldn't be too hard to get a list of all... [3,639,812 packages](https://www.npmjs.com/#:~:text=Packages-,3%2C639%2C812,-Downloads%20%C2%B7%20Last). Oh. That's a lot of packages. Well, considering npm had 374 _billion_ package downloads in the past _month_, I'm sure they wouldn't mine me making a few million HTTP requests.
+Obviously npm has some kind of API, so it shouldn't be too hard to get a list of all... [3,639,812 packages](https://www.npmjs.com/#:~:text=Packages-,3%2C639%2C812,-Downloads%20%C2%B7%20Last). Oh. That's a lot of packages. Well, considering npm had 374 _billion_ package downloads in the past _month_, I'm sure they wouldn't mind me making a few million HTTP requests.
 
 Doing a quick search search for "npm api" leads me to a readme in the [npm/registry repo](https://github.com/npm/registry/blob/main/docs/REGISTRY-API.md) on GitHub. There's a `/-/all` endpoint listed in the table of contents which seems promising. That section doesn't actually exist in the readme but maybe it still works?
 
