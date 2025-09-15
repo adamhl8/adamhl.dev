@@ -127,7 +127,7 @@ Some stats:
 
 **And the winner is...** (not really) [latentflip-test](https://www.npmjs.com/package/latentflip-test?activeTab=versions) at version `1000000000000000000.1000000000000000000.1000000000000000000`. And no, there haven't actually been one quintillion major versions of this package published. Disappointing, I know.
 
-Well, I feel like that shouldn't count. I think we can do better and find a "real" package that actually follows semantic versioning. I think a better question to ask is this:
+Okay, I feel like that shouldn't count. I think we can do better and find a "real" package that actually follows semantic versioning. I think a better question to ask is this:
 
 **For packages that _follow semantic versioning_, which package has the _largest number_ from `<major>.<minor>.<patch>` in _any_ of its versions?**
 
@@ -136,40 +136,42 @@ So, what does it mean to "follow semantic versioning"? Should we "disqualify" a 
 Before we get to the real winner, here are the top 10 packages _by total number of versions published_:
 
 ```
-electron-remote-control -> 37328 total versions
-@npm-torg/public-scoped-free-org-test-package-2 -> 37134 total versions
-public-unscoped-test-package -> 27719 total versions
-carrot-scan -> 27708 total versions
-@npm-torg/public-test-package-2 -> 27406 total versions
-@octopusdeploy/design-system-components -> 26724 total versions
-@octopusdeploy/type-utils -> 26708 total versions
-@octopusdeploy/design-system-tokens -> 22122 total versions
-@mahdiarjangi/phetch-cli -> 19498 total versions
-@atlassian-test-prod/hello-world -> 19120 total versions
+1. electron-remote-control -> 37328 total versions
+2. @npm-torg/public-scoped-free-org-test-package-2 -> 37134 total versions
+3. public-unscoped-test-package -> 27719 total versions
+4. carrot-scan -> 27708 total versions
+5. @npm-torg/public-test-package-2 -> 27406 total versions
+6. @octopusdeploy/design-system-components -> 26724 total versions
+7. @octopusdeploy/type-utils -> 26708 total versions
+8. @octopusdeploy/design-system-tokens -> 22122 total versions
+9. @mahdiarjangi/phetch-cli -> 19498 total versions
+10. @atlassian-test-prod/hello-world -> 19120 total versions
 ```
 
 Top 10 packages that (probably) follow semver _by largest number in one of its versions_:
 
 ```
-electron-remote-control -> 19065 (1.2.19065)
-@atlassian-test-prod/hello-world -> 16707 (9.7.16707)
-@octopusdeploy/design-system-components -> 14274 (2025.3.14274)
-@octopusdeploy/type-utils -> 14274 (2025.3.14274)
-@octopusdeploy/design-system-tokens -> 14274 (2025.3.14274)
-@atlassian-test-staging/test -> 13214 (49.4.13214)
-binky -> 9906 (3.4.9906)
-kse-visilia -> 5997 (1.6.5997)
-@idxdb/promised -> 4614 (2.3.4614)
-wix-style-react -> 4264 (1.1.4264)
+1. @mahdiarjangi/phetch-cli -> 19494 (1.0.19494)
+2. electron-remote-control -> 19065 (1.2.19065)
+3. @quip/collab -> 16999 (1.16999.0)
+4. @atlassian-test-prod/hello-world -> 16707 (9.7.16707)
+5. @wix/wix-code-types -> 14720 (2.0.14720)
+6. @octopusdeploy/design-system-components -> 14274 (2025.3.14274)
+7. @octopusdeploy/type-utils -> 14274 (2025.3.14274)
+8. @octopusdeploy/design-system-tokens -> 14274 (2025.3.14274)
+9. @atlassian-test-staging/test -> 13214 (49.4.13214)
+10. binky -> 9906 (3.4.9906)
 ```
 
-So it seems like the winner is [electron-remote-control](https://github.com/DinoscapeProgramming/Remote-Control), right? Unfortunately, I'm not going to count that either. It only has so many versions because of a [misconfigured GitHub action](https://github.com/DinoscapeProgramming/Remote-Control/issues/3) that ran every hour... for a while.
+So it seems like the winner is [@mahdiarjangi/phetch-cli](https://github.com/DinoscapeProgramming/Remote-Control) with `19494`, right? Unfortunately, I'm not going to count that either. It only has so many versions because of a [misconfigured GitHub action](https://github.com/arjangimahdi/phetch-cli/actions/runs/11531682007/workflow) that published new versions in a loop.
 
 I manually went down the above list, disqualifying any packages that had similar issues. I also checked that "new" versions actually differed from previous versions in terms of content. Overall, I looked for a package that was actually publishing new versions on purpose with _some_ kind of change to the package content.
 
-**The real winner (#20 on the list) is:** [@wppconnect/wa-version](https://github.com/wppconnect-team/wa-version) at version `1.5.2219`.
+**The real winner (#19 on the list) is:** [all-the-package-names](https://github.com/nice-registry/all-the-package-names) with `2401` from version `2.0.2401`.
 
-What you do with this extremely important and useful information is up to you.
+Well, that's sort of disappointing, but also kind of funny. I don't know what I was expecting to be honest. If you're curious, you can see [more results](#more-results) at the bottom of this post.
+
+What you do with all of this extremely important and useful information is up to you.
 
 ## Script
 
@@ -180,7 +182,7 @@ import fs from "node:fs/promises"
 import process from "node:process"
 
 async function main() {
-  const NUM_TO_PRINT = 20
+  const NUM_TO_PRINT = 50
 
   const packageIds = await fetchPackageIds()
   const packageData = await fetchAllPackageData(packageIds)
@@ -199,14 +201,14 @@ async function main() {
   )
 
   console.log(`\nTop ${NUM_TO_PRINT} packages by total number of versions published:`)
-  for (const { id, versions } of packagsByNumOfVersions.slice(0, NUM_TO_PRINT)) {
-    console.log(`${id} -> ${versions.length} total versions`)
-  }
+  packagsByNumOfVersions.slice(0, NUM_TO_PRINT).forEach(({ id, versions }, i) => {
+    console.log(`${i + 1}. ${id} -> ${versions.length} total versions`)
+  })
 
   const logPackagesByLargestNumber = (packages: NormalizedPackageData[]) => {
-    for (const { id, largestNumber } of packages.slice(0, NUM_TO_PRINT)) {
-      console.log(`${id} -> ${largestNumber.num} (${largestNumber.version})`)
-    }
+    packages.slice(0, NUM_TO_PRINT).forEach(({ id, largestNumber }, i) => {
+      console.log(`${i + 1}. ${id} -> ${largestNumber.num} (${largestNumber.version})`)
+    })
   }
 
   console.log(`\nTop ${NUM_TO_PRINT} packages by largest number in version:`)
@@ -228,25 +230,21 @@ async function main() {
  * For example, 'electron-remote-control' was publishing a version every hour for a long time due to a configuration mistake.
  */
 const KNOWN_BAD_PACKAGES = [
+  "@mahdiarjangi/phetch-cli",
   "electron-remote-control",
-  "carrot-scan",
+  "@quip/collab",
   "@atlassian-test",
+  "@wix/wix-code-types",
   "@octopusdeploy",
   "binky",
+  "carrot-scan",
+  "terrapin-test-1",
+  "@prisma/language-server",
   "kse-visilia",
   "intraactive-sdk-ui",
   "@idxdb/promised",
   "wix-style-react",
-  "sale-client",
   "botfather",
-  "electron-i18n",
-  "warframe-items",
-  "ebt-vue",
-  "@geometryzen/jsxgraph",
-  "eslint-config-innovorder-v2",
-  "@innovorder/serverless-resize-bucket-images",
-  "@xuda.io/xuda-worker-bundle",
-  "@abtasty/pulsar-common-ui",
 ]
 
 /**
@@ -408,10 +406,13 @@ await main()
  * If the string is not a valid semver, `undefined` is returned.
  */
 function splitSemver(version: string): SemverNumbers | undefined {
-  const versionParts = version.split(".").map((part) => Number.isInteger(Number(part)) && Number.parseInt(part, 10))
+  const versionParts = version
+    .split(".")
+    .slice(0, 3)
+    .map((part) => (Number.isInteger(Number(part)) ? Number.parseInt(part, 10) : undefined))
+    .filter((part) => part !== undefined)
   if (versionParts.length !== 3) return
-  const [major, minor, patch] = versionParts
-  if (!(major && minor && patch)) return
+  const [major, minor, patch] = versionParts as SemverNumbers
   return [major, minor, patch]
 }
 
@@ -438,4 +439,116 @@ async function fetchJson<T>(url: string): Promise<T | undefined> {
 
   return
 }
+```
+
+## More Results
+
+This is from the script:
+
+```
+Top 50 packages by total number of versions published:
+1. electron-remote-control -> 37328 total versions
+2. @npm-torg/public-scoped-free-org-test-package-2 -> 37134 total versions
+3. public-unscoped-test-package -> 27719 total versions
+4. carrot-scan -> 27708 total versions
+5. @npm-torg/public-test-package-2 -> 27406 total versions
+6. @octopusdeploy/design-system-components -> 26724 total versions
+7. @octopusdeploy/type-utils -> 26708 total versions
+8. @octopusdeploy/design-system-tokens -> 22122 total versions
+9. @mahdiarjangi/phetch-cli -> 19498 total versions
+10. @atlassian-test-prod/hello-world -> 19120 total versions
+11. @quip/collab -> 17004 total versions
+12. @gitpod/gitpod-protocol -> 16145 total versions
+13. ricos-build-cache -> 15867 total versions
+14. @wix/wix-code-types -> 15030 total versions
+15. @gitpod/supervisor-api-grpc -> 14364 total versions
+16. @atlassian-test-staging/test -> 13330 total versions
+17. @yuming2022/app-dnpkg-beta -> 12995 total versions
+18. nocodb-sdk-daily -> 12512 total versions
+19. @dais/sdk-minimal -> 12090 total versions
+20. nc-lib-gui-daily -> 11874 total versions
+21. binky -> 11460 total versions
+22. nocodb-daily -> 11283 total versions
+23. construct-hub-probe -> 10822 total versions
+24. renovate -> 10369 total versions
+25. @primer/react -> 10320 total versions
+26. @codecademy/styleguide -> 10186 total versions
+27. @prisma/client -> 10064 total versions
+28. @prisma/migrate -> 9994 total versions
+29. @prisma/generator-helper -> 9847 total versions
+30. decentraland-renderer -> 9640 total versions
+31. gfcdn.startpage -> 9580 total versions
+32. @prisma/debug -> 9521 total versions
+33. @codecademy/gamut -> 9411 total versions
+34. @coral-xyz/xnft-cli -> 9397 total versions
+35. @birdeye-so/tokenswap -> 9382 total versions
+36. @pdftron/webviewer -> 9373 total versions
+37. @gitpod/supervisor-api-grpcweb -> 9274 total versions
+38. @gitpod/local-app-api-grpcweb -> 9177 total versions
+39. kse-visilia -> 9150 total versions
+40. @prisma/fetch-engine -> 8988 total versions
+41. @coral-xyz/common -> 8946 total versions
+42. @prisma/get-platform -> 8926 total versions
+43. @materializeinc/sql-lexer -> 8868 total versions
+44. xnft -> 8846 total versions
+45. @prisma/language-server -> 8826 total versions
+46. prisma -> 8675 total versions
+47. @stoplight/cli -> 8455 total versions
+48. electron-apps -> 8445 total versions
+49. @knapsack/schema-utils -> 8332 total versions
+50. @knapsack/utils -> 8323 total versions
+```
+
+```
+Top 50 packages that follow semver by largest number in version:
+1. @mahdiarjangi/phetch-cli -> 19494 (1.0.19494)
+2. electron-remote-control -> 19065 (1.2.19065)
+3. @quip/collab -> 16999 (1.16999.0)
+4. @atlassian-test-prod/hello-world -> 16707 (9.7.16707)
+5. @wix/wix-code-types -> 14720 (2.0.14720)
+6. @octopusdeploy/design-system-components -> 14274 (2025.3.14274)
+7. @octopusdeploy/type-utils -> 14274 (2025.3.14274)
+8. @octopusdeploy/design-system-tokens -> 14274 (2025.3.14274)
+9. @atlassian-test-staging/test -> 13214 (49.4.13214)
+10. binky -> 9906 (3.4.9906)
+11. carrot-scan -> 9809 (5.0.9809)
+12. terrapin-test-1 -> 8151 (1.0.8151)
+13. @prisma/language-server -> 7906 (31.0.7906)
+14. kse-visilia -> 5997 (1.6.5997)
+15. intraactive-sdk-ui -> 4752 (1.1.4752)
+16. @idxdb/promised -> 4614 (2.3.4614)
+17. wix-style-react -> 4264 (1.1.4264)
+18. botfather -> 4058 (3.6.4058)
+19. all-the-package-names -> 3905 (1.3905.0)
+20. @openactive/rpde-validator -> 3571 (3.0.3571)
+21. electron-i18n -> 3136 (1.3136.0)
+22. warframe-items -> 3060 (1.1253.3060)
+23. ebt-vue -> 3053 (1.55.3053)
+24. @geometryzen/jsxgraph -> 3022 (1.6.3022)
+25. @deriv/api-types -> 2760 (1.0.2760)
+26. eslint-config-innovorder-v2 -> 2730 (2.2730.6)
+27. @innovorder/serverless-resize-bucket-images -> 2730 (2.2730.6)
+28. @zuplo/runtime -> 2544 (5.2544.0)
+29. @zuplo/core -> 2544 (5.2544.0)
+30. membership-tpa-translations -> 2515 (1.0.2515)
+31. all-the-package-repos -> 2401 (2.0.2401)
+32. @stoplight/cli -> 2400 (6.0.2400)
+33. @xuda.io/xuda-worker-bundle -> 2366 (1.3.2366)
+34. react-module-container -> 2356 (1.0.2356)
+35. @abtasty/pulsar-common-ui -> 2314 (1.1.2314)
+36. @xuda.io/xuda-worker-bundle-min -> 2256 (1.3.2256)
+37. @wppconnect/wa-version -> 2215 (1.5.2215)
+38. react-home-ar -> 2195 (0.0.2195)
+39. @parative/library -> 2145 (3.4.2145)
+40. @lightdash/cli -> 2001 (0.2001.1)
+41. @lightdash/common -> 2001 (0.2001.1)
+42. @lightdash/warehouses -> 2001 (0.2001.1)
+43. @eigenspace/framer-bundle-minifier -> 1930 (0.0.1930)
+44. carpams -> 1919 (1.1.1919)
+45. @eth-optimism/tokenlist -> 1714 (10.0.1714)
+46. aws-sdk -> 1692 (2.1692.0)
+47. hypothesis -> 1688 (1.1688.0)
+48. ros.grant.common -> 1681 (2.0.1681)
+49. commons-validator-js -> 1669 (1.0.1669)
+50. mol_regexp -> 1632 (0.0.1632)
 ```
