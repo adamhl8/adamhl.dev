@@ -15,16 +15,16 @@ That got me thinking: I wonder what package in the [npm registry](https://www.np
 
 Obviously npm has some kind of API, so it shouldn't be too hard to get a list of all... [3,639,812 packages](https://www.npmjs.com/#:~:text=Packages-,3%2C639%2C812,-Downloads%20%C2%B7%20Last). Oh. That's a lot of packages. Well, considering npm had 374 _billion_ package downloads in the past _month_, I'm sure they wouldn't mind me making a few million HTTP requests.
 
-Doing a quick search search for "npm api" leads me to a readme in the [npm/registry repo](https://github.com/npm/registry/blob/main/docs/REGISTRY-API.md) on GitHub. There's a `/-/all` endpoint listed in the table of contents which seems promising. That section doesn't actually exist in the readme but maybe it still works?
+Doing a quick search for "npm api" leads me to a readme in the [npm/registry repo](https://github.com/npm/registry/blob/main/docs/REGISTRY-API.md) on GitHub. There's a `/-/all` endpoint listed in the table of contents which seems promising. That section doesn't actually exist in the readme, but maybe it still works?
 
 ```sh
 $ curl 'https://registry.npmjs.org/-/all'
 {"code":"ResourceNotFound","message":"/-/all does not exist"}
 ```
 
-Whelp, maybe npm packages have an ID and I can just start at 1 and count up? It looks like packages have an `_id` field... never mind, the `_id` field is the package _name_. Okay let's try to find something else.
+Whelp, maybe npm packages have an ID and I can just start at 1 and count up? It looks like packages have an `_id` field... never mind, the `_id` field is the package _name_. Okay, let's try to find something else.
 
-A little more digging brings me to this [GitHub discussion](https://github.com/orgs/community/discussions/152515) about the npm replication API. So npm replicates package info in CouchDB at `https://replicate.npmjs.com`, and conveniently they support the [`_all_docs` endpoint](https://docs.couchdb.org/en/stable/api/database/bulk-api.html#db-all-docs). Let's give that a try:
+A little more digging brings me to this [GitHub discussion](https://github.com/orgs/community/discussions/152515) about the npm replication API. So npm replicates package info in CouchDB at `https://replicate.npmjs.com`, and conveniently, they support the [`_all_docs` endpoint](https://docs.couchdb.org/en/stable/api/database/bulk-api.html#db-all-docs). Let's give that a try:
 
 ```sh
 $ curl 'https://replicate.npmjs.com/registry/_all_docs'
@@ -58,14 +58,14 @@ $ curl 'https://replicate.npmjs.com/registry/_all_docs'
 
 Those are some interesting package names. Looks like this data is paginated and by default I get 1,000 packages at a time. When I write the final script, I can set the `limit` query parameter to the max of 10,000 to make pagination a little less painful.
 
-Fortunately the CouchDB docs have a [guide for pagination](https://docs.couchdb.org/en/latest/ddocs/views/pagination.html#paging), and it looks like it's as simple as using the `skip` query parameter.
+Fortunately, the CouchDB docs have a [guide for pagination](https://docs.couchdb.org/en/latest/ddocs/views/pagination.html#paging), and it looks like it's as simple as using the `skip` query parameter.
 
 ```sh
 $ curl 'https://replicate.npmjs.com/registry/_all_docs?skip=1000'
 "Bad Request"
 ```
 
-Never mind, according to the GitHub discussion linked above, `skip` is no longer supported. The "Paging (Alternate Method)" section of the same page says that I can use `startkey_docid` instead. If I grab the `id` of the last row, I should be able to use that to return the next set of rows. Fun fact, the 1000th package (alphabetically) on npm is `03-webpack-number-test`.
+Never mind. According to the GitHub discussion linked above, `skip` is no longer supported. The "Paging (Alternate Method)" section of the same page says that I can use `startkey_docid` instead. If I grab the `id` of the last row, I should be able to use that to return the next set of rows. Fun fact: The 1000th package (alphabetically) on npm is `03-webpack-number-test`.
 
 ```sh
 $ curl 'https://replicate.npmjs.com/registry/_all_docs?startkey_docid="03-webpack-number-test"'
@@ -78,7 +78,7 @@ $ curl 'https://replicate.npmjs.com/registry/_all_docs?startkey_docid="03-webpac
 
 Nice. Also, another `3628102 - 3628088 = 14` packages have been published in the ~15 minutes since I ran the last query.
 
-There's one more piece of the puzzle to figure out. How do I get all the versions for a given package? Unfortunately, it doesn't seem like I can get package version information along with the base info returned by `_all_docs`. I have to _separately_ fetch each package's metadata from `https://registry.npmjs.org/<package_id>`. Let's see what good ol' trusty `03-webpack-number-test` looks like:
+Now, there's one more piece of the puzzle to figure out. How do I get all the versions for a given package? Unfortunately, it doesn't seem like I can get package version information along with the base info returned by `_all_docs`. I have to _separately_ fetch each package's metadata from `https://registry.npmjs.org/<package_id>`. Let's see what good ol' trusty `03-webpack-number-test` looks like:
 
 ```sh
 $ curl 'https://registry.npmjs.org/03-webpack-number-test'
@@ -90,7 +90,7 @@ $ curl 'https://registry.npmjs.org/03-webpack-number-test'
       # the rest of the versions...
 ```
 
-Alright, I have everything I need. Now I just need to write a bash script that—just kidding. A wise programmer once said "if your shell script is more than 10 lines, it shouldn't be a shell script" (that was me, I said that). I like TypeScript, so let's use that.
+Alright, I have everything I need. Now I just need to write a bash script that— just kidding. A wise programmer once said, "if your shell script is more than 10 lines, it shouldn't be a shell script" (that was me, I said that). I like TypeScript, so let's use that.
 
 The biggest bottleneck is going to be waiting on the `GET`s for each package's metadata. My plan is this:
 
@@ -100,7 +100,7 @@ The biggest bottleneck is going to be waiting on the `GET`s for each package's m
 
 Once I have all the package data, I can answer the original question of "largest number in version" and look at a few other interesting things.
 
-(A couple hours and many iterations later...)
+(A few hours and many iterations later...)
 
 ```sh
 $ bun npm-package-versions.ts
@@ -113,7 +113,7 @@ Fetched 50 packages in 852ms (59 packages/s)
 # this goes on for a really long while...
 ```
 
-See the [script section](#script) at the end to if you want to see what it looks like.
+See the [script section](#script) at the end if you want to see what it looks like.
 
 ## Results
 
