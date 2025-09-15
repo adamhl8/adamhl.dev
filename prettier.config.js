@@ -1,8 +1,6 @@
-import prettierConfig from "@adamhl8/configs/prettier"
+import { prettierConfig } from "@adamhl8/configs"
 
 /** @type {import("prettier").Config} */
-// biome-ignore lint/style/noDefaultExport: prettier config
-export default {
-  ...prettierConfig,
+export default prettierConfig({
   tailwindAttributes: ["titleClass"],
-}
+})
