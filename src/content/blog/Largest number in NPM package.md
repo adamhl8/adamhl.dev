@@ -136,31 +136,31 @@ So, what does it mean to "follow semantic versioning"? Should we "disqualify" a 
 Before we get to the real winner, here are the top 10 packages _by total number of versions published_:
 
 ```
-1. electron-remote-control -> 37328 total versions
-2. @npm-torg/public-scoped-free-org-test-package-2 -> 37134 total versions
-3. public-unscoped-test-package -> 27719 total versions
-4. carrot-scan -> 27708 total versions
-5. @npm-torg/public-test-package-2 -> 27406 total versions
-6. @octopusdeploy/design-system-components -> 26724 total versions
-7. @octopusdeploy/type-utils -> 26708 total versions
-8. @octopusdeploy/design-system-tokens -> 22122 total versions
-9. @mahdiarjangi/phetch-cli -> 19498 total versions
-10. @atlassian-test-prod/hello-world -> 19120 total versions
+electron-remote-control -> 37328 total versions
+@npm-torg/public-scoped-free-org-test-package-2 -> 37134 total versions
+public-unscoped-test-package -> 27719 total versions
+carrot-scan -> 27708 total versions
+@npm-torg/public-test-package-2 -> 27406 total versions
+@octopusdeploy/design-system-components -> 26724 total versions
+@octopusdeploy/type-utils -> 26708 total versions
+@octopusdeploy/design-system-tokens -> 22122 total versions
+@mahdiarjangi/phetch-cli -> 19498 total versions
+@atlassian-test-prod/hello-world -> 19120 total versions
 ```
 
 Top 10 packages that (probably) follow semver _by largest number in one of its versions_:
 
 ```
-1. @mahdiarjangi/phetch-cli -> 19494 (1.0.19494)
-2. electron-remote-control -> 19065 (1.2.19065)
-3. @quip/collab -> 16999 (1.16999.0)
-4. @atlassian-test-prod/hello-world -> 16707 (9.7.16707)
-5. @wix/wix-code-types -> 14720 (2.0.14720)
-6. @octopusdeploy/design-system-components -> 14274 (2025.3.14274)
-7. @octopusdeploy/type-utils -> 14274 (2025.3.14274)
-8. @octopusdeploy/design-system-tokens -> 14274 (2025.3.14274)
-9. @atlassian-test-staging/test -> 13214 (49.4.13214)
-10. binky -> 9906 (3.4.9906)
+@mahdiarjangi/phetch-cli -> 19494 (1.0.19494)
+electron-remote-control -> 19065 (1.2.19065)
+@quip/collab -> 16999 (1.16999.0)
+@atlassian-test-prod/hello-world -> 16707 (9.7.16707)
+@wix/wix-code-types -> 14720 (2.0.14720)
+@octopusdeploy/design-system-components -> 14274 (2025.3.14274)
+@octopusdeploy/type-utils -> 14274 (2025.3.14274)
+@octopusdeploy/design-system-tokens -> 14274 (2025.3.14274)
+@atlassian-test-staging/test -> 13214 (49.4.13214)
+binky -> 9906 (3.4.9906)
 ```
 
 So it seems like the winner is [@mahdiarjangi/phetch-cli](https://github.com/DinoscapeProgramming/Remote-Control) with `19494`, right? Unfortunately, I'm not going to count that either. It only has so many versions because of a [misconfigured GitHub action](https://github.com/arjangimahdi/phetch-cli/actions/runs/11531682007/workflow) that published new versions in a loop.
@@ -498,6 +498,8 @@ Top 50 packages by total number of versions published:
 49. @knapsack/schema-utils -> 8332 total versions
 50. @knapsack/utils -> 8323 total versions
 ```
+
+<br></br>
 
 ```
 Top 50 packages that follow semver by largest number in version:
