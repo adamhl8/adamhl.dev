@@ -167,7 +167,7 @@ So it seems like the winner is [@mahdiarjangi/phetch-cli](https://github.com/Din
 
 I manually went down the above list, disqualifying any packages that had similar issues. I also checked that "new" versions actually differed from previous versions in terms of content. Overall, I looked for a package that was actually publishing new versions on purpose with _some_ kind of change to the package content.
 
-**The real winner (#19 on the list) is:** [all-the-package-names](https://github.com/nice-registry/all-the-package-names) with `2401` from version `2.0.2401`.
+**The real winner (#19 on the list) is:** [all-the-package-names](https://github.com/nice-registry/all-the-package-names) with `3905` from version `1.3905.0`.
 
 Well, that's sort of disappointing, but also kind of funny. I don't know what I was expecting to be honest. If you're curious, you can see [more results](#more-results) at the bottom of this post.
 
