@@ -34,11 +34,10 @@
     "reading-time": "^1.5.0",
     "remark-breaks": "^4.0.0",
     "tailwindcss": "^4.1.13",
-    "valibot": "v1.0.0-rc.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "valibot": "^1.1.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.15.15",
+    "@adamhl8/configs": "^0.15.19",
     "@biomejs/biome": "^2.2.4",
     "@types/bun": "^1.2.22",
     "jsonresume-theme-react-tailwind": "^1.2.0",
