@@ -1,6 +1,8 @@
-import { knipConfig } from "@adamhl8/configs"
+import type { KnipConfig } from "knip"
 
-const config = knipConfig({
+const config = {
+  entry: ["knip-preprocessor.ts"],
+  project: ["**"],
   ignoreDependencies: [
     "@iconify-json/tabler",
     "@tailwindcss/typography",
@@ -11,6 +13,6 @@ const config = knipConfig({
     "mdast",
     "vfile",
   ],
-} as const)
+} satisfies KnipConfig
 
 export default config

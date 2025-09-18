@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "knip": "knip-bun --preprocessor ./knip-preprocessor.ts",
     "astro": "astro",
     "bundle": "rm -rf dist .astro && bun generate:resume && bun lint && astro build",
     "dev": "astro dev",
