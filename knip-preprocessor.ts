@@ -6,7 +6,7 @@ import type { Issue, SymbolIssueType } from "knip/dist/types/issues"
  *
  * This is needed because we also need to update `options.counters` after filtering issues.
  */
-function filterIssue(
+function filterIssues(
   options: ReporterOptions,
   issueType: SymbolIssueType,
   filter: (issueEntry: [string, Record<string, Issue>]) => boolean,
@@ -23,8 +23,9 @@ function filterIssue(
 }
 
 const preprocess: Preprocessor = (options) => {
-  filterIssue(options, "unlisted", ([key]) => !key.includes("prettier"))
+  filterIssues(options, "unlisted", ([key]) => !key.includes("prettier"))
 
+  // filter out issues where the issue object is empty
   // filterIssue(options, "unlisted", ([, issueObj]) => Object.keys(issueObj).length > 0)
 
   console.log(`logging from 'knip-preprocessor.ts':\n${Bun.inspect(options.issues.unlisted)}`)
