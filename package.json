@@ -7,7 +7,7 @@
     "bundle": "rm -rf dist .astro && bun generate:resume && bun lint && astro build",
     "dev": "astro dev",
     "generate:resume": "resumed render ./src/pages/_resume/resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html",
-    "lint": "astro check && tsc --noEmit && prettier --write . && biome check --write",
+    "lint": "astro check && markdown-toc -i --bullets '-' --maxdepth 3 ./README.md && tsc --noEmit && prettier --write . && biome check --write && adamhl8-knip",
     "obsidian-share": "./obsidian-share.ts",
     "prepare": "find .githooks -type f -exec ln -srf {} .git/hooks/ \\; || true",
     "preview": "astro preview",
