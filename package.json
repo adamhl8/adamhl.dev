@@ -37,7 +37,7 @@
     "valibot": "^1.1.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.16.0",
+    "@adamhl8/configs": "^0.16.1",
     "@biomejs/biome": "^2.2.4",
     "@types/bun": "^1.2.22",
     "jsonresume-theme-react-tailwind": "^1.2.0",
