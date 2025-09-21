@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+
 import fs from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
@@ -73,14 +74,11 @@ async function main() {
   await fs.mkdir(SHARE_DIR)
 
   console.info("Reading vault...")
-  const files = await fs.readdir(OBSIDIAN_DIR, { recursive: true })
+  const files = await Array.fromAsync(new Bun.Glob("**/*.md").scan({ cwd: OBSIDIAN_DIR, absolute: true }))
 
   const fileDetailsPromises: Promise<FileDetails | undefined>[] = []
   for (const file of files) {
-    if (!file.endsWith(".md")) continue
-
-    const obsidianFilePath = path.join(OBSIDIAN_DIR, file)
-    const fileDetailsPromise = copySharedFile(obsidianFilePath)
+    const fileDetailsPromise = copySharedFile(file)
     fileDetailsPromises.push(fileDetailsPromise)
   }
   const allFileDetails = await Promise.all(fileDetailsPromises)
