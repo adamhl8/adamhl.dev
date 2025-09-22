@@ -27,7 +27,7 @@
         "valibot": "^1.1.0",
       },
       "devDependencies": {
-        "@adamhl8/configs": "^0.17.1",
+        "@adamhl8/configs": "^0.17.2",
         "@biomejs/biome": "^2.2.4",
         "@types/bun": "^1.2.22",
         "jsonresume-theme-react-tailwind": "^1.2.0",
@@ -41,7 +41,7 @@
     },
   },
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@0.17.1", "", { "dependencies": { "@optique/core": "^0.5.0-dev.83", "@optique/run": "^0.5.0-dev.83", "@prettier/plugin-xml": "^3.4.2", "es-toolkit": "^1.39.10", "get-tsconfig": "^4.10.1", "picocolors": "^1.1.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.14", "prettier-plugin-toml": "^2.0.6", "remeda": "^2.32.0", "ts-explicit-errors": "^4.0.1", "tsdown": "^0.15.4", "type-fest": "^5.0.1" }, "peerDependencies": { "typescript": "^5.0.0" }, "bin": { "adamhl8-knip": "dist/adamhl8-knip/index", "ts-import-fix": "dist/ts-import-fix/index" } }, "sha512-5fxsXTRmHbAXx1JrXkuuabzumnL0ydoTJD7G/yz6Q8pu5ne7bXJN9FTyvZkuqGVX2zl9o65M6k+5FHAz0DfVFg=="],
+    "@adamhl8/configs": ["@adamhl8/configs@0.17.2", "", { "dependencies": { "@optique/core": "^0.5.0-dev.83", "@optique/run": "^0.5.0-dev.83", "@prettier/plugin-xml": "^3.4.2", "es-toolkit": "^1.39.10", "get-tsconfig": "^4.10.1", "picocolors": "^1.1.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.14", "prettier-plugin-toml": "^2.0.6", "remeda": "^2.32.0", "ts-explicit-errors": "^4.0.1", "tsdown": "^0.15.4", "type-fest": "^5.0.1" }, "peerDependencies": { "typescript": "^5.0.0" }, "bin": { "adamhl8-knip": "dist/adamhl8-knip/index", "ts-import-fix": "dist/ts-import-fix/index" } }, "sha512-TguC0t9gwy00pE8+DLuy3dNbf+wb3lVTZUpODLSKpIfnYwX/T//2b5qRXe9BqL5TQnWuJf/GcwQ03fEhWtuVfQ=="],
 
     "@antfu/install-pkg": ["@antfu/install-pkg@1.1.0", "", { "dependencies": { "package-manager-detector": "^1.3.0", "tinyexec": "^1.0.1" } }, "sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ=="],
 
@@ -1784,6 +1784,8 @@
     "remarkable/argparse": ["argparse@1.0.10", "", { "dependencies": { "sprintf-js": "~1.0.2" } }, "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="],
 
     "remeda/type-fest": ["type-fest@4.41.0", "", {}, "sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA=="],
+
+    "resumed/strip-json-comments": ["strip-json-comments@5.0.3", "", {}, "sha512-1tB5mhVo7U+ETBKNf92xT4hrQa3pm0MZ0PQvuDnWgAAGHDsfp4lPSpiS6psrSiet87wyGPh9ft6wmhOMQ0hDiw=="],
 
     "sitemap/@types/node": ["@types/node@17.0.45", "", {}, "sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw=="],
 
