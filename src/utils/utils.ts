@@ -10,9 +10,7 @@ export type CollectionNames = keyof typeof collections
  * @param collection One of {@link CollectionNames}
  * @returns The sorted collection
  */
-async function getSortedCollection<T extends CollectionNames>(collection: T) {
+export async function getSortedCollection<T extends CollectionNames>(collection: T) {
   const posts = await getCollection(collection)
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 }
-
-export { getSortedCollection }

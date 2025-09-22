@@ -16,7 +16,7 @@ const RepoSchema = v.object({
  * @param repo The repo name: e.g. "adamhl8/my-repo"
  * @returns The repo data: {@link RepoSchema}
  */
-async function getRepoData(repo: string) {
+export async function getRepoData(repo: string) {
   // fallback to unauthenticated requests if GITHUB_ASTRO_TOKEN is not set so this works in CI
   const repoFetchOptions =
     typeof import.meta.env["GITHUB_ASTRO_TOKEN"] === "string"
@@ -46,7 +46,7 @@ let languageColorsPromise: Promise<LanguageColors> | undefined
  *
  * @returns The language colors: {@link LanguageColors}
  */
-function getLanguageColors() {
+export function getLanguageColors() {
   if (!languageColorsPromise) {
     const fetchLanguageColors = async () => {
       const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
@@ -59,5 +59,3 @@ function getLanguageColors() {
 
   return languageColorsPromise
 }
-
-export { getLanguageColors, getRepoData }

@@ -14,6 +14,4 @@ const processReadingTime = (tree: Root, file: VFile) => {
   file.data.astro.frontmatter["readingTime"] = readingTime.text
 }
 
-const remarkReadingTime: RemarkPlugin = () => processReadingTime
-
-export { remarkReadingTime }
+export const remarkReadingTime: RemarkPlugin = () => processReadingTime
