@@ -1,76 +1,87 @@
 ---
-import { Icon } from "astro-icon/components"
 import { marked } from "marked"
+import InfoCircleIcon from "~icons/tabler/info-circle"
+import HelpCircleIcon from "~icons/tabler/help-circle"
+import CircleCheckIcon from "~icons/tabler/circle-check"
+import AlertTriangleIcon from "~icons/tabler/alert-triangle"
+import AlertCircleIcon from "~icons/tabler/alert-circle"
+import CircleXIcon from "~icons/tabler/circle-x"
+import PencilIcon from "~icons/tabler/pencil"
+import ClipboardListIcon from "~icons/tabler/clipboard-list"
+import BulbIcon from "~icons/tabler/bulb"
+import BugIcon from "~icons/tabler/bug"
+import ListIcon from "~icons/tabler/list"
+import QuoteIcon from "~icons/tabler/quote"
 
 const callouts = {
   info: {
-    icon: "tabler:info-circle",
+    icon: InfoCircleIcon,
     color: "bg-callout-info/10",
     borderColor: "border-callout-info",
     iconColor: "text-callout-info",
   },
   question: {
-    icon: "tabler:help-circle",
+    icon: HelpCircleIcon,
     color: "bg-callout-question/10",
     borderColor: "border-callout-question",
     iconColor: "text-callout-question",
   },
   success: {
-    icon: "tabler:circle-check",
+    icon: CircleCheckIcon,
     color: "bg-callout-success/10",
     borderColor: "border-callout-success",
     iconColor: "text-callout-success",
   },
   warning: {
-    icon: "tabler:alert-triangle",
+    icon: AlertTriangleIcon,
     color: "bg-callout-warning/10",
     borderColor: "border-callout-warning",
     iconColor: "text-callout-warning",
   },
   danger: {
-    icon: "tabler:alert-circle",
+    icon: AlertCircleIcon,
     color: "bg-callout-danger/10",
     borderColor: "border-callout-danger",
     iconColor: "text-callout-danger",
   },
   failure: {
-    icon: "tabler:circle-x",
+    icon: CircleXIcon,
     color: "bg-callout-failure/10",
     borderColor: "border-callout-failure",
     iconColor: "text-callout-failure",
   },
   note: {
-    icon: "tabler:pencil",
+    icon: PencilIcon,
     color: "bg-callout-note/10",
     borderColor: "border-callout-note",
     iconColor: "text-callout-note",
   },
   summary: {
-    icon: "tabler:clipboard-list",
+    icon: ClipboardListIcon,
     color: "bg-callout-summary/10",
     borderColor: "border-callout-summary",
     iconColor: "text-callout-summary",
   },
   tip: {
-    icon: "tabler:bulb",
+    icon: BulbIcon,
     color: "bg-callout-tip/10",
     borderColor: "border-callout-tip",
     iconColor: "text-callout-tip",
   },
   bug: {
-    icon: "tabler:bug",
+    icon: BugIcon,
     color: "bg-callout-bug/10",
     borderColor: "border-callout-bug",
     iconColor: "text-callout-bug",
   },
   example: {
-    icon: "tabler:list",
+    icon: ListIcon,
     color: "bg-callout-example/10",
     borderColor: "border-callout-example",
     iconColor: "text-callout-example",
   },
   quote: {
-    icon: "tabler:quote",
+    icon: QuoteIcon,
     color: "bg-callout-quote/10",
     borderColor: "border-callout-quote",
     iconColor: "text-callout-quote",
@@ -91,7 +102,7 @@ const callout = callouts[type]
 
 <div class:list={["space-y-2 rounded-sm border-l-4 px-4 py-3", callout.color, callout.borderColor]}>
   <div class="flex items-center space-x-3">
-    <Icon name={callout.icon} class:list={["size-6", callout.iconColor]} aria-hidden="true" />
+    <callout.icon class:list={["size-6", callout.iconColor]} aria-hidden="true" />
     <div class:list={["font-bold prose-p:my-0", { capitalize: !title }]} set:html={markdownTitle ?? type} />
   </div>
   <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0">

@@ -1,11 +1,12 @@
 ---
-import { Icon } from "astro-icon/components"
+import SunHighIcon from "~icons/tabler/sun-high"
+import MoonFilledIcon from "~icons/tabler/moon-filled"
 ---
 
 <label class="toggle border-base-content p-0.5 text-base-content hover:text-base-content/75" aria-label="Toggle theme">
   <input type="checkbox" value="dark" class="theme-controller" />
-  <Icon name="tabler:sun-high" class="size-full" />
-  <Icon name="tabler:moon-filled" class="size-full" />
+  <SunHighIcon class="size-full" />
+  <MoonFilledIcon class="size-full" />
 </label>
 
 <script is:inline>

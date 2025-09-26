@@ -7,5 +7,5 @@
     "jsx": "preserve"
   },
   "include": ["**/*", "./.astro/types.d.ts"],
-  "exclude": ["dist/", "src/pages/rss.xml.js"]
+  "exclude": ["dist/", "src/pages/rss.xml.js", "dist_old"]
 }

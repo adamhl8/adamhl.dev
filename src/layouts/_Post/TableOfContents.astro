@@ -1,6 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro"
-import { Icon } from "astro-icon/components"
+import ChevronUpIcon from "~icons/tabler/chevron-up"
 
 import Link from "~/components/Link.astro"
 
@@ -27,7 +27,7 @@ const indentClass: Record<number, string> = {
     class="flex items-center justify-between"
     titleClass="text-xl font-semibold"
   >
-    <Icon name="tabler:chevron-up" class="size-5 opacity-50" />
+    <ChevronUpIcon class="size-5 opacity-50" />
   </Link>
 
   <ol class="mt-4 ml-0 space-y-2">

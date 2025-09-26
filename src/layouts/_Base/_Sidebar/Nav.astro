@@ -1,6 +1,6 @@
 ---
 import Link from "~/components/Link.astro"
-import { Icon } from "astro-icon/components"
+import ExternalLinkIcon from "~icons/tabler/external-link"
 
 const navLinks = [
   {
@@ -38,7 +38,7 @@ const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/v, "")
           <li>
             {link.label === "Resume" ? (
               <Link href={link.href} title={link.label} class="flex items-center space-x-1" target="_blank">
-                <Icon name="tabler:external-link" class="size-3.5 opacity-50" />
+                <ExternalLinkIcon class="size-3.5 opacity-50" />
               </Link>
             ) : (
               <Link href={link.href} title={link.label} titleClass={isActive ? "font-bold" : ""} />

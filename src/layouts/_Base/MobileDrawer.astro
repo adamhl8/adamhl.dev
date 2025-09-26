@@ -1,14 +1,14 @@
 ---
-import { Icon } from "astro-icon/components"
+import MenuIcon from "~icons/tabler/menu-2"
 
-import Sidebar from "~/components/Sidebar/Sidebar.astro"
+import Sidebar from "~/layouts/_Base/Sidebar.astro"
 ---
 
 <div class="drawer w-min">
   <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
   <label for="mobile-drawer">
     <span class="sr-only">open sidebar</span>
-    <Icon name="tabler:menu-2" class="size-8" />
+    <MenuIcon class="size-8" />
   </label>
   <aside class="drawer-side z-50">
     <label for="mobile-drawer" aria-label="close sidebar" class="drawer-overlay"></label>

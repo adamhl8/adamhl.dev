@@ -3,8 +3,8 @@ import type { CollectionEntry, RenderResult } from "astro:content"
 import * as v from "valibot"
 
 import PageTitle from "~/components/PageTitle.astro"
-import Prose from "~/components/Prose.astro"
-import TableOfContents from "~/components/TableOfContents.astro"
+import Prose from "~/layouts/_Post/Prose.astro"
+import TableOfContents from "~/layouts/_Post/TableOfContents.astro"
 import Base from "~/layouts/Base.astro"
 
 type BlogProps = CollectionEntry<"blog">

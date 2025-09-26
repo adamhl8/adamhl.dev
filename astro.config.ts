@@ -1,14 +1,13 @@
 import mdx from "@astrojs/mdx"
+import node from "@astrojs/node"
+import sitemap from "@astrojs/sitemap"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, fontProviders } from "astro/config"
 import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
-import icon from "astro-icon"
-import robotsTxt from "astro-robots-txt"
-import sitemap from "astro-sitemap"
-import webmanifest, { type WebmanifestOptions } from "astro-webmanifest"
 import remarkBreaks from "remark-breaks"
+import Icons from "unplugin-icons/vite"
 
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
 
@@ -25,19 +24,19 @@ const expressiveCodeOptions: AstroExpressiveCodeOptions = {
   },
 }
 
-const webmanifestOptions: WebmanifestOptions = {
-  name: "adamhl.dev",
-  icon: "src/favicon.svg",
-}
-
-// biome-ignore lint/style/noDefaultExport: astro config
 export default defineConfig({
   site: "https://adamhl.dev",
+  output: "static",
+  trailingSlash: "never",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), Icons({ compiler: "astro" })],
   },
+  adapter: node({
+    mode: "standalone",
+  }),
   experimental: {
     preserveScriptOrder: true,
+    staticImportMetaEnv: true,
     fonts: [
       {
         provider: fontProviders.google(),
@@ -77,10 +76,9 @@ export default defineConfig({
   integrations: [
     expressiveCode(expressiveCodeOptions),
     mdx(),
-    icon(),
-    sitemap({ exclude: ["share/**"] }),
-    robotsTxt(),
-    webmanifest(webmanifestOptions),
+    sitemap({
+      filter: (page) => !new URL(page).pathname.startsWith("/share"),
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],

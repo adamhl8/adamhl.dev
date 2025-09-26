@@ -10,7 +10,9 @@ const config = knipConfig({
     "@astrojs/markdown-remark",
     "mdast",
     "vfile",
+    "sharp",
   ],
+  ignoreUnresolved: ["~icons/.+"],
 } as const)
 
 export default config

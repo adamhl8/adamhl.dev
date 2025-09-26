@@ -1,0 +1,12 @@
+---
+import Nav from "~/layouts/_Base/_Sidebar/Nav.astro"
+import RecentPosts from "~/layouts/_Base/_Sidebar/RecentPosts.astro"
+import SidebarTitle from "~/layouts/_Base/_Sidebar/SidebarTitle.astro"
+---
+
+<aside class="space-y-6">
+  <SidebarTitle />
+  <Nav />
+  <RecentPosts collectionName="blog" title="Recent Blog Posts" />
+  <RecentPosts collectionName="til" title="Recent TIL Posts" />
+</aside>
