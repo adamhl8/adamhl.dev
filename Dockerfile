@@ -31,8 +31,8 @@ COPY --from=install /temp/prod/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
 
-ENV PORT=8000
+ENV PORT=8080
 ENV HOST=0.0.0.0
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["bun", "start:prod"]
