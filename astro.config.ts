@@ -1,5 +1,6 @@
 import mdx from "@astrojs/mdx"
 import node from "@astrojs/node"
+import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import sectionize from "@hbsnow/rehype-sectionize"
@@ -79,6 +80,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => !new URL(page).pathname.startsWith("/share"),
     }),
+    react(),
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],

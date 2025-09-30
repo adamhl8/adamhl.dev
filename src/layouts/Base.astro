@@ -41,6 +41,7 @@ const { title, description } = Astro.props
       <Breadcrumbs title={title} />
       <slot />
       <hr class="border-base-300" />
+      <slot name="comments" />
     </main>
 
     <aside class="ml-16 hidden md:block">

@@ -5,6 +5,7 @@ import * as v from "valibot"
 import PageTitle from "~/components/PageTitle.astro"
 import Prose from "~/layouts/_Post/Prose.astro"
 import TableOfContents from "~/layouts/_Post/TableOfContents.astro"
+import ThemedGiscus from "~/layouts/_Post/ThemedGiscus.tsx"
 import Base from "~/layouts/Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
@@ -21,11 +22,13 @@ const readingTime = v.parse(v.optional(v.string()), remarkPluginFrontmatter["rea
 ---
 
 <Base title={title} description={description}>
-  <PageTitle title={title} date={date} description={description} readingTime={readingTime} />
+  <PageTitle title={title} date={date} description={description} readingTime={readingTime} isPostTitle />
 
   <Prose>
     <Content />
   </Prose>
 
   {headings.length > 0 && <TableOfContents headings={headings} slot="toc" />}
+
+  <ThemedGiscus client:only slot="comments" />
 </Base>

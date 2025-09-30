@@ -3,7 +3,7 @@ WORKDIR /app
 ENV NODE_ENV="production"
 ENV BUN_OPTIONS="--bun"
 
-FROM base AS install
+FROM base AS deps
 
 RUN mkdir -p /temp/dev
 COPY package.json bun.lock /temp/dev/
@@ -15,7 +15,7 @@ RUN cd /temp/prod && bun install --frozen-lockfile --production
 
 FROM base AS build
 
-COPY --from=install /temp/dev/node_modules ./node_modules
+COPY --from=deps /temp/dev/node_modules ./node_modules
 COPY public ./public
 COPY scripts ./scripts
 COPY src ./src
@@ -27,7 +27,7 @@ RUN bun bundle:prod
 
 FROM base
 
-COPY --from=install /temp/prod/node_modules ./node_modules
+COPY --from=deps /temp/prod/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json ./
 

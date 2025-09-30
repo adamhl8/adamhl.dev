@@ -10,20 +10,20 @@ const RepoSchema = v.object({
 })
 
 /**
- * Fetches the repo data from the GitHub API using `GITHUB_ASTRO_TOKEN` if available,
+ * Fetches the repo data from the GitHub API using `GITHUB_TOKEN` if available,
  * otherwise falls back to unauthenticated requests (rate limited)
  *
  * @param repo The repo name: e.g. "adamhl8/my-repo"
  * @returns The repo data: {@link RepoSchema}
  */
 export async function getRepoData(repo: string) {
-  // fallback to unauthenticated requests if GITHUB_ASTRO_TOKEN is not set so this works in CI
+  // fallback to unauthenticated requests if GITHUB_TOKEN is not set so this works in CI
   const repoFetchOptions =
-    typeof import.meta.env["GITHUB_ASTRO_TOKEN"] === "string"
+    typeof import.meta.env["GITHUB_TOKEN"] === "string"
       ? {
           headers: {
             Accept: "application/vnd.github+json",
-            Authorization: `Bearer ${import.meta.env["GITHUB_ASTRO_TOKEN"]}`,
+            Authorization: `Bearer ${import.meta.env["GITHUB_TOKEN"]}`,
             "X-GitHub-Api-Version": "2022-11-28",
           },
         }

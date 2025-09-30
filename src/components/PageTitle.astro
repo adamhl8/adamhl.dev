@@ -1,20 +1,36 @@
 ---
 import FormattedDate from "~/components/FormattedDate.astro"
+import MessagesIcon from "~icons/tabler/messages"
+import Link from "~/components/Link.astro"
 
 interface Props {
   title: string
   date?: Date
   description: string
   readingTime?: string | undefined
+  isPostTitle?: boolean
 }
-const { title, date, description, readingTime } = Astro.props
+const { title, date, description, readingTime, isPostTitle = false } = Astro.props
 ---
 
-<hgroup class="">
+<hgroup>
   <h1 id="title" class="text-3xl font-bold">{title}</h1>
   {date && <FormattedDate class="text-lg" date={date} />}
   {readingTime && <div class="opacity-75">{readingTime}</div>}
   <p class="mt-4 opacity-75">{description}</p>
 </hgroup>
 
-<hr class="border-base-300" />
+<div class="space-y-2">
+  <hr class="border-base-300" />
+  {
+    isPostTitle && (
+      <Link
+        class="mt-2 flex items-center justify-end space-x-2 opacity-75"
+        title="Leave a reaction or comment"
+        href="#comments"
+      >
+        <MessagesIcon class="size-4" slot="before" />
+      </Link>
+    )
+  }
+</div>

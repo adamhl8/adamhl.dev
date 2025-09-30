@@ -4,7 +4,8 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "include": ["**/*", "./.astro/types.d.ts"],
   "exclude": ["dist/", "src/pages/rss.xml.js", "dist_old"]
