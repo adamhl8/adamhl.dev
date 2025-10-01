@@ -23,7 +23,7 @@ COPY astro.config.ts ./
 COPY package.json ./
 COPY tsconfig.json ./
 
-RUN bun bundle:prod
+RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN bun bundle:prod
 
 FROM base
 

@@ -21,10 +21,10 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        uses: docker/build-push-action@v6
         with:
+          secrets: |
+            GH_TOKEN=${{ secrets.GH_TOKEN }}
           tags: ghcr.io/adamhl8/adamhl.dev:latest
           platforms: linux/amd64
           push: true
