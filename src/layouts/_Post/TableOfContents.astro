@@ -20,8 +20,9 @@ const indentClass: Record<number, string> = {
 ---
 
 <nav class="sticky top-24">
-  <h1 class="text-xl font-semibold">Table of Contents</h1>
-  <Link href="#title" title="Back to top" class="flex items-center space-x-1 opacity-50" />
+  <Link href="#title" title="Back to top" titleClass="opacity-50" class="flex flex-col items-start">
+    <span class="text-xl font-semibold" slot="before">Table of Contents</span>
+  </Link>
 
   <ol class="mt-4 ml-0 space-y-2">
     {
