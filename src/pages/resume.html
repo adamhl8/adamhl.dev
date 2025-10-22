@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
     <title>Adam Langbert</title>
     <style>
-      /*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+      /*! tailwindcss v4.1.15 | MIT License | https://tailwindcss.com */
       @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
       @layer properties;
       @layer theme, base, components, utilities;
@@ -22,8 +22,7 @@
           --text-sm: 0.875rem;
           --text-sm--line-height: calc(1.25 / 0.875);
           --text-base: 1rem;
-          --text-lg: 1.125rem;
-          --text-4xl: 2.25rem;
+          --text-2xl: 1.5rem;
           --font-weight-medium: 500;
           --font-weight-bold: 700;
           --leading-tight: 1.25;
@@ -197,7 +196,9 @@
           ::placeholder {
             color: currentcolor;
             @supports (color: color-mix(in lab, red, red)) {
-              color: color-mix(in oklab, currentcolor 50%, transparent);
+              & {
+                color: color-mix(in oklab, currentcolor 50%, transparent);
+              }
             }
           }
         }
@@ -227,6 +228,9 @@
         ::-webkit-datetime-edit-millisecond-field,
         ::-webkit-datetime-edit-meridiem-field {
           padding-block: 0;
+        }
+        ::-webkit-calendar-picker-indicator {
+          line-height: 1;
         }
         :-moz-ui-invalid {
           box-shadow: none;
@@ -263,6 +267,9 @@
         .mt-10 {
           margin-top: calc(var(--spacing) * 10);
         }
+        .mr-0\.5 {
+          margin-right: calc(var(--spacing) * 0.5);
+        }
         .mr-\[0\.15rem\] {
           margin-right: 0.15rem;
         }
@@ -286,6 +293,9 @@
         }
         .grid {
           display: grid;
+        }
+        .inline-flex {
+          display: inline-flex;
         }
         .h-\[1px\] {
           height: 1px;
@@ -420,16 +430,12 @@
         .pl-\[0\.15rem\] {
           padding-left: 0.15rem;
         }
-        .text-4xl\/tight {
-          font-size: var(--text-4xl);
+        .text-2xl\/tight {
+          font-size: var(--text-2xl);
           line-height: var(--leading-tight);
         }
         .text-base\/tight {
           font-size: var(--text-base);
-          line-height: var(--leading-tight);
-        }
-        .text-lg\/tight {
-          font-size: var(--text-lg);
           line-height: var(--leading-tight);
         }
         .text-md\/tight {
@@ -452,7 +458,7 @@
           font-size: var(--text-xs);
           line-height: var(--leading-tight);
         }
-        .leading-\[1\] {
+        .leading-none {
           --tw-leading: 1;
           line-height: 1;
         }
@@ -678,10 +684,12 @@
     </div>
     <main class="w-[815px] p-12 shadow-[0_0_25px_rgba(0,0,0,0.25)] print:w-full print:p-0 print:shadow-none">
       <div class="mb-4 border-t-8 border-secondary"></div>
-      <h1 class="text-4xl/tight font-bold">Adam Langbert</h1>
-      <h2 class="text-lg/tight font-bold text-secondary">Senior Software Engineer</h2>
       <div class="mt-4 grid grid-cols-7 space-x-4">
         <section class="col-span-2 space-y-6">
+          <div>
+            <h1 class="text-2xl/tight font-bold">Adam Langbert</h1>
+            <h2 class="text-base/tight font-bold text-secondary">Senior Software Engineer</h2>
+          </div>
           <div>
             <div>
               <h3 class="font-lighter">About</h3>
@@ -827,7 +835,6 @@
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Java</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Lua</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Golang</span
-                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Rust</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">SQL</span>
               </div>
             </div>
@@ -838,11 +845,12 @@
               </div>
               <div class="flex flex-wrap">
                 <span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">React</span
-                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">TailwindCSS</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Tailwind</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Git</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">POSIX/Unix/Linux</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Docker</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Node</span
+                ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Bun</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Spring/Spring Boot</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">PostgreSQL</span
                 ><span class="m-[0.15rem] rounded-sm bg-[ghostwhite] p-[0.15rem] text-sm/tight">Prisma</span>
@@ -874,11 +882,50 @@
                 <header>
                   <div class="text-md/tight font-bold">Senior Software Engineer</div>
                   <div class="space-x-1.5 text-sm/tight">
+                    <span class="font-bold text-secondary">US Army - Army Software Factory</span><span>|</span
+                    ><span class="font-lighter italic">June, 2022 - March, 2026</span>
+                  </div>
+                </header>
+                <div class="space-y-1">
+                  <p class="text-smaller/3.5">
+                    Tech lead for an internal tools team, focusing on accelerating development processes and ensuring
+                    security and compliance throughout the organization. The team plays a pivotal role in setting
+                    technical standards and providing support across app development teams.
+                  </p>
+                  <ul class="text-smaller/3.5 list-inside list-disc">
+                    <li>
+                      Developed and maintained a comprehensive full-stack web application starter template, which
+                      significantly reduced time to production and increased developer efficiency for 15+ app teams.
+                    </li>
+                    <li>
+                      Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined
+                      development processes.
+                    </li>
+                    <li>
+                      Developed and delivered targeted programming curriculum, mentoring new developers and enriching
+                      the organization&#x27;s technical knowledge base.
+                    </li>
+                    <li>
+                      Designed and implemented comprehensive policies and CI/CD pipelines to ensure security compliance
+                      before application deployment.
+                    </li>
+                    <li>
+                      Frequently collaborated with DevOps and Security teams to improve CI/CD performance and
+                      reliability.
+                    </li>
+                    <li>Created custom tools and scripts to automate routine tasks and improve team productivity.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <header>
+                  <div class="text-md/tight font-bold">Senior Software Engineer</div>
+                  <div class="space-x-1.5 text-sm/tight">
                     <span class="font-bold text-secondary">Geode</span
                     ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
                       ><span>•</span
                       ><a href="https://www.geode.io" target="_blank" rel="noreferrer">www.geode.io</a></span
-                    ><span>|</span><span class="font-lighter italic">November, 2024 - Present</span>
+                    ><span>|</span><span class="font-lighter italic">2024 - 2025</span>
                   </div>
                 </header>
                 <div class="space-y-1">
@@ -895,36 +942,6 @@
                     <li>
                       Built automated data processing service, streamlining client workflows and reducing manual data
                       handling overhead.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <header>
-                  <div class="text-md/tight font-bold">Software Engineer</div>
-                  <div class="space-x-1.5 text-sm/tight">
-                    <span class="font-bold text-secondary">US Army - Army Software Factory</span><span>|</span
-                    ><span class="font-lighter italic">June, 2022 - Present</span>
-                  </div>
-                </header>
-                <div class="space-y-1">
-                  <p class="text-smaller/3.5">
-                    Tech lead for an internal tools team, focusing on accelerating development processes and ensuring
-                    security and compliance throughout the organization. The team plays a pivotal role in setting
-                    technical standards and providing support across app development teams.
-                  </p>
-                  <ul class="text-smaller/3.5 list-inside list-disc">
-                    <li>
-                      Develops and maintains a comprehensive full-stack web application starter template, which
-                      significantly reduces time to production and increases developer efficiency for 15+ app teams.
-                    </li>
-                    <li>
-                      Maintains over 20 frontend/backend packages, providing reusable solutions that streamline
-                      development processes.
-                    </li>
-                    <li>
-                      Developed and delivered targeted programming curriculum, mentoring new developers and enriching
-                      the organization&#x27;s technical knowledge base.
                     </li>
                   </ul>
                 </div>
@@ -963,9 +980,100 @@
             </div>
             <div class="space-y-3.5">
               <div>
-                <header class="space-x-1.5">
+                <header class="flex items-center space-x-1.5">
+                  <span class="text-md/tight font-bold">FilterQL</span
+                  ><span class="font-lighter flex items-center space-x-1.5 text-xs/tight text-[dimgray]"
+                    ><span>•</span
+                    ><a href="https://github.com/adamhl8/filterql" target="_blank" rel="noreferrer"
+                      >github.com/adamhl8/filterql</a
+                    ><span>•</span
+                    ><span class="inline-flex items-center"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="tabler-icon tabler-icon-star mr-0.5"
+                      >
+                        <path
+                          d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                        ></path>
+                      </svg>
+                      277</span
+                    ></span
+                  >
+                </header>
+                <div class="space-y-2">
+                  <div>
+                    <span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
+                      >TypeScript</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
+                      >Library</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
+                      >Query Language</span
+                    >
+                  </div>
+                  <p class="text-smaller/3.5">
+                    A custom query language and TypeScript library for filtering structured data.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <header class="flex items-center space-x-1.5">
+                  <span class="text-md/tight font-bold">Inspectarr</span
+                  ><span class="font-lighter flex items-center space-x-1.5 text-xs/tight text-[dimgray]"
+                    ><span>•</span
+                    ><a href="https://github.com/adamhl8/inspectarr" target="_blank" rel="noreferrer"
+                      >github.com/adamhl8/inspectarr</a
+                    ><span>•</span
+                    ><span class="inline-flex items-center"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="tabler-icon tabler-icon-star mr-0.5"
+                      >
+                        <path
+                          d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                        ></path>
+                      </svg>
+                      52</span
+                    ></span
+                  >
+                </header>
+                <div class="space-y-2">
+                  <div>
+                    <span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
+                      >TypeScript</span
+                    ><span
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
+                      >CLI tool</span
+                    >
+                  </div>
+                  <p class="text-smaller/3.5">
+                    A CLI tool for querying and inspecting media in Radarr and Sonarr instances.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <header class="flex items-center space-x-1.5">
                   <span class="text-md/tight font-bold">ts-explicit-errors</span
-                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
+                  ><span class="font-lighter flex items-center space-x-1.5 text-xs/tight text-[dimgray]"
                     ><span>•</span
                     ><a href="https://github.com/adamhl8/ts-explicit-errors" target="_blank" rel="noreferrer"
                       >github.com/adamhl8/ts-explicit-errors</a
@@ -975,74 +1083,16 @@
                 <div class="space-y-2">
                   <div>
                     <span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
                       >TypeScript</span
                     ><span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
+                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-none"
                       >Library</span
                     >
                   </div>
                   <p class="text-smaller/3.5">
                     A concise and type-safe error handling library for TypeScript, allowing users to treat errors as
                     values in order to write more safe, readable, and maintainable code.
-                  </p>
-                </div>
-              </div>
-              <div>
-                <header class="space-x-1.5">
-                  <span class="text-md/tight font-bold">dataviewjs-habit-tracker</span
-                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
-                    ><span>•</span
-                    ><a href="https://github.com/adamhl8/dataviewjs-habit-tracker" target="_blank" rel="noreferrer"
-                      >github.com/adamhl8/dataviewjs-habit-tracker</a
-                    ></span
-                  >
-                </header>
-                <div class="space-y-2">
-                  <div>
-                    <span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >TypeScript</span
-                    ><span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >obsidian.md</span
-                    ><span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >Plugin</span
-                    >
-                  </div>
-                  <p class="text-smaller/3.5">
-                    A code snippet for the Obsidian plugin Dataview, designed to generate a dynamic table without
-                    requiring specific Dataview annotations.
-                  </p>
-                </div>
-              </div>
-              <div>
-                <header class="space-x-1.5">
-                  <span class="text-md/tight font-bold">astro-validate-env</span
-                  ><span class="font-lighter space-x-1.5 text-xs/tight text-[dimgray]"
-                    ><span>•</span
-                    ><a href="https://github.com/adamhl8/astro-validate-env" target="_blank" rel="noreferrer"
-                      >github.com/adamhl8/astro-validate-env</a
-                    ></span
-                  >
-                </header>
-                <div class="space-y-2">
-                  <div>
-                    <span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >TypeScript</span
-                    ><span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >Astro</span
-                    ><span
-                      class="mr-[0.15rem] ml-[0.15rem] rounded-sm bg-[ghostwhite] pr-[0.15rem] pl-[0.15rem] text-xs/tight leading-[1]"
-                      >Integration</span
-                    >
-                  </div>
-                  <p class="text-smaller/3.5">
-                    An integration for the Astro web framework that provides a flexible system for defining and
-                    validating environment variables.
                   </p>
                 </div>
               </div>

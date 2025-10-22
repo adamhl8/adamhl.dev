@@ -26,17 +26,18 @@
   "skills": [
     {
       "name": "Languages",
-      "keywords": ["TypeScript/JavaScript", "HTML", "CSS", "Python", "Java", "Lua", "Golang", "Rust", "SQL"]
+      "keywords": ["TypeScript/JavaScript", "HTML", "CSS", "Python", "Java", "Lua", "Golang", "SQL"]
     },
     {
       "name": "Technologies",
       "keywords": [
         "React",
-        "TailwindCSS",
+        "Tailwind",
         "Git",
         "POSIX/Unix/Linux",
         "Docker",
         "Node",
+        "Bun",
         "Spring/Spring Boot",
         "PostgreSQL",
         "Prisma"
@@ -49,27 +50,30 @@
   ],
   "work": [
     {
+      "name": "US Army - Army Software Factory",
+      "position": "Senior Software Engineer",
+      "startDate": "June, 2022",
+      "endDate": "March, 2026",
+      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and ensuring security and compliance throughout the organization. The team plays a pivotal role in setting technical standards and providing support across app development teams.",
+      "highlights": [
+        "Developed and maintained a comprehensive full-stack web application starter template, which significantly reduced time to production and increased developer efficiency for 15+ app teams.",
+        "Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined development processes.",
+        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base.",
+        "Designed and implemented comprehensive policies and CI/CD pipelines to ensure security compliance before application deployment.",
+        "Frequently collaborated with DevOps and Security teams to improve CI/CD performance and reliability.",
+        "Created custom tools and scripts to automate routine tasks and improve team productivity."
+      ]
+    },
+    {
       "name": "Geode",
       "url": "https://www.geode.io",
       "position": "Senior Software Engineer",
-      "startDate": "November, 2024",
-      "endDate": "Present",
+      "startDate": "2024",
+      "endDate": "2025",
       "summary": "Full-stack software engineer developing custom solutions for diverse clients, ranging from mobile apps to data automation services. Focused on delivering end-to-end solutions that meet specific client requirements and business objectives.",
       "highlights": [
         "Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription system to enable monetization.",
         "Built automated data processing service, streamlining client workflows and reducing manual data handling overhead."
-      ]
-    },
-    {
-      "name": "US Army - Army Software Factory",
-      "position": "Software Engineer",
-      "startDate": "June, 2022",
-      "endDate": "Present",
-      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and ensuring security and compliance throughout the organization. The team plays a pivotal role in setting technical standards and providing support across app development teams.",
-      "highlights": [
-        "Develops and maintains a comprehensive full-stack web application starter template, which significantly reduces time to production and increases developer efficiency for 15+ app teams.",
-        "Maintains over 20 frontend/backend packages, providing reusable solutions that streamline development processes.",
-        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base."
       ]
     },
     {
@@ -87,22 +91,24 @@
   ],
   "projects": [
     {
+      "name": "FilterQL",
+      "keywords": ["TypeScript", "Library", "Query Language"],
+      "description": "A custom query language and TypeScript library for filtering structured data.",
+      "url": "https://github.com/adamhl8/filterql",
+      "stars": 277
+    },
+    {
+      "name": "Inspectarr",
+      "keywords": ["TypeScript", "CLI tool"],
+      "description": "A CLI tool for querying and inspecting media in Radarr and Sonarr instances.",
+      "url": "https://github.com/adamhl8/inspectarr",
+      "stars": 52
+    },
+    {
       "name": "ts-explicit-errors",
       "keywords": ["TypeScript", "Library"],
       "description": "A concise and type-safe error handling library for TypeScript, allowing users to treat errors as values in order to write more safe, readable, and maintainable code.",
       "url": "https://github.com/adamhl8/ts-explicit-errors"
-    },
-    {
-      "name": "dataviewjs-habit-tracker",
-      "keywords": ["TypeScript", "obsidian.md", "Plugin"],
-      "description": "A code snippet for the Obsidian plugin Dataview, designed to generate a dynamic table without requiring specific Dataview annotations.",
-      "url": "https://github.com/adamhl8/dataviewjs-habit-tracker"
-    },
-    {
-      "name": "astro-validate-env",
-      "keywords": ["TypeScript", "Astro", "Integration"],
-      "description": "An integration for the Astro web framework that provides a flexible system for defining and validating environment variables.",
-      "url": "https://github.com/adamhl8/astro-validate-env"
     }
   ],
   "education": [
