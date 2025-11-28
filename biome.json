@@ -2,7 +2,7 @@
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "extends": ["@adamhl8/configs/biome"],
   "files": {
-    "includes": ["**", "!.astro", "!dist"]
+    "includes": ["**", "!.astro", "!dist", "!src/pages/resume.html"]
   },
   "overrides": [
     {
@@ -15,16 +15,6 @@
           "correctness": {
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": ["**/*.css"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noUnknownAtRules": "off"
           }
         }
       }
