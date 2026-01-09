@@ -34,7 +34,7 @@
         "React",
         "Tailwind",
         "Git",
-        "POSIX/Unix/Linux",
+        "POSIX/Linux",
         "Docker",
         "Node",
         "Bun",
@@ -52,28 +52,38 @@
     {
       "name": "US Army - Army Software Factory",
       "position": "Senior Software Engineer",
-      "startDate": "June, 2022",
+      "startDate": "February, 2025",
       "endDate": "March, 2026",
-      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and ensuring security and compliance throughout the organization. The team plays a pivotal role in setting technical standards and providing support across app development teams.",
+      "summary": "Software engineer on the DevSecOps team developing tools and services to ensure security and compliance throughout the organization.",
       "highlights": [
-        "Developed and maintained a comprehensive full-stack web application starter template, which significantly reduced time to production and increased developer efficiency for 15+ app teams.",
-        "Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined development processes.",
-        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base.",
         "Designed and implemented comprehensive policies and CI/CD pipelines to ensure security compliance before application deployment.",
-        "Frequently collaborated with DevOps and Security teams to improve CI/CD performance and reliability.",
-        "Created custom tools and scripts to automate routine tasks and improve team productivity."
+        "Improved and automated security testing and vulnerability scanning processes to reduce risk and improve overall security posture.",
+        "Reduced the team's number of support tickets by over 90% by automating vulnerability scanning and remediation workflows.",
+        "Developed a full-stack application used across the organization to streamline code security compliance and reduce the time required to complete compliance audits from weeks to hours."
       ]
     },
     {
       "name": "Geode",
-      "url": "https://www.geode.io",
       "position": "Senior Software Engineer",
       "startDate": "2024",
       "endDate": "2025",
-      "summary": "Full-stack software engineer developing custom solutions for diverse clients, ranging from mobile apps to data automation services. Focused on delivering end-to-end solutions that meet specific client requirements and business objectives.",
+      "summary": "Full-stack software engineer developing custom, end-to-end solutions for diverse clients, ranging from mobile apps to data automation services.",
       "highlights": [
         "Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription system to enable monetization.",
         "Built automated data processing service, streamlining client workflows and reducing manual data handling overhead."
+      ]
+    },
+    {
+      "name": "US Army - Army Software Factory",
+      "position": "Technical Lead",
+      "startDate": "June, 2022",
+      "endDate": "February, 2025",
+      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and setting technical standards.",
+      "highlights": [
+        "Developed a comprehensive full-stack web application starter template, which significantly reduced time to production and increased developer efficiency for 15+ app teams.",
+        "Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined development processes.",
+        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base.",
+        "Frequently collaborated with Platform/DevOps and Security teams to improve CI/CD performance and reliability."
       ]
     },
     {
@@ -82,11 +92,7 @@
       "location": "Landstuhl, Germany",
       "startDate": "2019",
       "endDate": "June, 2022",
-      "summary": "Duties included the installation, configuration, maintenance, and operation of various fixed SATCOM terminals in support of both military and commercial end-users.",
-      "highlights": [
-        "Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols to troubleshoot and resolve issues.",
-        "Configured networking equipment such as routers, switches, modems, circuits, trunk groups, and other related equipment."
-      ]
+      "summary": "Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols for the installation, configuration, maintenance, and operation of various fixed SATCOM terminals."
     }
   ],
   "projects": [
@@ -95,19 +101,19 @@
       "keywords": ["TypeScript", "Library", "Query Language"],
       "description": "A custom query language and TypeScript library for filtering structured data.",
       "url": "https://github.com/adamhl8/filterql",
-      "stars": 277
+      "stars": 279
     },
     {
       "name": "Inspectarr",
       "keywords": ["TypeScript", "CLI tool"],
       "description": "A CLI tool for querying and inspecting media in Radarr and Sonarr instances.",
       "url": "https://github.com/adamhl8/inspectarr",
-      "stars": 52
+      "stars": 55
     },
     {
       "name": "ts-explicit-errors",
       "keywords": ["TypeScript", "Library"],
-      "description": "A concise and type-safe error handling library for TypeScript, allowing users to treat errors as values in order to write more safe, readable, and maintainable code.",
+      "description": "A type-safe error handling library for TypeScript, allowing users to treat errors as values.",
       "url": "https://github.com/adamhl8/ts-explicit-errors"
     }
   ],
