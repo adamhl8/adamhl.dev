@@ -7,6 +7,7 @@ import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, fontProviders } from "astro/config"
 import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
+import rehypeExternalLinks from "rehype-external-links"
 import remarkBreaks from "remark-breaks"
 import Icons from "unplugin-icons/vite"
 
@@ -84,6 +85,6 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkBreaks, remarkReadingTime],
-    rehypePlugins: [sectionize],
+    rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: [] }]],
   },
 })
