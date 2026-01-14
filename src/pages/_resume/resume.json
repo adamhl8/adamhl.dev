@@ -56,10 +56,24 @@
       "endDate": "March, 2026",
       "summary": "Software engineer on the DevSecOps team developing tools and services to ensure security and compliance throughout the organization.",
       "highlights": [
+        "Developed a full-stack application used across the organization to streamline code security compliance and reduce the time required to complete compliance audits from weeks to hours.",
+        "Spearheaded the implementation of a new authentication architecture for new and existing apps, integrating Okta with existing legacy identity providers.",
         "Designed and implemented comprehensive policies and CI/CD pipelines to ensure security compliance before application deployment.",
-        "Improved and automated security testing and vulnerability scanning processes to reduce risk and improve overall security posture.",
-        "Reduced the team's number of support tickets by over 90% by automating vulnerability scanning and remediation workflows.",
-        "Developed a full-stack application used across the organization to streamline code security compliance and reduce the time required to complete compliance audits from weeks to hours."
+        "Automated vulnerability scanning processes to improve overall security posture, additionally reducing pipeline execution time from over an hour to under 15 minutes.",
+        "These tools and processes reduced the team's volume of support tickets by over 90%."
+      ]
+    },
+    {
+      "name": "US Army - Army Software Factory",
+      "position": "Senior Software Engineer / Technical Lead",
+      "startDate": "June, 2022",
+      "endDate": "February, 2025",
+      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and setting technical standards.",
+      "highlights": [
+        "Developed a comprehensive full-stack web application starter template, which significantly reduced time to production and increased developer efficiency for 15+ app teams.",
+        "Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined development processes for development teams across the organization.",
+        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base.",
+        "Frequently collaborated with DevOps teams to improve CI/CD performance and reliability."
       ]
     },
     {
@@ -67,23 +81,10 @@
       "position": "Senior Software Engineer",
       "startDate": "2024",
       "endDate": "2025",
-      "summary": "Full-stack software engineer developing custom, end-to-end solutions for diverse clients, ranging from mobile apps to data automation services.",
+      "summary": "Full-stack software engineer developing custom end-to-end solutions for diverse clients.",
       "highlights": [
         "Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription system to enable monetization.",
         "Built automated data processing service, streamlining client workflows and reducing manual data handling overhead."
-      ]
-    },
-    {
-      "name": "US Army - Army Software Factory",
-      "position": "Technical Lead",
-      "startDate": "June, 2022",
-      "endDate": "February, 2025",
-      "summary": "Tech lead for an internal tools team, focusing on accelerating development processes and setting technical standards.",
-      "highlights": [
-        "Developed a comprehensive full-stack web application starter template, which significantly reduced time to production and increased developer efficiency for 15+ app teams.",
-        "Maintained over 20 frontend/backend packages, providing reusable solutions that streamlined development processes.",
-        "Developed and delivered targeted programming curriculum, mentoring new developers and enriching the organization's technical knowledge base.",
-        "Frequently collaborated with Platform/DevOps and Security teams to improve CI/CD performance and reliability."
       ]
     },
     {
@@ -122,7 +123,7 @@
       "institution": "University of Maryland",
       "area": "Computer Science",
       "studyType": "BS",
-      "score": "3.99"
+      "score": "3.9"
     },
     {
       "institution": "University of Maryland",
