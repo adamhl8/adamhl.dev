@@ -12,6 +12,11 @@
   }
 }
 
+.expressive-code {
+  /* Prevent non-wrapping code blocks from expanding parent containers */
+  contain: inline-size;
+}
+
 @plugin "daisyui" {
   logs: false;
 }

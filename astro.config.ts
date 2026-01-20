@@ -17,9 +17,6 @@ const expressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ["github-dark", "github-light"],
   themeCssSelector: () => `[data-theme="light"]`,
   plugins: [pluginLineNumbers()],
-  defaultProps: {
-    wrap: true,
-  },
   styleOverrides: {
     uiFontFamily: "var(--font-sans)",
     codeFontFamily: "var(--font-mono)",

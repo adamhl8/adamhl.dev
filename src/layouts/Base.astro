@@ -22,29 +22,29 @@ const { title, description } = Astro.props
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="m-8 grid grid-cols-1 md:max-w-[80rem] md:grid-cols-5 md:justify-self-center">
+  <body class="m-8 grid grid-cols-1 lg:max-w-400 lg:grid-cols-5 lg:justify-self-center">
     <div class="absolute top-4 right-4">
       <ThemeToggle />
     </div>
 
-    <div class="flex items-start justify-between md:hidden">
+    <div class="flex items-start justify-between lg:hidden">
       <MobileDrawer />
       <SidebarTitle />
       <div class="w-8"></div>
     </div>
 
-    <div class="mr-16 hidden md:block">
+    <div class="mr-32 hidden lg:block">
       <Sidebar />
     </div>
 
-    <main class="mt-16 space-y-8 md:col-span-3">
+    <main class="mt-16 max-w-3xl space-y-8 justify-self-center lg:col-span-3">
       <Breadcrumbs title={title} />
       <slot />
       <hr class="border-base-300" />
       <slot name="comments" />
     </main>
 
-    <aside class="ml-16 hidden md:block">
+    <aside class="ml-16 hidden lg:block">
       <slot name="toc" />
     </aside>
   </body>

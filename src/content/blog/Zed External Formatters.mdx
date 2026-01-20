@@ -182,7 +182,7 @@ Specifically, this is what I want to do:
 
 This is what I came up with:
 
-```bash title="format-wrapper.bash" wrap=false
+```bash title="format-wrapper.bash"
 #!/usr/bin/env bash
 
 buffer_path="${1}"
@@ -284,7 +284,7 @@ To be clear, I still want the original "fallback" behavior. That is, if any form
 
 So I decided to implement this, and took the opportunity to rewrite the script in TypeScript with Bun as the runtime.
 
-```ts title="format-wrapper.ts" wrap=false
+```ts title="format-wrapper.ts"
 #!/usr/bin/env bun
 
 import path from "node:path"
