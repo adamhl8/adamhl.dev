@@ -34,8 +34,7 @@ const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
 
 <nav class="inline-block border-b border-base-300">
   <ol class="flex flex-wrap items-center">
-    {
-      breadcrumbs.map((crumb, index) => {
+    {breadcrumbs.map((crumb, index) => {
         const isCurrentPage = index === breadcrumbs.length - 1
         return (
           <li class="flex items-center opacity-75">
@@ -51,7 +50,6 @@ const breadcrumbs = isHome ? [homeBreadcrumb] : breadcrumbSegments
             )}
           </li>
         )
-      })
-    }
+      })}
   </ol>
 </nav>

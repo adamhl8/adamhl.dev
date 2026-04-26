@@ -33,20 +33,30 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-  experimental: {
-    preserveScriptOrder: true,
-    staticImportMetaEnv: true,
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Atkinson Hyperlegible Next",
-        cssVariable: "--font-atkinson-hyperlegible-next",
-        weights: ["200 800"],
-      },
-      {
-        provider: "local",
-        name: "Iosevka",
-        cssVariable: "--font-iosevka",
+  integrations: [
+    expressiveCode(expressiveCodeOptions),
+    mdx(),
+    sitemap({
+      filter: (page) => !new URL(page).pathname.startsWith("/share"),
+    }),
+    react(),
+  ],
+  markdown: {
+    remarkPlugins: [remarkBreaks, remarkReadingTime],
+    rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }]],
+  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Atkinson Hyperlegible Next",
+      cssVariable: "--font-atkinson-hyperlegible-next",
+      weights: ["200 800"],
+    },
+    {
+      provider: fontProviders.local(),
+      name: "Iosevka",
+      cssVariable: "--font-iosevka",
+      options: {
         variants: [
           {
             src: ["./src/fonts/Iosevka-Regular.ttf"],
@@ -70,18 +80,6 @@ export default defineConfig({
           },
         ],
       },
-    ],
-  },
-  integrations: [
-    expressiveCode(expressiveCodeOptions),
-    mdx(),
-    sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith("/share"),
-    }),
-    react(),
+    },
   ],
-  markdown: {
-    remarkPlugins: [remarkBreaks, remarkReadingTime],
-    rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: [] }]],
-  },
 })

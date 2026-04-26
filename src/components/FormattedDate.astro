@@ -8,11 +8,9 @@ const { date, class: classNames } = Astro.props
 ---
 
 <time class:list={[classNames]} datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString("en-us", {
+  {date.toLocaleDateString("en-us", {
       year: "numeric",
       month: "short",
       day: "numeric",
-    })
-  }
+    })}
 </time>

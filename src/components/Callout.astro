@@ -1,16 +1,17 @@
 ---
 import { marked } from "marked"
-import InfoCircleIcon from "~icons/tabler/info-circle"
-import HelpCircleIcon from "~icons/tabler/help-circle"
-import CircleCheckIcon from "~icons/tabler/circle-check"
-import AlertTriangleIcon from "~icons/tabler/alert-triangle"
+
 import AlertCircleIcon from "~icons/tabler/alert-circle"
-import CircleXIcon from "~icons/tabler/circle-x"
-import PencilIcon from "~icons/tabler/pencil"
-import ClipboardListIcon from "~icons/tabler/clipboard-list"
-import BulbIcon from "~icons/tabler/bulb"
+import AlertTriangleIcon from "~icons/tabler/alert-triangle"
 import BugIcon from "~icons/tabler/bug"
+import BulbIcon from "~icons/tabler/bulb"
+import CircleCheckIcon from "~icons/tabler/circle-check"
+import CircleXIcon from "~icons/tabler/circle-x"
+import ClipboardListIcon from "~icons/tabler/clipboard-list"
+import HelpCircleIcon from "~icons/tabler/help-circle"
+import InfoCircleIcon from "~icons/tabler/info-circle"
 import ListIcon from "~icons/tabler/list"
+import PencilIcon from "~icons/tabler/pencil"
 import QuoteIcon from "~icons/tabler/quote"
 
 const callouts = {
@@ -105,7 +106,5 @@ const callout = callouts[type]
     <callout.icon class:list={["size-6", callout.iconColor]} aria-hidden="true" />
     <div class:list={["font-bold prose-p:my-0", { capitalize: !title }]} set:html={markdownTitle ?? type} />
   </div>
-  <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
-    <slot />
-  </div>
+  <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0"><slot /></div>
 </div>

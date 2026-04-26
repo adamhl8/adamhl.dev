@@ -1,6 +1,6 @@
 ---
-import SunHighIcon from "~icons/tabler/sun-high"
 import MoonFilledIcon from "~icons/tabler/moon-filled"
+import SunHighIcon from "~icons/tabler/sun-high"
 ---
 
 <label class="toggle border-base-content p-0.5 text-base-content hover:text-base-content/75" aria-label="Toggle theme">
@@ -10,31 +10,31 @@ import MoonFilledIcon from "~icons/tabler/moon-filled"
 </label>
 
 <script is:inline>
-  function initializeTheme() {
-    const localStorageTheme = localStorage?.getItem("theme")
-    const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
-    const theme = localStorageTheme || systemTheme
+function initializeTheme() {
+  const localStorageTheme = localStorage?.getItem("theme")
+  const systemTheme = globalThis.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+  const theme = localStorageTheme || systemTheme
 
-    document.documentElement.setAttribute("data-theme", theme)
-    localStorage.setItem("theme", theme)
+  document.documentElement.setAttribute("data-theme", theme)
+  localStorage.setItem("theme", theme)
 
-    const themeController = document.querySelector(".theme-controller")
-    if (!(themeController instanceof HTMLInputElement)) return
-    themeController.checked = theme === "dark"
-    themeController.addEventListener("change", handleToggleClick)
-  }
+  const themeController = document.querySelector(".theme-controller")
+  if (!(themeController instanceof HTMLInputElement)) return
+  themeController.checked = theme === "dark"
+  themeController.addEventListener("change", handleToggleClick)
+}
 
-  function handleToggleClick() {
-    const themeController = document.querySelector(".theme-controller")
-    if (!(themeController instanceof HTMLInputElement)) return
+function handleToggleClick() {
+  const themeController = document.querySelector(".theme-controller")
+  if (!(themeController instanceof HTMLInputElement)) return
 
-    const currentTheme = document.documentElement.getAttribute("data-theme")
-    const newTheme = currentTheme === "light" ? "dark" : "light"
+  const currentTheme = document.documentElement.getAttribute("data-theme")
+  const newTheme = currentTheme === "light" ? "dark" : "light"
 
-    document.documentElement.setAttribute("data-theme", newTheme)
-    localStorage.setItem("theme", newTheme)
-    themeController.checked = newTheme === "dark"
-  }
+  document.documentElement.setAttribute("data-theme", newTheme)
+  localStorage.setItem("theme", newTheme)
+  themeController.checked = newTheme === "dark"
+}
 
-  initializeTheme()
+initializeTheme()
 </script>

@@ -2,7 +2,7 @@
   "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "extends": ["@adamhl8/configs/biome"],
   "files": {
-    "includes": ["**", "!.astro", "!dist", "!src/pages/resume.html"]
+    "includes": ["**", "!.astro", "!dist"]
   },
   "overrides": [
     {
@@ -14,10 +14,22 @@
         "rules": {
           "correctness": {
             "noUnusedVariables": "off",
-            "noUnusedImports": "off"
+            "noUnusedImports": "off",
+            "useJsxKeyInIterable": "off"
           }
         }
       }
+    },
+    {
+      "includes": ["src/pages/resume.html"],
+      "linter": {
+        "enabled": false
+      }
     }
-  ]
+  ],
+  "html": {
+    "formatter": {
+      "selfCloseVoidElements": "always"
+    }
+  }
 }

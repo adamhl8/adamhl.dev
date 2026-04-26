@@ -3,6 +3,7 @@
 import fs from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
+import bun from "bun"
 import * as v from "valibot"
 import * as yaml from "yaml"
 
@@ -59,7 +60,7 @@ async function processFile(fileDetails: FileDetails) {
 
   // Update frontmatter
   frontmatter.title = titleMatch?.groups?.["title"] ?? fileName
-  const date = new Date().toISOString().split("T")[0]
+  const [date] = new Date().toISOString().split("T")
   if (!date) throw new Error("Failed to get date")
   frontmatter.date = date // YYYY-MM-DD format
 
@@ -74,7 +75,7 @@ async function main() {
   await fs.mkdir(SHARE_DIR)
 
   console.info("Reading vault...")
-  const files = await Array.fromAsync(new Bun.Glob("**/*.md").scan({ cwd: OBSIDIAN_DIR, absolute: true }))
+  const files = await Array.fromAsync(new bun.Glob("**/*.md").scan({ cwd: OBSIDIAN_DIR, absolute: true }))
 
   const fileDetailsPromises: Promise<FileDetails | undefined>[] = []
   for (const file of files) {

@@ -25,37 +25,35 @@ const indentClass: Record<number, string> = {
   </Link>
 
   <ol class="mt-4 ml-0 space-y-2">
-    {
-      headings.map((heading) => (
+    {headings.map((heading) => (
         <li
           class:list={[indentClass[heading.depth], "border-l-2 border-base-300 pl-4 transition-colors"]}
           data-heading-id={heading.slug}
         >
           <Link href={`#${heading.slug}`} title={heading.text} />
         </li>
-      ))
-    }
+      ))}
   </ol>
 </nav>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      const heading = entry.target.querySelector("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
-      const id = heading?.getAttribute("id")
-      const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
+const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    const heading = entry.target.querySelector("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
+    const id = heading?.getAttribute("id")
+    const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
 
-      if (entry.intersectionRatio > 0) {
-        tocItem?.classList.remove("border-base-300")
-        tocItem?.classList.add("border-secondary")
-      } else {
-        tocItem?.classList.remove("border-secondary")
-        tocItem?.classList.add("border-base-300")
-      }
+    if (entry.intersectionRatio > 0) {
+      tocItem?.classList.remove("border-base-300")
+      tocItem?.classList.add("border-secondary")
+    } else {
+      tocItem?.classList.remove("border-secondary")
+      tocItem?.classList.add("border-base-300")
     }
-  })
-
-  for (const section of document.querySelectorAll("section.heading")) {
-    observer.observe(section)
   }
+})
+
+for (const section of document.querySelectorAll("section.heading")) {
+  observer.observe(section)
+}
 </script>

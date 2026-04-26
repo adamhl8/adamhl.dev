@@ -31,8 +31,7 @@ const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/v, "")
 
 <nav>
   <menu class="space-y-2">
-    {
-      navLinks.map((link) => {
+    {navLinks.map((link) => {
         const isActive = link.href === cleanPathname
         return (
           <li>
@@ -45,7 +44,6 @@ const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/v, "")
             )}
           </li>
         )
-      })
-    }
+      })}
   </menu>
 </nav>

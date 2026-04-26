@@ -1,9 +1,9 @@
 ---
+import SidebarTitle from "~/layouts/_Base/_Sidebar/SidebarTitle.astro"
 import BaseHead from "~/layouts/_Base/BaseHead.astro"
 import Breadcrumbs from "~/layouts/_Base/Breadcrumbs.astro"
 import MobileDrawer from "~/layouts/_Base/MobileDrawer.astro"
 import Sidebar from "~/layouts/_Base/Sidebar.astro"
-import SidebarTitle from "~/layouts/_Base/_Sidebar/SidebarTitle.astro"
 import ThemeToggle from "~/layouts/_Base/ThemeToggle.astro"
 
 import "~/global.css"
@@ -23,9 +23,7 @@ const { title, description } = Astro.props
   </head>
 
   <body class="m-8 grid grid-cols-1 lg:max-w-400 lg:grid-cols-5 lg:justify-self-center">
-    <div class="absolute top-4 right-4">
-      <ThemeToggle />
-    </div>
+    <div class="absolute top-4 right-4"><ThemeToggle /></div>
 
     <div class="flex items-start justify-between lg:hidden">
       <MobileDrawer />
@@ -33,9 +31,7 @@ const { title, description } = Astro.props
       <div class="w-8"></div>
     </div>
 
-    <div class="mr-32 hidden lg:block">
-      <Sidebar />
-    </div>
+    <div class="mr-32 hidden lg:block"><Sidebar /></div>
 
     <main class="mt-16 max-w-3xl space-y-8 justify-self-center lg:col-span-3">
       <Breadcrumbs title={title} />
@@ -44,8 +40,6 @@ const { title, description } = Astro.props
       <slot name="comments" />
     </main>
 
-    <aside class="ml-16 hidden lg:block">
-      <slot name="toc" />
-    </aside>
+    <aside class="ml-16 hidden lg:block"><slot name="toc" /></aside>
   </body>
 </html>
