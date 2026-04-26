@@ -13,7 +13,7 @@
         "rehype-external-links": "^3.0.0",
       },
       "devDependencies": {
-        "@adamhl8/configs": "^0.19.2",
+        "@adamhl8/configs": "^0.19.3",
         "@astrojs/check": "0.9.8",
         "@astrojs/mdx": "^5.0.4",
         "@astrojs/rss": "^4.0.18",
@@ -35,7 +35,6 @@
         "markdown-toc": "^1.2.0",
         "marked": "^18.0.2",
         "mdast-util-to-string": "^4.0.0",
-        "prettier": "^3.8.3",
         "reading-time": "^1.5.0",
         "remark-breaks": "^4.0.0",
         "resumed": "^6.1.0",
@@ -49,7 +48,7 @@
     },
   },
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@0.19.2", "", { "dependencies": { "es-toolkit": "^1.46.0", "remeda": "^2.33.7", "type-fest": "^5.6.0" }, "peerDependencies": { "typescript": "^6.0.0" }, "bin": { "adamhl8-knip": "dist/adamhl8-knip/index" } }, "sha512-e/GLCF091aVnm/Yyw4fWNuUgfwJIJlgs7kX4NZ4oC62Ib2N1Q1RUg4wquUUH9LaSZYjdFcg/oOgAFvsXNHTPow=="],
+    "@adamhl8/configs": ["@adamhl8/configs@0.19.3", "", { "dependencies": { "es-toolkit": "^1.46.0", "remeda": "^2.33.7", "type-fest": "^5.6.0" }, "peerDependencies": { "typescript": "^6.0.0" }, "bin": { "adamhl8-knip": "dist/adamhl8-knip/index" } }, "sha512-cFKo2mcZWW5U/pessvwzeHyMjPmW0OwLNT5S55ICQ9VrvA2GInB7wSpK38WdZWt5gSmZbK6cub+l1dx4eI1CAQ=="],
 
     "@antfu/install-pkg": ["@antfu/install-pkg@1.1.0", "", { "dependencies": { "package-manager-detector": "^1.3.0", "tinyexec": "^1.0.1" } }, "sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ=="],
 

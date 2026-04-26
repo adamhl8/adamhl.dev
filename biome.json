@@ -26,10 +26,5 @@
         "enabled": false
       }
     }
-  ],
-  "html": {
-    "formatter": {
-      "selfCloseVoidElements": "always"
-    }
-  }
+  ]
 }
