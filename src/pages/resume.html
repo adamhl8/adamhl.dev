@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
     <title>Adam Langbert</title>
     <style>
-    /*! tailwindcss v4.1.15 | MIT License | https://tailwindcss.com */
+    /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
     @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
     @layer properties;
     @layer theme, base, components, utilities;
@@ -29,8 +29,8 @@
         --radius-lg: 0.5rem;
         --default-font-family: var(--font-sans);
         --default-mono-font-family: var(--font-mono);
-        --color-primary: #39424b;
-        --color-secondary: #56817a;
+        --color-primary: rgb(57 66 75);
+        --color-secondary: rgb(86 129 122);
         --font-weight-lighter: 350;
         --font-weight-semimedium: 450;
         --text-smaller: 0.8125rem;
@@ -195,9 +195,7 @@
         ::placeholder {
           color: currentcolor;
           @supports (color: color-mix(in lab, red, red)) {
-            & {
-              color: color-mix(in oklab, currentcolor 50%, transparent);
-            }
+            color: color-mix(in oklab, currentcolor 50%, transparent);
           }
         }
       }
@@ -332,8 +330,8 @@
       .space-y-1 {
         :where(& > :not(:last-child)) {
           --tw-space-y-reverse: 0;
-          margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
-          margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+          margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+          margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
         }
       }
       .space-y-2 {
@@ -504,7 +502,7 @@
       }
       .print\:m-0 {
         @media print {
-          margin: calc(var(--spacing) * 0);
+          margin: 0;
         }
       }
       .print\:hidden {
@@ -519,7 +517,7 @@
       }
       .print\:p-0 {
         @media print {
-          padding: calc(var(--spacing) * 0);
+          padding: 0;
         }
       }
       .print\:shadow-none {
@@ -885,6 +883,21 @@
                 <header>
                   <div class="font-bold text-md/tight">Senior Software Engineer</div>
                   <div class="space-x-1.5 text-sm/tight">
+                    <span class="font-bold text-secondary">Parlay Finance</span><span>|</span
+                    ><span class="font-lighter italic">April, 2026 - Present</span>
+                  </div>
+                </header>
+                <div class="space-y-1">
+                  <p class="text-smaller/3.5">
+                    Fullstack software engineer focused on building a next-generation Loan Intelligence System for SBA
+                    and small business lenders.
+                  </p>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <header>
+                  <div class="font-bold text-md/tight">Senior Software Engineer</div>
+                  <div class="space-x-1.5 text-sm/tight">
                     <span class="font-bold text-secondary">US Army - Army Software Factory</span><span>|</span
                     ><span class="font-lighter italic">February, 2025 - March, 2026</span>
                   </div>
@@ -967,21 +980,6 @@
                       handling overhead.
                     </li>
                   </ul>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <header>
-                  <div class="font-bold text-md/tight">25S - Satellite Communication Systems Operator-Maintainer</div>
-                  <div class="space-x-1.5 text-sm/tight">
-                    <span class="font-bold text-secondary">US Army</span><span>|</span
-                    ><span class="font-lighter italic">2019 - June, 2022</span>
-                  </div>
-                </header>
-                <div class="space-y-1">
-                  <p class="text-smaller/3.5">
-                    Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols for the installation,
-                    configuration, maintenance, and operation of various fixed SATCOM terminals.
-                  </p>
                 </div>
               </div>
             </div>

@@ -50,6 +50,12 @@
   ],
   "work": [
     {
+      "name": "Parlay Finance",
+      "position": "Senior Software Engineer",
+      "startDate": "April, 2026",
+      "summary": "Fullstack software engineer focused on building a next-generation Loan Intelligence System for SBA and small business lenders."
+    },
+    {
       "name": "US Army - Army Software Factory",
       "position": "Senior Software Engineer",
       "startDate": "February, 2025",
@@ -86,14 +92,6 @@
         "Developed a full-stack iOS app using Expo / React Native and implemented a robust subscription system to enable monetization.",
         "Built automated data processing service, streamlining client workflows and reducing manual data handling overhead."
       ]
-    },
-    {
-      "name": "US Army",
-      "position": "25S - Satellite Communication Systems Operator-Maintainer",
-      "location": "Landstuhl, Germany",
-      "startDate": "2019",
-      "endDate": "June, 2022",
-      "summary": "Utilized extensive knowledge of TCP/IP, DNS, and other networking protocols for the installation, configuration, maintenance, and operation of various fixed SATCOM terminals."
     }
   ],
   "projects": [

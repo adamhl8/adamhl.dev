@@ -25,7 +25,7 @@
     "rehype-external-links": "^3.0.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.19.5",
+    "@adamhl8/configs": "^0.19.6",
     "@astrojs/check": "0.9.9",
     "@astrojs/mdx": "^6.0.3",
     "@astrojs/rss": "^4.0.18",
@@ -42,7 +42,7 @@
     "@types/react-dom": "^19.2.3",
     "astro-expressive-code": "^0.43.1",
     "daisyui": "^5.5.23",
-    "jsonresume-theme-react-tailwind": "^1.3.0",
+    "jsonresume-theme-react-tailwind": "^1.3.1",
     "knip": "^6.17.1",
     "markdown-toc": "^1.2.0",
     "marked": "^18.0.5",
