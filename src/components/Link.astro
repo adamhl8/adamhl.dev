@@ -9,6 +9,7 @@ type Props = HTMLAttributes<"a"> & {
 const { class: className, title, titleClass, ...props } = Astro.props
 ---
 
+<!-- biome-ignore lint/a11y/useValidAnchor: href is passed via props -->
 <a class:list={[className, { group: title, "transition-colors hover:text-accent": !title }]} {...props}>
   <slot name="before" />
   {title && <span class:list={[titleClass, "block transition-colors group-hover:text-accent"]}>{title}</span>}

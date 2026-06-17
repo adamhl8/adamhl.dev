@@ -9,4 +9,5 @@ Allow: /
 Sitemap: ${sitemapURL.href}
 `
 
+// biome-ignore lint/nursery/useReactFunctionComponentDefinition: false positive
 export const GET: APIRoute = ({ site }) => new Response(getRobotsTxt(new URL(SITEMAP_FILE, site)))

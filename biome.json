@@ -4,6 +4,13 @@
   "files": {
     "includes": ["**", "!.astro", "!dist"]
   },
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noUndeclaredClasses": "off"
+      }
+    }
+  },
   "overrides": [
     {
       "includes": ["**/*.astro"],

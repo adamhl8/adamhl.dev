@@ -16,6 +16,7 @@ const languageColors = await getLanguageColors()
 ---
 
 <style define:vars={{ langColor:languageColors[repoData.language]?.color ?? "transparent" }}>
+/* biome-ignore lint/nursery/noUnusedClasses: false positive */
 .lang-dot {
   background-color: var(--langColor);
 }
