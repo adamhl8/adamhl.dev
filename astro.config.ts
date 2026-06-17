@@ -1,3 +1,4 @@
+import { unified } from "@astrojs/markdown-remark"
 import mdx from "@astrojs/mdx"
 import node from "@astrojs/node"
 import react from "@astrojs/react"
@@ -47,8 +48,10 @@ export default defineConfig({
     react(),
   ],
   markdown: {
-    remarkPlugins: [remarkBreaks, remarkReadingTime],
-    rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }]],
+    processor: unified({
+      remarkPlugins: [remarkBreaks, remarkReadingTime],
+      rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }]],
+    }),
   },
   fonts: [
     {
