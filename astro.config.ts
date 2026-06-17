@@ -6,11 +6,13 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, fontProviders } from "astro/config"
-import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code"
+import type { AstroExpressiveCodeOptions } from "astro-expressive-code"
+import expressiveCode from "astro-expressive-code"
 import rehypeExternalLinks from "rehype-external-links"
 import remarkBreaks from "remark-breaks"
 import Icons from "unplugin-icons/vite"
 
+import { caddyfile } from "./scripts/shiki-langs.ts"
 import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
 
 const expressiveCodeOptions: AstroExpressiveCodeOptions = {
@@ -20,6 +22,9 @@ const expressiveCodeOptions: AstroExpressiveCodeOptions = {
   styleOverrides: {
     uiFontFamily: "var(--font-sans)",
     codeFontFamily: "var(--font-mono)",
+  },
+  shiki: {
+    langs: [caddyfile],
   },
 }
 
