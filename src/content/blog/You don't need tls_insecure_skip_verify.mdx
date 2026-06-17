@@ -1,0 +1,115 @@
+---
+title: "You (probably) don't need tls_insecure_skip_verify"
+description: "There is a better way to proxy to an upstream HTTPS server"
+date: 2026-06-17
+tags: [homelab, caddy]
+---
+
+import Callout from "../../components/Callout.astro"
+
+If you use caddy to reverse proxy to an upstream HTTPS server, you've probably run into the issue where you can't connect to it because of certificate verification errors.
+
+The common workaround is to use `tls_insecure_skip_verify`, which disables certificate verification entirely.
+
+```Caddyfile
+https://someservice.mydomain.com {
+	reverse_proxy https://upstream.local {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
+}
+```
+
+You generally *don't* want to do this and should proxy over plain old HTTP instead. However, this isn't always possible if the upstream doesn't expose itself over HTTP (looking at you, UniFi OS).
+
+To rant for a second: if you provide a self-hostable service, you can expect that some users will put it behind something that terminates TLS (such as caddy). In a scenario like this, forcing HTTPS with a self-signed cert pushes people toward things like `tls_insecure_skip_verify`, which gives a false sense of security (the HTTPS connection is unauthenticated/unverified). **Allow users to opt out of HTTPS if they want to terminate TLS themselves.** Please.
+
+## The better way
+
+Instead of ignoring TLS verification entirely, you can tell caddy to trust the upstream cert. This approach is mainly for services that use a self-signed certificate (which is probably the case for most self-hosted services that force HTTPS).
+
+This is more secure because only an upstream holding that cert's private key can complete the TLS handshake.
+
+You can get rid of `tls_insecure_skip_verify` and use two other options:
+- [tls_server_name](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#tls_server_name): caddy verifies that this name is present in the upstream's certificate.
+- [tls_trust_pool](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#tls_trust_pool): Tells caddy to trust the upstream's self-signed certificate.
+
+### Getting `tls_server_name`
+
+When caddy does a TLS handshake, it checks that the server name appears in the certificate's SAN (Subject Alternative Name) field. If it doesn't, caddy will reject the connection.
+
+The SAN is *usually* the same as the hostname when the certificate was generated, but not always, so it's good to verify. (In my case with UniFi OS, it is *not* the same.)
+
+You can run the following command to find out what names the certificate is valid for:
+
+```sh
+echo | openssl s_client -connect <YOUR_UPSTREAM_HOST>:<PORT> 2>/dev/null | openssl x509 -noout -ext subjectAltName
+```
+
+Running this against my UniFi OS instance returns:
+
+```
+X509v3 Subject Alternative Name:
+    DNS:unifi.local, DNS:localhost, DNS:[::1], IP Address:127.0.0.1, IP Address:FE80:0:0:0:0:0:0:1
+```
+
+In this case I'd use `unifi.local`.
+
+### Copy the upstream's cert to your caddy instance
+
+**On your caddy instance**, run the following command:
+
+```sh
+echo | openssl s_client -connect <YOUR_UPSTREAM_HOST>:<PORT> 2>/dev/null | openssl x509 | sudo tee /var/lib/caddy/<CERT_NAME>.crt >/dev/null
+```
+
+- Make sure to replace `<CERT_NAME>` with a descriptive name for your upstream (e.g. `unifi-server`).
+
+This fetches your upstream's public certificate and copies it into a directory caddy can read.
+
+<Callout type="tip">
+
+If you run caddy in a docker container, you'll want to save the certificate on the host and mount it into the container.
+
+</Callout>
+
+Set permissions/owner so caddy can read it:
+
+```sh
+sudo chmod 644 /var/lib/caddy/<CERT_NAME>.crt
+sudo chown caddy:caddy /var/lib/caddy/<CERT_NAME>.crt
+```
+
+<br/>
+
+<Callout type="warning">
+
+If you (or your service) ever regenerates the certificate, you'll need to copy it over again.
+
+</Callout>
+
+### Caddyfile
+
+This is what my site block looks like for my instance of UniFi OS:
+
+```Caddyfile
+unifi.adamhl.dev {
+	authorize with admin_policy
+	reverse_proxy https://unifi.lan:8443 {
+		header_up Host {host}
+		transport http {
+			tls_server_name unifi.local
+			tls_trust_pool file /var/lib/caddy/unifi-server.crt
+		}
+	}
+}
+```
+
+<br/>
+
+<Callout type="info">
+
+If you don't have it already, you will generally need to add `header_up Host {host}` because of [changes made to Host header forwarding in caddy](https://www.reddit.com/r/selfhosted/comments/1tojr7s/beware_caddy_made_a_change_to_the_default/) v2.11.0. Although some services don't care about the `Host` header so this might be optional.
+
+</Callout>
