@@ -95,7 +95,6 @@ This is what my site block looks like for my instance of UniFi OS:
 
 ```Caddyfile
 unifi.adamhl.dev {
-	authorize with admin_policy
 	reverse_proxy https://unifi.lan:8443 {
 		header_up Host {host}
 		transport http {
