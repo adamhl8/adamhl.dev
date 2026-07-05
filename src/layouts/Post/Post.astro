@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry, RenderResult } from "astro:content"
-import { optional, parse, string } from "valibot"
+import { type } from "arktype"
 
 import PageTitle from "#/components/PageTitle.astro"
 import Prose from "#/components/Prose.astro"
@@ -18,7 +18,7 @@ type Props = (BlogProps | TILProps | ShareProps) & {
 const { data, renderedPost } = Astro.props
 const { title, date, description = "" } = data
 const { Content, headings, remarkPluginFrontmatter } = renderedPost
-const readingTime = parse(optional(string()), remarkPluginFrontmatter["readingTime"])
+const readingTime = type("string | undefined").assert(remarkPluginFrontmatter["readingTime"])
 ---
 
 <Base title={title} description={description}>

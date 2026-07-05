@@ -4,16 +4,17 @@ import fs from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
 
-import { boolean, object, optional, parse, string } from "valibot"
-import type { InferOutput } from "valibot"
+import { type } from "arktype"
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml"
 
-const frontmatterSchema = object({
-  share: optional(boolean()),
-  title: optional(string()),
-  date: optional(string()),
+// "+": "delete" drops unknown frontmatter keys so they aren't re-serialized into the shared file
+const frontmatterSchema = type({
+  "share?": "boolean",
+  "title?": "string",
+  "date?": "string",
+  "+": "delete",
 })
-type Frontmatter = InferOutput<typeof frontmatterSchema>
+type Frontmatter = typeof frontmatterSchema.infer
 
 const OBSIDIAN_DIR = `${os.homedir()}/Obsidian`
 const SHARE_DIR = "src/content/share"
@@ -36,7 +37,7 @@ const copySharedFile = async (filePath: string): Promise<FileDetails | undefined
   if (!frontmatterGroup) return
 
   const frontmatterYaml: unknown = parseYaml(frontmatterGroup)
-  const frontmatter = parse(frontmatterSchema, frontmatterYaml)
+  const frontmatter = frontmatterSchema.assert(frontmatterYaml)
 
   if (!frontmatter.share) return
 

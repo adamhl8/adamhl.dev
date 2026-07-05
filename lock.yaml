@@ -9,13 +9,13 @@ importers:
     dependencies:
       "@astrojs/node":
         specifier: ^11.0.2
-        version: 11.0.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
+        version: 11.0.2(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
       "@astrojs/react":
         specifier: ^6.0.1
         version: 6.0.1(@types/node@26.1.0)(@types/react@19.2.17)(@types/react-dom@19.2.3(@types/react@19.2.17))(esbuild@0.28.1)(jiti@2.7.0)(react@19.2.7)(react-dom@19.2.7(react@19.2.7))(yaml@2.9.0)
       astro:
         specifier: ^7.0.6
-        version: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
+        version: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -37,7 +37,7 @@ importers:
         version: 7.2.1
       "@astrojs/mdx":
         specifier: ^7.0.2
-        version: 7.0.2(@astrojs/markdown-satteri@0.3.3)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
+        version: 7.0.2(@astrojs/markdown-satteri@0.3.3)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
       "@astrojs/rss":
         specifier: ^4.0.19
         version: 4.0.19
@@ -80,9 +80,12 @@ importers:
       "@types/react-dom":
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.17)
+      arktype:
+        specifier: ^2.2.2
+        version: 2.2.2
       astro-expressive-code:
         specifier: ^0.44.0
-        version: 0.44.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
+        version: 0.44.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)
       daisyui:
         specifier: ^5.6.13
         version: 5.6.13
@@ -134,9 +137,6 @@ importers:
       unplugin-icons:
         specifier: ^23.0.1
         version: 23.0.1
-      valibot:
-        specifier: ^1.4.2
-        version: 1.4.2(typescript@6.0.3)
       vfile:
         specifier: ^6.0.3
         version: 6.0.3
@@ -5668,15 +5668,6 @@ packages:
     resolution:
       { integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw== }
 
-  valibot@1.4.2:
-    resolution:
-      { integrity: sha512-gjdCvJ6d3RyHAneqxMYMW9QMCwYMb3jpOO0IyHZV1bnRHFBHrX3VkIILt5XYR0WhwHiH7Mty8ovuPZ/O3gamrg== }
-    peerDependencies:
-      typescript: ">=5"
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   vfile-location@4.1.0:
     resolution:
       { integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw== }
@@ -6081,9 +6072,9 @@ snapshots:
   "@astrojs/compiler-binding-linux-x64-musl@0.3.0":
     optional: true
 
-  "@astrojs/compiler-binding-wasm32-wasi@0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)":
+  "@astrojs/compiler-binding-wasm32-wasi@0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)":
     dependencies:
-      "@napi-rs/wasm-runtime": 1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      "@napi-rs/wasm-runtime": 1.1.6(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)
     optional: true
 
   "@astrojs/compiler-binding-win32-arm64-msvc@0.3.0":
@@ -6092,7 +6083,7 @@ snapshots:
   "@astrojs/compiler-binding-win32-x64-msvc@0.3.0":
     optional: true
 
-  "@astrojs/compiler-binding@0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)":
+  "@astrojs/compiler-binding@0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)":
     optionalDependencies:
       "@astrojs/compiler-binding-darwin-arm64": 0.3.0
       "@astrojs/compiler-binding-darwin-x64": 0.3.0
@@ -6100,13 +6091,13 @@ snapshots:
       "@astrojs/compiler-binding-linux-arm64-musl": 0.3.0
       "@astrojs/compiler-binding-linux-x64-gnu": 0.3.0
       "@astrojs/compiler-binding-linux-x64-musl": 0.3.0
-      "@astrojs/compiler-binding-wasm32-wasi": 0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      "@astrojs/compiler-binding-wasm32-wasi": 0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)
       "@astrojs/compiler-binding-win32-arm64-msvc": 0.3.0
       "@astrojs/compiler-binding-win32-x64-msvc": 0.3.0
 
-  "@astrojs/compiler-rs@0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)":
+  "@astrojs/compiler-rs@0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)":
     dependencies:
-      "@astrojs/compiler-binding": 0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      "@astrojs/compiler-binding": 0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)
 
   "@astrojs/compiler@2.13.1": {}
 
@@ -6173,14 +6164,14 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.9.4
 
-  "@astrojs/mdx@7.0.2(@astrojs/markdown-satteri@0.3.3)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)":
+  "@astrojs/mdx@7.0.2(@astrojs/markdown-satteri@0.3.3)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)":
     dependencies:
       "@astrojs/internal-helpers": 0.10.1
       "@astrojs/markdown-remark": 7.2.1
       "@astrojs/markdown-satteri": 0.3.3
       "@mdx-js/mdx": 3.1.1
       acorn: 8.17.0
-      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
+      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
       es-module-lexer: 2.3.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -6194,10 +6185,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  "@astrojs/node@11.0.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)":
+  "@astrojs/node@11.0.2(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0)":
     dependencies:
       "@astrojs/internal-helpers": 0.10.1
-      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
+      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -7858,15 +7849,15 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.44.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0):
+  astro-expressive-code@0.44.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(astro@7.0.6(@astrojs/markdown-remark@7.2.1))(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
-      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
+      astro: 7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0)
       rehype-expressive-code: 0.44.0
       url-extras: 0.1.0
 
-  astro@7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0):
+  astro@7.0.6(@astrojs/markdown-remark@7.2.1)(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)(@types/node@26.1.0)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
-      "@astrojs/compiler-rs": 0.3.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      "@astrojs/compiler-rs": 0.3.0(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.0)
       "@astrojs/internal-helpers": 0.10.1
       "@astrojs/markdown-remark": 7.2.1
       "@astrojs/markdown-satteri": 0.3.3
@@ -10852,10 +10843,6 @@ snapshots:
   url-join@5.0.0: {}
 
   util-deprecate@1.0.2: {}
-
-  valibot@1.4.2(typescript@6.0.3):
-    dependencies:
-      typescript: 6.0.3
 
   vfile-location@4.1.0:
     dependencies:
