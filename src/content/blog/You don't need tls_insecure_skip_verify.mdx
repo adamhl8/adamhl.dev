@@ -21,7 +21,7 @@ https://someservice.mydomain.com {
 }
 ```
 
-You generally *don't* want to do this and should proxy over plain old HTTP instead. However, this isn't always possible if the upstream doesn't expose itself over HTTP (looking at you, UniFi OS).
+You generally _don't_ want to do this and should proxy over plain old HTTP instead. However, this isn't always possible if the upstream doesn't expose itself over HTTP (looking at you, UniFi OS).
 
 To rant for a second: if you provide a self-hostable service, you can expect that some users will put it behind something that terminates TLS (such as caddy). In a scenario like this, forcing HTTPS with a self-signed cert pushes people toward things like `tls_insecure_skip_verify`, which gives a false sense of security (the HTTPS connection is unauthenticated/unverified). **Allow users to opt out of HTTPS if they want to terminate TLS themselves.** Please.
 
@@ -32,6 +32,7 @@ Instead of ignoring TLS verification entirely, you can tell caddy to trust the u
 This is more secure because only an upstream holding that cert's private key can complete the TLS handshake.
 
 You can get rid of `tls_insecure_skip_verify` and use two other options:
+
 - [tls_server_name](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#tls_server_name): caddy verifies that this name is present in the upstream's certificate.
 - [tls_trust_pool](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#tls_trust_pool): Tells caddy to trust the upstream's self-signed certificate.
 
@@ -39,7 +40,7 @@ You can get rid of `tls_insecure_skip_verify` and use two other options:
 
 When caddy does a TLS handshake, it checks that the server name appears in the certificate's SAN (Subject Alternative Name) field. If it doesn't, caddy will reject the connection.
 
-The SAN is *usually* the same as the hostname when the certificate was generated, but not always, so it's good to verify. (In my case with UniFi OS, it is *not* the same.)
+The SAN is _usually_ the same as the hostname when the certificate was generated, but not always, so it's good to verify. (In my case with UniFi OS, it is _not_ the same.)
 
 You can run the following command to find out what names the certificate is valid for:
 
@@ -81,7 +82,7 @@ sudo chmod 644 /var/lib/caddy/<CERT_NAME>.crt
 sudo chown caddy:caddy /var/lib/caddy/<CERT_NAME>.crt
 ```
 
-<br/>
+<br />
 
 <Callout type="warning">
 
@@ -105,7 +106,7 @@ unifi.adamhl.dev {
 }
 ```
 
-<br/>
+<br />
 
 <Callout type="info">
 

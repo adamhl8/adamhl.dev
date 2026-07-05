@@ -1,21 +1,17 @@
-import * as v from "valibot"
+import { nullable, number, object, parse, record, string } from "valibot"
+import type { InferOutput } from "valibot"
 
-const RepoSchema = v.object({
-  html_url: v.string(),
-  name: v.string(),
-  description: v.string(),
-  language: v.string(),
-  stargazers_count: v.number(),
-  forks: v.number(),
+const RepoSchema = object({
+  html_url: string(),
+  name: string(),
+  description: string(),
+  language: string(),
+  stargazers_count: number(),
+  forks: number(),
 })
 
-/**
- * Fetches the repo data from the GitHub API
- *
- * @param repo The repo name: e.g. "adamhl8/my-repo"
- * @returns The repo data: {@link RepoSchema}
- */
-export async function getRepoData(repo: string) {
+/** Fetches the repo data from the GitHub API for a repo name like "adamhl8/my-repo" */
+export const getRepoData = async (repo: string) => {
   const repoResp = await fetch(`https://api.github.com/repos/${repo}`, {
     headers: {
       Accept: "application/vnd.github+json",
@@ -26,26 +22,23 @@ export async function getRepoData(repo: string) {
   if (!repoResp.ok)
     throw new Error(`failed to fetch repo data for ${repo}: ${repoResp.status.toString()} ${repoResp.statusText}`)
 
-  return v.parse(RepoSchema, await repoResp.json())
+  return parse(RepoSchema, await repoResp.json())
 }
 
-const LanguageColorsSchema = v.record(v.string(), v.object({ color: v.nullable(v.string()) }))
-type LanguageColors = v.InferOutput<typeof LanguageColorsSchema>
+const ColorSchema = object({ color: nullable(string()) })
+const LanguageColorsSchema = record(string(), ColorSchema)
+type LanguageColors = InferOutput<typeof LanguageColorsSchema>
 
 let languageColorsPromise: Promise<LanguageColors> | undefined
 
-/**
- * Fetches the language colors from: {@link https://raw.githubusercontent.com/ozh/github-colors/master/colors.json}
- *
- * @returns The language colors: {@link LanguageColors}
- */
-export function getLanguageColors() {
+/** Fetches the language colors from {@link https://raw.githubusercontent.com/ozh/github-colors/master/colors.json} */
+export const getLanguageColors = async () => {
   if (!languageColorsPromise) {
     const fetchLanguageColors = async () => {
       const colorsResp = await fetch("https://raw.githubusercontent.com/ozh/github-colors/master/colors.json")
       if (!colorsResp.ok)
         throw new Error(`Failed to fetch language colors: ${colorsResp.status.toString()} ${colorsResp.statusText}`)
-      return v.parse(LanguageColorsSchema, await colorsResp.json())
+      return parse(LanguageColorsSchema, await colorsResp.json())
     }
     languageColorsPromise = fetchLanguageColors()
   }

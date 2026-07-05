@@ -2,11 +2,10 @@
 import type { CollectionEntry } from "astro:content"
 import { getCollection, render } from "astro:content"
 
-import Post from "~/layouts/Post.astro"
+import Post from "#/layouts/Post.astro"
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = await getCollection("share")
-  // biome-ignore lint/suspicious/noShadow: false positive
   return posts.map((post) => ({
     params: { slug: post.id },
     props: post,

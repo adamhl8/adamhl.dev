@@ -1,6 +1,6 @@
 ---
-import Link from "~/components/Link.astro"
-import { getLanguageColors, getRepoData } from "~/pages/_projects/_RepoCard/utils.ts"
+import Link from "#/components/Link.astro"
+import { getLanguageColors, getRepoData } from "#/pages/_projects/_RepoCard/utils.ts"
 import GitHubIcon from "~icons/tabler/brand-github"
 import GitForkIcon from "~icons/tabler/git-fork"
 import StarIcon from "~icons/tabler/star"
@@ -16,7 +16,6 @@ const languageColors = await getLanguageColors()
 ---
 
 <style define:vars={{ langColor:languageColors[repoData.language]?.color ?? "transparent" }}>
-/* biome-ignore lint/nursery/noUnusedClasses: false positive */
 .lang-dot {
   background-color: var(--langColor);
 }

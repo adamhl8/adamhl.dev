@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry, RenderResult } from "astro:content"
-import * as v from "valibot"
+import { optional, parse, string } from "valibot"
 
-import PageTitle from "~/components/PageTitle.astro"
-import Prose from "~/layouts/_Post/Prose.astro"
-import TableOfContents from "~/layouts/_Post/TableOfContents.astro"
-import ThemedGiscus from "~/layouts/_Post/ThemedGiscus.tsx"
-import Base from "~/layouts/Base.astro"
+import PageTitle from "#/components/PageTitle.astro"
+import Prose from "#/layouts/_Post/Prose.astro"
+import TableOfContents from "#/layouts/_Post/TableOfContents.astro"
+import { ThemedGiscus } from "#/layouts/_Post/ThemedGiscus.tsx"
+import Base from "#/layouts/Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">
@@ -18,7 +18,7 @@ type Props = (BlogProps | TILProps | ShareProps) & {
 const { data, renderedPost } = Astro.props
 const { title, date, description = "" } = data
 const { Content, headings, remarkPluginFrontmatter } = renderedPost
-const readingTime = v.parse(v.optional(v.string()), remarkPluginFrontmatter["readingTime"])
+const readingTime = parse(optional(string()), remarkPluginFrontmatter["readingTime"])
 ---
 
 <Base title={title} description={description}>

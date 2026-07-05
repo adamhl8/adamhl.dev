@@ -6,15 +6,15 @@ import sitemap from "@astrojs/sitemap"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
 import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
-import { defineConfig, fontProviders } from "astro/config"
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code"
 import expressiveCode from "astro-expressive-code"
+import { defineConfig, fontProviders } from "astro/config"
 import rehypeExternalLinks from "rehype-external-links"
 import remarkBreaks from "remark-breaks"
-import Icons from "unplugin-icons/vite"
+import icons from "unplugin-icons/vite"
 
-import { caddyfile } from "./scripts/shiki-langs.ts"
-import { remarkReadingTime } from "./src/utils/remark-reading-time.ts"
+import { remarkReadingTime } from "#/utils/remark-reading-time.ts"
+import { caddyfile } from "#/utils/shiki-langs.ts"
 
 const expressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ["github-dark", "github-light"],
@@ -34,7 +34,7 @@ export default defineConfig({
   output: "static",
   trailingSlash: "never",
   vite: {
-    plugins: [tailwindcss(), Icons({ compiler: "astro" })],
+    plugins: [tailwindcss(), icons({ compiler: "astro" })],
   },
   adapter: node({
     mode: "standalone",

@@ -1,18 +1,19 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import fs from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
-import bun from "bun"
-import * as v from "valibot"
-import * as yaml from "yaml"
 
-const frontmatterSchema = v.object({
-  share: v.optional(v.boolean()),
-  title: v.optional(v.string()),
-  date: v.optional(v.string()),
+import { boolean, object, optional, parse, string } from "valibot"
+import type { InferOutput } from "valibot"
+import { parse as parseYaml, stringify as stringifyYaml } from "yaml"
+
+const frontmatterSchema = object({
+  share: optional(boolean()),
+  title: optional(string()),
+  date: optional(string()),
 })
-type Frontmatter = v.InferOutput<typeof frontmatterSchema>
+type Frontmatter = InferOutput<typeof frontmatterSchema>
 
 const OBSIDIAN_DIR = `${os.homedir()}/Obsidian`
 const SHARE_DIR = "src/content/share"
@@ -27,15 +28,15 @@ interface FileDetails {
   content: string
 }
 
-async function copySharedFile(filePath: string): Promise<FileDetails | undefined> {
+const copySharedFile = async (filePath: string): Promise<FileDetails | undefined> => {
   const content = await fs.readFile(filePath, "utf8")
   const frontmatterMatch = FRONTMATTER_REGEX.exec(content)
 
   const frontmatterGroup = frontmatterMatch?.groups?.["frontmatter"]
   if (!frontmatterGroup) return
 
-  const frontmatterYaml: unknown = yaml.parse(frontmatterGroup)
-  const frontmatter = v.parse(frontmatterSchema, frontmatterYaml)
+  const frontmatterYaml: unknown = parseYaml(frontmatterGroup)
+  const frontmatter = parse(frontmatterSchema, frontmatterYaml)
 
   if (!frontmatter.share) return
 
@@ -51,7 +52,7 @@ async function copySharedFile(filePath: string): Promise<FileDetails | undefined
   }
 }
 
-async function processFile(fileDetails: FileDetails) {
+const processFile = async (fileDetails: FileDetails) => {
   const { destFilePath, content, frontmatter, fileName } = fileDetails
 
   // Remove the title heading
@@ -64,18 +65,19 @@ async function processFile(fileDetails: FileDetails) {
   if (!date) throw new Error("Failed to get date")
   frontmatter.date = date // YYYY-MM-DD format
 
-  const updatedFrontmatter = yaml.stringify(frontmatter)
+  const updatedFrontmatter = stringifyYaml(frontmatter)
   processedContent = processedContent.replace(FRONTMATTER_REGEX, `---\n${updatedFrontmatter}---`)
 
   await fs.writeFile(destFilePath, processedContent, "utf8")
 }
 
-async function main() {
+const main = async () => {
   await fs.rm(SHARE_DIR, { recursive: true, force: true })
   await fs.mkdir(SHARE_DIR)
 
   console.info("Reading vault...")
-  const files = await Array.fromAsync(new bun.Glob("**/*.md").scan({ cwd: OBSIDIAN_DIR, absolute: true }))
+  const relativeFiles = await Array.fromAsync(fs.glob("**/*.md", { cwd: OBSIDIAN_DIR }))
+  const files = relativeFiles.map((file) => path.join(OBSIDIAN_DIR, file))
 
   const fileDetailsPromises: Promise<FileDetails | undefined>[] = []
   for (const file of files) {

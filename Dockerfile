@@ -5,13 +5,14 @@ ENV BUN_OPTIONS="--bun"
 
 FROM base AS deps
 
+# --ignore-scripts: the prepare script runs `just prepare` (lefthook), which doesn't exist in the image
 RUN mkdir -p /temp/dev
-COPY package.json bun.lock /temp/dev/
-RUN cd /temp/dev && bun install --frozen-lockfile
+COPY package.json /temp/dev/
+RUN cd /temp/dev && bun install --ignore-scripts
 
 RUN mkdir -p /temp/prod
-COPY package.json bun.lock /temp/prod/
-RUN cd /temp/prod && bun install --frozen-lockfile --production
+COPY package.json /temp/prod/
+RUN cd /temp/prod && bun install --ignore-scripts --production
 
 FROM base AS build
 
@@ -23,7 +24,7 @@ COPY astro.config.ts ./
 COPY package.json ./
 COPY tsconfig.json ./
 
-RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN bun bundle:prod
+RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN bun ./scripts/process-favicon.ts && bun run astro build
 
 FROM base
 
@@ -35,4 +36,4 @@ ENV PORT=8080
 ENV HOST=0.0.0.0
 EXPOSE 8080
 
-CMD ["bun", "start:prod"]
+CMD ["bun", "./dist/server/entry.mjs"]
