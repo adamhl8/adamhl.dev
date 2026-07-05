@@ -1,19 +1,16 @@
-import { unified } from "@astrojs/markdown-remark"
+import { satteri } from "@astrojs/markdown-satteri"
 import mdx from "@astrojs/mdx"
 import node from "@astrojs/node"
 import react from "@astrojs/react"
 import sitemap from "@astrojs/sitemap"
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
-import sectionize from "@hbsnow/rehype-sectionize"
 import tailwindcss from "@tailwindcss/vite"
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code"
 import expressiveCode from "astro-expressive-code"
 import { defineConfig, fontProviders } from "astro/config"
-import rehypeExternalLinks from "rehype-external-links"
-import remarkBreaks from "remark-breaks"
 import icons from "unplugin-icons/vite"
 
-import { remarkReadingTime } from "#/utils/remark-reading-time.ts"
+import { breaksPlugin, externalLinksPlugin, readingTimePlugin } from "#/utils/satteri-plugins.ts"
 import { caddyfile } from "#/utils/shiki-langs.ts"
 
 const expressiveCodeOptions: AstroExpressiveCodeOptions = {
@@ -48,10 +45,22 @@ export default defineConfig({
     react(),
   ],
   markdown: {
-    processor: unified({
-      remarkPlugins: [remarkBreaks, remarkReadingTime],
-      rehypePlugins: [sectionize, [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }]],
+    processor: satteri({
+      features: {
+        smartPunctuation: {
+          dashes: true,
+          ellipses: false,
+          quotes: false,
+        },
+      },
+      mdastPlugins: [readingTimePlugin, breaksPlugin],
+      hastPlugins: [externalLinksPlugin],
     }),
+  },
+  prefetch: { prefetchAll: true },
+  experimental: {
+    clientPrerender: true,
+    contentIntellisense: true,
   },
   fonts: [
     {

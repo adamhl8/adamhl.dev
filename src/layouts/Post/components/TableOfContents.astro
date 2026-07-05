@@ -37,23 +37,44 @@ const indentClass: Record<number, string> = {
 </nav>
 
 <script>
-const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    const heading = entry.target.querySelector("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
-    const id = heading?.getAttribute("id")
-    const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
+// Group the article's children into (nested) sections by heading depth: each element belongs
+// to every heading currently open above it, so a parent stays lit while a subsection is on screen.
+const article = document.querySelector("article.prose")
+const articleElements = article ? [...article.children] : []
+const idsByElement = new Map<Element, string[]>()
+const openHeadings: { id: string; depth: number }[] = []
+const tagRegex = /^H(?<depth>[1-6])$/v
 
-    if (entry.intersectionRatio > 0) {
-      tocItem?.classList.remove("border-base-300")
-      tocItem?.classList.add("border-secondary")
-    } else {
-      tocItem?.classList.remove("border-secondary")
-      tocItem?.classList.add("border-base-300")
-    }
+for (const element of articleElements) {
+  const match = tagRegex.exec(element.tagName)
+  const depth = match?.groups?.["depth"]
+  const depthNum = depth && Number(depth)
+
+  if (depthNum) {
+    while (openHeadings.length > 0 && (openHeadings.at(-1)?.depth ?? 0) >= depthNum) openHeadings.pop()
+    const id = element.getAttribute("id")
+    if (id) openHeadings.push({ id, depth: depthNum })
+  }
+
+  if (openHeadings.length > 0) idsByElement.set(element, openHeadings.map((item) => item.id))
+}
+
+const visibleElements = new Set<Element>()
+
+const observer = new IntersectionObserver((entries) => {
+  const changedIds = new Set<string>()
+  for (const entry of entries) {
+    if (entry.isIntersecting) visibleElements.add(entry.target)
+    else visibleElements.delete(entry.target)
+    for (const id of idsByElement.get(entry.target) ?? []) changedIds.add(id)
+  }
+  for (const id of changedIds) {
+    const isLit = [...visibleElements].some((element) => idsByElement.get(element)?.includes(id))
+    const tocItem = document.querySelector(`nav li[data-heading-id="${id}"]`)
+    tocItem?.classList.toggle("border-secondary", isLit)
+    tocItem?.classList.toggle("border-base-300", !isLit)
   }
 })
 
-for (const section of document.querySelectorAll("section.heading")) 
-  observer.observe(section)
-
+for (const element of idsByElement.keys()) observer.observe(element)
 </script>

@@ -1,7 +1,7 @@
 import "node_modules/@adamhl8/configs/dist/configs/justfile.base.just"
 
 clean:
-    rm -rf dist .astro
+    rm -rf dist .astro node_modules/.astro
 
 generate-resume:
     resumed render ./src/pages/_resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html

@@ -1,5 +1,5 @@
 ---
-import { marked } from "marked"
+import { markdownToHtml } from "satteri"
 
 import AlertCircleIcon from "~icons/tabler/alert-circle"
 import AlertTriangleIcon from "~icons/tabler/alert-triangle"
@@ -96,7 +96,7 @@ interface Props {
 }
 
 const { type, title } = Astro.props
-const markdownTitle = title && (await marked.parse(title))
+const markdownTitle = title && markdownToHtml(title).html
 
 const callout = callouts[type]
 ---
@@ -106,5 +106,5 @@ const callout = callouts[type]
     <callout.icon class:list={["size-6", callout.iconColor]} aria-hidden="true" />
     <div class:list={["font-bold prose-p:my-0", { capitalize: !title }]} set:html={markdownTitle ?? type} />
   </div>
-  <div class="[&>:first-child]:mt-0 [&>:last-child]:mb-0"><slot /></div>
+  <div class="*:first:mt-0 *:last:mb-0"><slot /></div>
 </div>
