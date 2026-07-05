@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/adamhl8/adamhl.dev/compare/v1.0.1..v1.1.0) - 2026-07-05
+
+### ✨ Improvements
+
+- use satteri ([b2fccbe](https://github.com/adamhl8/adamhl.dev/commit/b2fccbe38a713a1f7df13aca7541b4f7a627a516) by @adamhl8)
+
+- use arktype ([0c248d3](https://github.com/adamhl8/adamhl.dev/commit/0c248d304101c877d98d408780cceec1e6548719) by @adamhl8)
+
+### 🚜 Refactor
+
+- reorganize modules ([974e936](https://github.com/adamhl8/adamhl.dev/commit/974e936c5d0f8029f7887ce756a1c9e5d835f0ba) by @adamhl8)
+
 ## [1.0.1](https://github.com/adamhl8/adamhl.dev/compare/v1.0.0..v1.0.1) - 2026-07-05
 
 ### 🚜 Refactor
