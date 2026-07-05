@@ -1,39 +1,36 @@
-FROM oven/bun:latest AS base
+FROM ghcr.io/nubjs/nub:latest AS base
+LABEL org.opencontainers.image.source=https://github.com/adamhl8/adamhl.dev
 WORKDIR /app
 ENV NODE_ENV="production"
-ENV BUN_OPTIONS="--bun"
-
-FROM base AS deps
-
-# --ignore-scripts: the prepare script runs `just prepare` (lefthook), which doesn't exist in the image
-RUN mkdir -p /temp/dev
-COPY package.json /temp/dev/
-RUN cd /temp/dev && bun install --ignore-scripts
-
-RUN mkdir -p /temp/prod
-COPY package.json /temp/prod/
-RUN cd /temp/prod && bun install --ignore-scripts --production
 
 FROM base AS build
 
-COPY --from=deps /temp/dev/node_modules ./node_modules
-COPY public ./public
+COPY --from=ghcr.io/casey/just:latest /just /usr/local/bin/
+
+COPY package.json lock.yaml ./
+
+RUN nub install --frozen-lockfile --ignore-scripts
+
+COPY --chown=node:node public ./public
 COPY scripts ./scripts
 COPY src ./src
 COPY astro.config.ts ./
-COPY package.json ./
+COPY justfile ./
 COPY tsconfig.json ./
 
-RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN bun ./scripts/process-favicon.ts && bun run astro build
+RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN \
+  just build-site
 
 FROM base
 
-COPY --from=deps /temp/prod/node_modules ./node_modules
+COPY package.json lock.yaml ./
+
+RUN nub install --frozen-lockfile --ignore-scripts --prod
+
 COPY --from=build /app/dist ./dist
-COPY package.json ./
 
 ENV PORT=8080
 ENV HOST=0.0.0.0
 EXPOSE 8080
 
-CMD ["bun", "./dist/server/entry.mjs"]
+CMD ["nub", "./dist/server/entry.mjs"]

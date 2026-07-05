@@ -9,7 +9,9 @@ generate-resume:
 lint: astro-sync _lint
     astro check
 
-build: clean generate-resume _build
+build: clean generate-resume _build build-site
+
+build-site:
     nub ./scripts/process-favicon.ts
     astro build
 
