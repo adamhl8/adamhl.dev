@@ -4,7 +4,7 @@ clean:
     rm -rf dist .astro
 
 generate-resume:
-    resumed render ./src/pages/_resume/resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html
+    resumed render ./src/pages/_resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html
 
 lint: astro-sync _lint
     astro check

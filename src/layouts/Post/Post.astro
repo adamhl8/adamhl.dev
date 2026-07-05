@@ -3,10 +3,10 @@ import type { CollectionEntry, RenderResult } from "astro:content"
 import { optional, parse, string } from "valibot"
 
 import PageTitle from "#/components/PageTitle.astro"
-import Prose from "#/layouts/_Post/Prose.astro"
-import TableOfContents from "#/layouts/_Post/TableOfContents.astro"
-import { ThemedGiscus } from "#/layouts/_Post/ThemedGiscus.tsx"
-import Base from "#/layouts/Base.astro"
+import Prose from "#/components/Prose.astro"
+import TableOfContents from "#/layouts/Post/components/TableOfContents.astro"
+import { ThemedGiscus } from "#/layouts/Post/components/ThemedGiscus.tsx"
+import Base from "#/layouts/Base/Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">
