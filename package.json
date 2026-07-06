@@ -2,6 +2,7 @@
   "name": "adamhl.dev",
   "version": "1.1.0",
   "private": true,
+  "description": "My personal website/blog.",
   "type": "module",
   "imports": {
     "#/*": "./src/*"
@@ -17,7 +18,7 @@
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.32.0",
+    "@adamhl8/configs": "^0.36.0",
     "@astrojs/check": "0.9.9",
     "@astrojs/markdown-satteri": "0.3.3",
     "@astrojs/mdx": "^7.0.2",
@@ -35,7 +36,7 @@
     "@types/react-dom": "^19.2.3",
     "arktype": "^2.2.2",
     "astro-expressive-code": "^0.44.0",
-    "daisyui": "^5.6.13",
+    "daisyui": "^5.6.14",
     "jsonresume-theme-react-tailwind": "^1.3.2",
     "knip": "^6.24.0",
     "markdown-toc": "^1.2.0",
