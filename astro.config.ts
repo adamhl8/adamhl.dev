@@ -70,33 +70,10 @@ export default defineConfig({
       weights: ["200 800"],
     },
     {
-      provider: fontProviders.local(),
+      provider: fontProviders.npm(),
       name: "Iosevka",
       cssVariable: "--font-iosevka",
-      options: {
-        variants: [
-          {
-            src: ["./src/fonts/Iosevka-Regular.ttf"],
-            style: "normal",
-            weight: "400",
-          },
-          {
-            src: ["./src/fonts/Iosevka-Bold.ttf"],
-            style: "normal",
-            weight: "700",
-          },
-          {
-            src: ["./src/fonts/Iosevka-Italic.ttf"],
-            style: "italic",
-            weight: "400",
-          },
-          {
-            src: ["./src/fonts/Iosevka-BoldItalic.ttf"],
-            style: "italic",
-            weight: "700",
-          },
-        ],
-      },
+      options: { package: "@adamhl8/font-iosevka" },
     },
   ],
 })

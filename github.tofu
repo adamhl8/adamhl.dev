@@ -15,7 +15,6 @@ module "github" {
   }
   additional_secrets = ["WATCHTOWER_API_TOKEN"]
   repo_settings = {
-    visibility   = "public"
-    homepage_url = "https://adamhl.dev"
+    visibility = "public"
   }
 }

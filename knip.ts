@@ -9,6 +9,7 @@ const config = knipConfig(
       "jsonresume-theme-react-tailwind",
       "resumed",
       "@adamhl8/eslint-plugin-clean-modules",
+      "@adamhl8/font-iosevka",
     ],
     ignoreUnresolved: ["~icons/.+"],
   },
