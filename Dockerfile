@@ -23,7 +23,7 @@ RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN \
 
 FROM base
 
-RUN bun install --ignore-scripts --prod
+RUN bun install --ignore-scripts --production
 
 COPY --from=build /app/dist ./dist
 
