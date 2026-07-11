@@ -1,4 +1,4 @@
-FROM ghcr.io/nubjs/nub:latest AS base
+FROM oven/bun:canary AS base
 LABEL org.opencontainers.image.source=https://github.com/adamhl8/adamhl.dev
 WORKDIR /app
 ENV NODE_ENV="production"
@@ -7,11 +7,11 @@ FROM base AS build
 
 COPY --from=ghcr.io/casey/just:latest /just /usr/local/bin/
 
-COPY package.json lock.yaml ./
+COPY package.json bun.lock ./
 
-RUN nub install --frozen-lockfile --ignore-scripts
+RUN bun install --ignore-scripts
 
-COPY --chown=node:node public ./public
+COPY public ./public
 COPY scripts ./scripts
 COPY src ./src
 COPY astro.config.ts ./
@@ -23,9 +23,9 @@ RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN \
 
 FROM base
 
-COPY package.json lock.yaml ./
+COPY package.json bun.lock ./
 
-RUN nub install --frozen-lockfile --ignore-scripts --prod
+RUN bun install --ignore-scripts --prod
 
 COPY --from=build /app/dist ./dist
 
@@ -33,4 +33,4 @@ ENV PORT=8080
 ENV HOST=0.0.0.0
 EXPOSE 8080
 
-CMD ["nub", "./dist/server/entry.mjs"]
+CMD ["bun", "./dist/server/entry.mjs"]

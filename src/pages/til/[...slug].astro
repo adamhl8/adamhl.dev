@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 import { getCollection, render } from "astro:content"
 
-import Post from "#/layouts/Post/Post.astro"
+import Post from "#layouts/Post/Post.astro"
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("til")

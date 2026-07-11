@@ -10,8 +10,8 @@ import expressiveCode from "astro-expressive-code"
 import { defineConfig, fontProviders } from "astro/config"
 import icons from "unplugin-icons/vite"
 
-import { breaksPlugin, externalLinksPlugin, readingTimePlugin } from "#/utils/satteri-plugins.ts"
-import { caddyfile } from "#/utils/shiki-langs.ts"
+import { breaksPlugin, externalLinksPlugin, readingTimePlugin } from "#utils/satteri-plugins.ts"
+import { caddyfile } from "#utils/shiki-langs.ts"
 
 const expressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ["github-dark", "github-light"],

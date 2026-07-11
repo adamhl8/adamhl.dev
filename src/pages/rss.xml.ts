@@ -2,7 +2,7 @@ import rss from "@astrojs/rss"
 import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
 
-import { SITE_DESCRIPTION, SITE_TITLE } from "#/consts.ts"
+import { SITE_DESCRIPTION, SITE_TITLE } from "#consts.ts"
 
 export const GET: APIRoute = async (context) => {
   const { site } = context

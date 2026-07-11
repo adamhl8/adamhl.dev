@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro"
 
-import { SITEMAP_FILE } from "#/consts.ts"
+import { SITEMAP_FILE } from "#consts.ts"
 
 const getRobotsTxt = (sitemapURL: URL) => `\
 User-agent: *

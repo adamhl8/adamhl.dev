@@ -2,11 +2,11 @@
 import type { CollectionEntry, RenderResult } from "astro:content"
 import { type } from "arktype"
 
-import PageTitle from "#/components/PageTitle.astro"
-import Prose from "#/components/Prose.astro"
-import TableOfContents from "#/layouts/Post/components/TableOfContents.astro"
-import { ThemedGiscus } from "#/layouts/Post/components/ThemedGiscus.tsx"
-import Base from "#/layouts/Base/Base.astro"
+import PageTitle from "#components/PageTitle.astro"
+import Prose from "#components/Prose.astro"
+import TableOfContents from "#layouts/Post/components/TableOfContents.astro"
+import { ThemedGiscus } from "#layouts/Post/components/ThemedGiscus.tsx"
+import Base from "#layouts/Base/Base.astro"
 
 type BlogProps = CollectionEntry<"blog">
 type TILProps = CollectionEntry<"til">

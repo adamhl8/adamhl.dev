@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import fs from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
 
 import { type } from "arktype"
-import { parse as parseYaml, stringify as stringifyYaml } from "yaml"
+import { YAML } from "bun"
 
 // "+": "delete" drops unknown frontmatter keys so they aren't re-serialized into the shared file
 const frontmatterSchema = type({
@@ -36,7 +36,7 @@ const copySharedFile = async (filePath: string): Promise<FileDetails | undefined
   const frontmatterGroup = frontmatterMatch?.groups?.["frontmatter"]
   if (!frontmatterGroup) return
 
-  const frontmatterYaml: unknown = parseYaml(frontmatterGroup)
+  const frontmatterYaml = YAML.parse(frontmatterGroup)
   const frontmatter = frontmatterSchema.assert(frontmatterYaml)
 
   if (!frontmatter.share) return
@@ -66,7 +66,7 @@ const processFile = async (fileDetails: FileDetails) => {
   if (!date) throw new Error("Failed to get date")
   frontmatter.date = date // YYYY-MM-DD format
 
-  const updatedFrontmatter = stringifyYaml(frontmatter)
+  const updatedFrontmatter = YAML.stringify(frontmatter)
   processedContent = processedContent.replace(FRONTMATTER_REGEX, `---\n${updatedFrontmatter}---`)
 
   await fs.writeFile(destFilePath, processedContent, "utf8")

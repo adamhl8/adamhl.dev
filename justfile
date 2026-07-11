@@ -7,12 +7,12 @@ generate-resume:
     resumed render ./src/pages/_resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html
 
 lint: astro-sync _lint
-    astro check
+    # TODO: run `astro check` once working with typescript 7
 
 build: clean generate-resume _build build-site
 
 build-site:
-    nub ./scripts/process-favicon.ts
+    bun ./scripts/process-favicon.ts
     astro build
 
 astro-sync:
@@ -25,4 +25,4 @@ preview:
     astro preview
 
 obsidian-share:
-    nub ./scripts/obsidian-share.ts
+    bun ./scripts/obsidian-share.ts
