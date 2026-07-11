@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/adamhl8/adamhl.dev/compare/v1.2.1..v1.2.2) - 2026-07-11
+
+### ⚙️ Miscellaneous Tasks
+
+- fix bun install in dockerfile ([6c969e3](https://github.com/adamhl8/adamhl.dev/commit/6c969e321e5d50412bdd9260755ba4b2b7c39157) by @adamhl8)
+
 ## [1.2.1](https://github.com/adamhl8/adamhl.dev/compare/v1.2.0..v1.2.1) - 2026-07-11
 
 ### ⚙️ Miscellaneous Tasks
