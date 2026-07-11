@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/adamhl8/adamhl.dev/compare/v1.2.0..v1.2.1) - 2026-07-11
+
+### ⚙️ Miscellaneous Tasks
+
+- provide GH_TOKEN for ci workflow ([36cbbb0](https://github.com/adamhl8/adamhl.dev/commit/36cbbb07d7f4f5f724abfa6f1ca15eddff22212b) by @adamhl8)
+
 ## [1.2.0](https://github.com/adamhl8/adamhl.dev/compare/v1.1.0..v1.2.0) - 2026-07-11
 
 ### ✨ Improvements
