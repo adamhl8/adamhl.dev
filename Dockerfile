@@ -3,11 +3,11 @@ LABEL org.opencontainers.image.source=https://github.com/adamhl8/adamhl.dev
 WORKDIR /app
 ENV NODE_ENV="production"
 
+COPY package.json bun.lock bunfig.toml ./
+
 FROM base AS build
 
 COPY --from=ghcr.io/casey/just:latest /just /usr/local/bin/
-
-COPY package.json bun.lock ./
 
 RUN bun install --ignore-scripts
 
@@ -22,8 +22,6 @@ RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN \
   just build-site
 
 FROM base
-
-COPY package.json bun.lock ./
 
 RUN bun install --ignore-scripts --prod
 
