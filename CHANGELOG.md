@@ -1,3 +1,15 @@
+## [1.2.0](https://github.com/adamhl8/adamhl.dev/compare/v1.1.0..v1.2.0) - 2026-07-11
+
+### ✨ Improvements
+
+- use @adamhl8/font-iosevka ([5382cab](https://github.com/adamhl8/adamhl.dev/commit/5382cab3c61907da4f961ffabf4c6b9b92c7a42e) by @adamhl8)
+
+### ⚙️ Miscellaneous Tasks
+
+- update tooling ([1e89354](https://github.com/adamhl8/adamhl.dev/commit/1e89354caf60c711d0f793f7c358c2b15a814984) by @adamhl8)
+
+- add tofu config ([6806b00](https://github.com/adamhl8/adamhl.dev/commit/6806b00f8fd18b91fd972467e163c92e03a81145) by @adamhl8)
+
 ## [1.1.0](https://github.com/adamhl8/adamhl.dev/compare/v1.0.1..v1.1.0) - 2026-07-05
 
 ### ✨ Improvements
