@@ -5,7 +5,7 @@ import os from "node:os"
 import path from "node:path"
 
 import { type } from "arktype"
-import { YAML } from "bun"
+import bun, { Glob, YAML } from "bun"
 
 // "+": "delete" drops unknown frontmatter keys so they aren't re-serialized into the shared file
 const frontmatterSchema = type({
@@ -30,7 +30,7 @@ interface FileDetails {
 }
 
 const copySharedFile = async (filePath: string): Promise<FileDetails | undefined> => {
-  const content = await fs.readFile(filePath, "utf8")
+  const content = await bun.file(filePath).text()
   const frontmatterMatch = FRONTMATTER_REGEX.exec(content)
 
   const frontmatterGroup = frontmatterMatch?.groups?.["frontmatter"]
@@ -43,7 +43,7 @@ const copySharedFile = async (filePath: string): Promise<FileDetails | undefined
 
   const fileName = path.basename(filePath)
   const destFilePath = path.join(SHARE_DIR, fileName)
-  await fs.copyFile(filePath, destFilePath)
+  await bun.write(destFilePath, bun.file(filePath))
 
   return {
     fileName,
@@ -69,7 +69,7 @@ const processFile = async (fileDetails: FileDetails) => {
   const updatedFrontmatter = YAML.stringify(frontmatter)
   processedContent = processedContent.replace(FRONTMATTER_REGEX, `---\n${updatedFrontmatter}---`)
 
-  await fs.writeFile(destFilePath, processedContent, "utf8")
+  await bun.write(destFilePath, processedContent)
 }
 
 const main = async () => {
@@ -77,7 +77,7 @@ const main = async () => {
   await fs.mkdir(SHARE_DIR)
 
   console.info("Reading vault...")
-  const relativeFiles = await Array.fromAsync(fs.glob("**/*.md", { cwd: OBSIDIAN_DIR }))
+  const relativeFiles = await Array.fromAsync(new Glob("**/*.md").scan({ cwd: OBSIDIAN_DIR }))
   const files = relativeFiles.map((file) => path.join(OBSIDIAN_DIR, file))
 
   const fileDetailsPromises: Promise<FileDetails | undefined>[] = []

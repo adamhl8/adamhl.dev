@@ -4,7 +4,7 @@ clean:
     rm -rf dist .astro node_modules/.astro
 
 generate-resume:
-    resumed render ./src/pages/_resume.json -t jsonresume-theme-react-tailwind -o ./src/pages/resume.html
+    bun resumed render ./src/pages/_resume.json --theme jsonresume-theme-react-tailwind --output ./src/pages/resume.html
 
 lint: astro-sync _lint
     # TODO: run `astro check` once working with typescript 7
@@ -13,16 +13,16 @@ build: clean generate-resume _build build-site
 
 build-site:
     bun ./scripts/process-favicon.ts
-    astro build
+    bun astro build
 
 astro-sync:
-    astro sync
+    bun astro sync
 
 dev:
-    astro dev
+    bun astro dev
 
 preview:
-    astro preview
+    bun astro preview
 
 obsidian-share:
     bun ./scripts/obsidian-share.ts

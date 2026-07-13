@@ -1,4 +1,4 @@
-FROM oven/bun:canary AS base
+FROM oven/bun:latest AS base
 LABEL org.opencontainers.image.source=https://github.com/adamhl8/adamhl.dev
 WORKDIR /app
 ENV NODE_ENV="production"
