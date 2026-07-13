@@ -1,3 +1,9 @@
+## [1.2.3](https://github.com/adamhl8/adamhl.dev/compare/v1.2.2..v1.2.3) - 2026-07-13
+
+### ⚙️ Miscellaneous Tasks
+
+- _(deps)_ update dependencies ([38077e6](https://github.com/adamhl8/adamhl.dev/commit/38077e6a4b091c6b1f4cbfb43bab8ad25cd6eee3) by @adamhl8)
+
 ## [1.2.2](https://github.com/adamhl8/adamhl.dev/compare/v1.2.1..v1.2.2) - 2026-07-11
 
 ### ⚙️ Miscellaneous Tasks
