@@ -8,7 +8,7 @@ const resolveTheme = (): GiscusTheme => {
   return currentTheme === "light" ? "light" : "dark_dimmed"
 }
 
-export const ThemedGiscus = () => {
+export function ThemedGiscus() {
   const [theme, setTheme] = useState<GiscusTheme>(resolveTheme())
 
   useEffect(() => {
