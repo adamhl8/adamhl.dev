@@ -42,7 +42,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => !new URL(page).pathname.startsWith("/share"),
     }),
-    react(),
+    react({ compiler: true }),
   ],
   markdown: {
     processor: satteri({
@@ -53,6 +53,7 @@ export default defineConfig({
           quotes: false,
         },
       },
+      // `readingTimePlugin` must run before `breaksPlugin` because `breaksPlugin` removes the newlines between words.
       mdastPlugins: [readingTimePlugin, breaksPlugin],
       hastPlugins: [externalLinksPlugin],
     }),
