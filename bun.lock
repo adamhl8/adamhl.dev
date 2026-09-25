@@ -12,7 +12,7 @@
         "react-dom": "^19.3.0",
       },
       "devDependencies": {
-        "@adamhl8/configs": "^2.8.0",
+        "@adamhl8/configs": "^2.8.1",
         "@adamhl8/font-iosevka": "^0.1.5",
         "@astrojs/check": "0.9.10",
         "@astrojs/markdown-satteri": "0.4.2",
@@ -53,7 +53,7 @@
     },
   },
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@2.8.0", "", { "dependencies": { "@adamhl8/eslint-plugin-clean-modules": "^0.1.5", "@commitlint/config-conventional": "^21.2.3", "@commitlint/types": "^21.2.3", "arkenv": "^0.12.3", "arktype": "^2.2.3", "es-toolkit": "^1.52.0", "ts-explicit-errors": "^4.1.3", "type-fest": "^5.10.0" }, "peerDependencies": { "@arethetypeswrong/core": ">=0.18", "@commitlint/cli": ">=21", "knip": ">=6", "markdown-toc": ">=1", "oxfmt": ">=0.50", "oxlint": ">=1", "oxlint-tsgolint": ">=0.24", "publint": ">=0.3", "release-it": ">=21", "release-it-git-cliff": ">=0.1", "tsdown": ">=0.20", "typescript": "^7.0.0" }, "optionalPeers": ["@arethetypeswrong/core", "publint", "release-it", "release-it-git-cliff", "tsdown"], "bin": { "adamhl8-bunfig": "dist/adamhl8-bunfig/index", "adamhl8-gitignore": "dist/adamhl8-gitignore/index" } }, "sha512-5Ln0XM7PUG83atfjLmFrwWhrbe7wrXTiqN+Zf3o101q47PKkODjOYqNYw6YvIIvx5VLxBJ4GiEgBThH6jpvEiQ=="],
+    "@adamhl8/configs": ["@adamhl8/configs@2.8.1", "", { "dependencies": { "@adamhl8/eslint-plugin-clean-modules": "^0.1.5", "@commitlint/config-conventional": "^21.2.3", "@commitlint/types": "^21.2.3", "arkenv": "^0.12.3", "arktype": "^2.2.5", "es-toolkit": "^1.52.0", "ts-explicit-errors": "^4.1.3", "type-fest": "^5.10.0" }, "peerDependencies": { "@arethetypeswrong/core": ">=0.18", "@commitlint/cli": ">=21", "knip": ">=6", "markdown-toc": ">=1", "oxfmt": ">=0.50", "oxlint": ">=1", "oxlint-tsgolint": ">=0.24", "publint": ">=0.3", "release-it": ">=21", "release-it-git-cliff": ">=0.1", "tsdown": ">=0.20", "typescript": "^7.0.0" }, "optionalPeers": ["@arethetypeswrong/core", "publint", "release-it", "release-it-git-cliff", "tsdown"], "bin": { "adamhl8-bunfig": "dist/adamhl8-bunfig/index", "adamhl8-gitignore": "dist/adamhl8-gitignore/index" } }, "sha512-JTUc8e4Uo/klq+3xRpcereh1SyykViyrzqmqSV5bWrdML1PB92FlSC8H1McAoXc603ESEcFcpAbZQNIlTuX3JA=="],
 
     "@adamhl8/eslint-plugin-clean-modules": ["@adamhl8/eslint-plugin-clean-modules@0.1.5", "", { "dependencies": { "@typescript-eslint/types": "^8.63.0", "@typescript-eslint/utils": "^8.63.0" } }, "sha512-0Icl5jzQobbjwikMCOpZENa6caNrRNBRaIt/4Y0tISnZGXN8iCB30OCynOho2TbSkC/xfnUqg3p2v6mb+cMc9g=="],
 
@@ -1801,15 +1801,15 @@
 
     "vscode-json-languageservice": ["vscode-json-languageservice@4.1.8", "", { "dependencies": { "jsonc-parser": "^3.0.0", "vscode-languageserver-textdocument": "^1.0.1", "vscode-languageserver-types": "^3.16.0", "vscode-nls": "^5.0.0", "vscode-uri": "^3.0.2" } }, "sha512-0vSpg6Xd9hfV+eZAaYN63xVVMOTmJ4GgHxXnkLCh+9RsQBkWKIghzLhW2B9ebfG+LQQg8uLtsQ2aUKjTgE+QOg=="],
 
-    "vscode-jsonrpc": ["vscode-jsonrpc@9.0.2", "", {}, "sha512-SbQSV9yRemARxeXw6LU5sS6Zq0e9/DgCCX5yelH263ZQWukbTk8EF8fjTrr1dziasf4GwlJbvTwFnTrnQFWZXQ=="],
+    "vscode-jsonrpc": ["vscode-jsonrpc@9.0.3", "", {}, "sha512-qETYf9PCl1lVfwR+oBmMfc4vP2nqLNA35ABxorw3j06+xlKRgDVxbLgKm4Y/xPL0YWdeDjLoI4ImICIT3nB0zQ=="],
 
     "vscode-languageserver": ["vscode-languageserver@9.0.1", "", { "dependencies": { "vscode-languageserver-protocol": "3.17.5" }, "bin": { "installServerIntoExtension": "bin/installServerIntoExtension" } }, "sha512-woByF3PDpkHFUreUa7Hos7+pUWdeWMXRd26+ZX2A8cFx6v/JPTtd4/uN0/jB6XQHYaOlHbio03NTHCqrgG5n7g=="],
 
-    "vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.18.3", "", { "dependencies": { "vscode-jsonrpc": "9.0.2", "vscode-languageserver-types": "3.18.3" } }, "sha512-DF49+WeV5py4zO5hhobp60jjsDSK0lAqA0OuKBLBvp423HPWQcCbhZz3JgyfIewsEz2f8U+X75xNIFHdiXZm2w=="],
+    "vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.18.4", "", { "dependencies": { "vscode-jsonrpc": "9.0.3", "vscode-languageserver-types": "3.18.4" } }, "sha512-CCXbyr99dafRJzJH/0Ryk7ly5T8XPmSR0//OuF2w4m+9JiOin7zcAT5iET8GRE7Z9taFBejb3GbM0a0mbjdbrg=="],
 
     "vscode-languageserver-textdocument": ["vscode-languageserver-textdocument@1.0.15", "", {}, "sha512-Gsfr9S8LU3S6885cS+NaleasJ0n3V5y/SOTqHCifQiXWFw3G9w9/YItDfwHrlCz+dSZWWZ8ilYVMcJe7Sz7Sxw=="],
 
-    "vscode-languageserver-types": ["vscode-languageserver-types@3.18.3", "", {}, "sha512-XIlzJ7Qp/jzSI1ds7/FwPAWrPeTZA7pAtlW4hdJ1J6xXWJL6dR9QYnDhJOdLzdKhUQ5Mm6mvUMw+3DcOQQasPw=="],
+    "vscode-languageserver-types": ["vscode-languageserver-types@3.18.4", "", {}, "sha512-nQsacoiijvl0fRf2q28uFDrAVwRhdCa3QveiF7/CX0r18mLR5FU/1WskSsCKOjmEbtteKUnY8x8Yzxop+k0zwg=="],
 
     "vscode-nls": ["vscode-nls@5.2.0", "", {}, "sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng=="],
 

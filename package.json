@@ -29,7 +29,7 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^2.8.0",
+    "@adamhl8/configs": "^2.8.1",
     "@adamhl8/font-iosevka": "^0.1.5",
     "@astrojs/check": "0.9.10",
     "@astrojs/markdown-satteri": "0.4.2",
