@@ -1,6 +1,7 @@
 ---
-import Link from "#components/Link.astro"
 import ExternalLinkIcon from "~icons/tabler/external-link"
+
+import Link from "#components/Link.astro"
 
 const navLinks = [
   {
@@ -32,18 +33,18 @@ const cleanPathname = pathname === "/" ? pathname : pathname.replace(/\/$/v, "")
 <nav>
   <menu class="space-y-2">
     {navLinks.map((link) => {
-        const isActive = link.href === cleanPathname
-        return (
-          <li>
-            {link.label === "Resume" ? (
-              <Link href={link.href} title={link.label} class="flex items-center space-x-1" target="_blank">
-                <ExternalLinkIcon class="size-3.5 opacity-50" />
-              </Link>
-            ) : (
-              <Link href={link.href} title={link.label} titleClass={isActive ? "font-bold" : ""} />
-            )}
-          </li>
-        )
-      })}
+      const isActive = link.href === cleanPathname
+      return (
+        <li>
+          {link.label === "Resume" ? (
+            <Link href={link.href} title={link.label} class="flex items-center space-x-1" target="_blank">
+              <ExternalLinkIcon class="size-3.5 opacity-50" />
+            </Link>
+          ) : (
+            <Link href={link.href} title={link.label} titleClass={isActive ? "font-bold" : ""} />
+          )}
+        </li>
+      )
+    })}
   </menu>
 </nav>

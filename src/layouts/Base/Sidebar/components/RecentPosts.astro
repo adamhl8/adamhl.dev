@@ -19,11 +19,11 @@ const recentPosts = posts.slice(0, 3)
 
   <ul class="space-y-4">
     {recentPosts.map((post) => (
-        <li>
-          <Link href={`/${collectionName}/${post.id}`} title={post.data.title} titleClass="font-bold text-primary">
-            <FormattedDate class="text-sm" date={post.data.date} />
-          </Link>
-        </li>
-      ))}
+      <li>
+        <Link href={`/${collectionName}/${post.id}`} title={post.data.title} titleClass="font-bold text-primary">
+          <FormattedDate class="text-sm" date={post.data.date} />
+        </Link>
+      </li>
+    ))}
   </ul>
 </section>

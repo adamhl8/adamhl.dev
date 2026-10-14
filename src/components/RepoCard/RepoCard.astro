@@ -1,9 +1,10 @@
 ---
-import Link from "#components/Link.astro"
-import { getLanguageColors, getRepoData } from "#components/RepoCard/utils.ts"
 import GitHubIcon from "~icons/tabler/brand-github"
 import GitForkIcon from "~icons/tabler/git-fork"
 import StarIcon from "~icons/tabler/star"
+
+import Link from "#components/Link.astro"
+import { getLanguageColors, getRepoData } from "#components/RepoCard/utils.ts"
 
 interface Props {
   repo: string
@@ -15,17 +16,19 @@ const repoData = await getRepoData(repo)
 const languageColors = await getLanguageColors()
 ---
 
-<style define:vars={{ langColor:languageColors[repoData.language]?.color ?? "transparent" }}>
-.lang-dot {
-  background-color: var(--langColor);
-}
+<style define:vars={{ langColor: languageColors[repoData.language]?.color ?? "transparent" }}>
+  .lang-dot {
+    background-color: var(--langColor);
+  }
 </style>
 
-<div class="flex flex-col justify-between space-y-3 rounded-md border border-base-300 bg-base-200 p-4">
+<div class="border-base-300 bg-base-200 flex flex-col justify-between space-y-3 rounded-md border p-4">
   <hgroup class="flex flex-col space-y-2">
     <header class="flex items-center space-x-2">
       <GitHubIcon class="size-5 shrink-0 opacity-75" />
-      <Link class="text-secondary" href={repoData.html_url}>{repoData.name}</Link>
+      <Link class="text-secondary" href={repoData.html_url}>
+        {repoData.name}
+      </Link>
     </header>
     {repoData.description ? <p class="text-sm">{repoData.description}</p> : undefined}
   </hgroup>
@@ -38,17 +41,17 @@ const languageColors = await getLanguageColors()
 
     <div class="flex items-center space-x-4">
       {repoData.stargazers_count ? (
-          <div class="flex items-center space-x-1">
-            <StarIcon class="size-4 opacity-75" />
-            <span class="text-sm">{repoData.stargazers_count}</span>
-          </div>
-        ) : undefined}
+        <div class="flex items-center space-x-1">
+          <StarIcon class="size-4 opacity-75" />
+          <span class="text-sm">{repoData.stargazers_count}</span>
+        </div>
+      ) : undefined}
       {repoData.forks ? (
-          <div class="flex items-center space-x-1">
-            <GitForkIcon name="tabler:git-fork" class="size-4 opacity-75" />
-            <span class="text-sm">{repoData.forks}</span>
-          </div>
-        ) : undefined}
+        <div class="flex items-center space-x-1">
+          <GitForkIcon name="tabler:git-fork" class="size-4 opacity-75" />
+          <span class="text-sm">{repoData.forks}</span>
+        </div>
+      ) : undefined}
     </div>
   </aside>
 </div>

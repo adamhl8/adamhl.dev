@@ -14,14 +14,10 @@ const posts = await getSortedCollection(collectionName)
 
 <ul class="space-y-8">
   {posts.map((post) => (
-      <li class="flex flex-col">
-        <Link
-          href={`/${collectionName}/${post.id}`}
-          title={post.data.title}
-          titleClass="text-xl font-bold text-primary"
-        >
-          <FormattedDate class="text-sm" date={post.data.date} />
-        </Link>
-      </li>
-    ))}
+    <li class="flex flex-col">
+      <Link href={`/${collectionName}/${post.id}`} title={post.data.title} titleClass="text-xl font-bold text-primary">
+        <FormattedDate class="text-sm" date={post.data.date} />
+      </Link>
+    </li>
+  ))}
 </ul>

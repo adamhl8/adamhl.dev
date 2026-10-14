@@ -226,8 +226,9 @@ async function main() {
 }
 
 /**
- * These are packages that have a large number of versions because of some automation (e.g. GitHub Action), where each "new" version was identical to the last.
- * For example, 'electron-remote-control' was publishing a version every hour for a long time due to a configuration mistake.
+ * These are packages that have a large number of versions because of some automation (e.g. GitHub Action), where each
+ * "new" version was identical to the last. For example, 'electron-remote-control' was publishing a version every hour
+ * for a long time due to a configuration mistake.
  */
 const KNOWN_BAD_PACKAGES = [
   "@mahdiarjangi/phetch-cli",
@@ -247,9 +248,7 @@ const KNOWN_BAD_PACKAGES = [
   "botfather",
 ]
 
-/**
- * Fetches every single package ID from the npm replicate API and writes the data to a file.
- */
+/** Fetches every single package ID from the npm replicate API and writes the data to a file. */
 async function fetchPackageIds(): Promise<string[]> {
   const packageIdsFile = Bun.file("package-ids.json")
   // return the existing package IDs if they exist
@@ -301,9 +300,7 @@ interface PackageData {
   versions: string[]
 }
 
-/**
- * Fetches all package metadata from the npm registry API and writes the data to a file.
- */
+/** Fetches all package metadata from the npm registry API and writes the data to a file. */
 async function fetchAllPackageData(packageIds: string[]): Promise<PackageData[]> {
   /** The number of packages to fetch at once */
   const BATCH_SIZE = 50
@@ -367,8 +364,8 @@ interface NormalizedPackageData {
 }
 
 /**
- * Transforms package data so that it includes the largest number from all of its versions.
- * In each `versions` array, only valid semver versions are kept.
+ * Transforms package data so that it includes the largest number from all of its versions. In each `versions` array,
+ * only valid semver versions are kept.
  */
 function normalizePackageData(packageData: PackageData[]): NormalizedPackageData[] {
   console.log("Getting normalized package data...")
@@ -401,9 +398,8 @@ await main()
 /* UTILS */
 
 /**
- *
- * Splits a valid semver string into an array of three number: `[major, minor, patch]`
- * If the string is not a valid semver, `undefined` is returned.
+ * Splits a valid semver string into an array of three number: `[major, minor, patch]` If the string is not a valid
+ * semver, `undefined` is returned.
  */
 function splitSemver(version: string): SemverNumbers | undefined {
   const versionParts = version
@@ -416,16 +412,15 @@ function splitSemver(version: string): SemverNumbers | undefined {
   return [major, minor, patch]
 }
 
-/**
- * Calls `console.error` with the message and appends the message to a `error.log` file.
- */
+/** Calls `console.error` with the message and appends the message to a `error.log` file. */
 function logError(message: string) {
   console.error(message)
   fs.appendFile("error.log", message)
 }
 
 /**
- * Fetches the url and returns the JSON response object. Calls {@link logError} and returns `undefined` instead of throwing if an error occurs.
+ * Fetches the url and returns the JSON response object. Calls {@link logError} and returns `undefined` instead of
+ * throwing if an error occurs.
  */
 async function fetchJson<T>(url: string): Promise<T | undefined> {
   try {

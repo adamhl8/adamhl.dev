@@ -1,10 +1,12 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from "#consts.ts"
 import Prose from "#components/Prose.astro"
+import { SITE_DESCRIPTION, SITE_TITLE } from "#consts.ts"
 import Base from "#layouts/Base/Base.astro"
 import { Content as Home } from "#pages/_home.md"
 ---
 
 <Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <Prose> <Home /> </Prose>
+  <Prose>
+    <Home />
+  </Prose>
 </Base>
