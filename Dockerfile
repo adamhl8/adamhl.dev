@@ -7,19 +7,17 @@ COPY package.json bun.lock bunfig.toml ./
 
 FROM base AS build
 
-COPY --from=ghcr.io/casey/just:latest /just /usr/local/bin/
-
 RUN bun install --ignore-scripts
 
 COPY public ./public
 COPY scripts ./scripts
 COPY src ./src
 COPY astro.config.ts ./
-COPY justfile ./
+COPY bask.ts ./
 COPY tsconfig.json ./
 
 RUN --mount=type=secret,id=GH_TOKEN,env=GITHUB_TOKEN \
-  just build-site
+  bunx bask build-site
 
 FROM base
 
