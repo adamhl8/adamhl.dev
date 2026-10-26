@@ -2,6 +2,9 @@ import getReadingTime from "reading-time"
 import type { MdastContent, MdastNode, MdastVisitorContext } from "satteri"
 import { defineHastPlugin, defineMdastPlugin } from "satteri"
 
+const NEWLINE_REGEX = /\r?\n/v
+const EXTERNAL_URL_REGEX = /^https?:\/\//v
+
 // Returns a factory so satteri creates a new `blocks` array for each document.
 export const readingTimePlugin = () => {
   // Collect text per block because `ctx.textContent(root)` joins blocks with no separator, which merges words.
@@ -31,7 +34,7 @@ export const breaksPlugin = defineMdastPlugin({
   text(node, ctx) {
     if (!node.value.includes("\n")) return
 
-    const [first = "", ...rest] = node.value.split(/\r?\n/v)
+    const [first = "", ...rest] = node.value.split(NEWLINE_REGEX)
 
     const nodes: MdastContent[] = [
       { type: "text", value: first },
@@ -48,7 +51,7 @@ export const externalLinksPlugin = defineHastPlugin({
   element: {
     filter: ["a"],
     visit(node, ctx) {
-      const isExternal = /^https?:\/\//v.test(node.properties.href ?? "")
+      const isExternal = EXTERNAL_URL_REGEX.test(node.properties.href ?? "")
       if (!isExternal) return
 
       ctx.setProperty(node, "target", "_blank")

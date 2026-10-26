@@ -1,6 +1,6 @@
 import { oxfmtConfig } from "@adamhl8/configs"
 import { defineConfig } from "oxfmt"
 
-const config = oxfmtConfig({ astro: { allowShorthand: false } })
+const config = oxfmtConfig()
 
 export default defineConfig(config)

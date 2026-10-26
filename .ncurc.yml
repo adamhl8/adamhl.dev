@@ -1,0 +1,4 @@
+# Keep `satteri` on the version `@astrojs/markdown-satteri` depends on, because our plugins run inside its processor.
+# Remove this once `@astrojs/markdown-satteri` depends on a newer `satteri`.
+reject:
+  - satteri

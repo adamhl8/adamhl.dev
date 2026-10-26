@@ -29,7 +29,7 @@ const indentClass: Record<number, string> = {
   <ol class="mt-4 ml-0 space-y-2">
     {headings.map((heading) => (
       <li
-        class:list={[indentClass[heading.depth], "border-base-300 border-l-2 pl-4 transition-colors"]}
+        class:list={[indentClass[heading.depth], "border-l-2 border-base-300 pl-4 transition-colors"]}
         data-heading-id={heading.slug}
       >
         <Link href={`#${heading.slug}`} title={heading.text} />

@@ -1,6 +1,5 @@
 {
   "extends": "@adamhl8/configs/tsconfig",
-  "include": ["**/*", "./.astro/types.d.ts"],
   "compilerOptions": {
     "types": ["bun", "unplugin-icons/types/astro"]
   }

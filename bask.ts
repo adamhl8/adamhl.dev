@@ -8,24 +8,24 @@ export const clean = task(async ({ sh }) => {
 })
 
 export const generateResume = task(async ({ sh }) => {
-  await sh`bun resumed render ./src/pages/_resume.json --theme jsonresume-theme-react-tailwind --output ./src/pages/resume.html`
+  await sh`resumed render ./src/pages/_resume.json --theme jsonresume-theme-react-tailwind --output ./src/pages/resume.html`
 })
 
 export const buildSite = task(async ({ sh }) => {
   await sh`bun ./scripts/process-favicon.ts`
-  await sh`bun astro build`
+  await sh`astro build`
 })
 
 export const astroSync = task(async ({ sh }) => {
-  await sh`bun astro sync`
+  await sh`astro sync`
 })
 
 export const dev = task(async ({ sh }) => {
-  await sh`bun astro dev`
+  await sh`astro dev`
 })
 
 export const preview = task(async ({ sh }) => {
-  await sh`bun astro preview`
+  await sh`astro preview`
 })
 
 export const obsidianShare = task(async ({ sh }) => {
