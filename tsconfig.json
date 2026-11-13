@@ -1,5 +1,5 @@
 {
-  "extends": "@adamhl8/configs/tsconfig",
+  "extends": "@adamhl8/configs/tsconfig/no-dts",
   "compilerOptions": {
     "types": ["bun", "unplugin-icons/types/astro"]
   }
