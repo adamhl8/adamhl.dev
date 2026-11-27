@@ -1,3 +1,9 @@
+## [1.2.8](https://github.com/adamhl8/adamhl.dev/compare/v1.2.7..v1.2.8) - 2026-11-27
+
+### 🐛 Bug Fixes
+
+- set w-full on main ([6d8c654](https://github.com/adamhl8/adamhl.dev/commit/6d8c654f34e1915a98df9063b5db6299c454360c) by @adamhl8)
+
 ## [1.2.7](https://github.com/adamhl8/adamhl.dev/compare/v1.2.6..v1.2.7) - 2026-11-27
 
 ### ⚙️ Miscellaneous Tasks
