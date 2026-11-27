@@ -66,8 +66,9 @@ const processFile = async (fileDetails: FileDetails) => {
   if (!date) throw new Error("Failed to get date")
   frontmatter.date = date // YYYY-MM-DD format
 
-  const updatedFrontmatter = YAML.stringify(frontmatter)
-  processedContent = processedContent.replace(FRONTMATTER_REGEX, `---\n${updatedFrontmatter}---`)
+  // Pass `space` because `YAML.stringify` emits flow style without it. Its output has no trailing newline.
+  const updatedFrontmatter = YAML.stringify(frontmatter, undefined, 2)
+  processedContent = processedContent.replace(FRONTMATTER_REGEX, `---\n${updatedFrontmatter}\n---`)
 
   await bun.write(destFilePath, processedContent)
 }
