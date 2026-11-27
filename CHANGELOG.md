@@ -1,3 +1,9 @@
+## [1.2.7](https://github.com/adamhl8/adamhl.dev/compare/v1.2.6..v1.2.7) - 2026-11-27
+
+### ⚙️ Miscellaneous Tasks
+
+- update wishlist ([f579613](https://github.com/adamhl8/adamhl.dev/commit/f579613b550f5a9ac67e752c44bd40987e1e0115) by @adamhl8)
+
 ## [1.2.6](https://github.com/adamhl8/adamhl.dev/compare/v1.2.5..v1.2.6) - 2026-10-26
 
 ### ⚙️ Miscellaneous Tasks
